@@ -1,4 +1,6 @@
 <?php require_once "includes/headerOpen.php"; ?>
+<?php require_once "classes/Stylesheet.php"; ?>
+<?php Stylesheet::add(['assets/style.css']); ?>
 
 <form action="" method="POST">
   <div class="form-group">
@@ -7,10 +9,6 @@
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Achternaam:</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Studentennummer:</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
   </div>
   <div class="form-group">
