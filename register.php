@@ -1,3 +1,5 @@
+<?php require_once "includes/headerOpen.php"; ?>
+
 <form action="" method="POST">
   <div class="form-group">
     <label for="exampleFormControlInput1">Voornaam:</label>
@@ -24,3 +26,5 @@
     <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
   </div>
 </form>
+
+<?php require_once "includes/headerClose.php"; ?>
