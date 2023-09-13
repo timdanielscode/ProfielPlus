@@ -1,15 +1,19 @@
 <?php 
 
-/* @autor Tim Daniëls
- * Autloading, to include/require classes automatically
- * 
+/* @author Tim Daniëls
+ * Autoloading, to include/require classes automatically
+ * Currently from following folders + routes.php file: classes, controllers
 */
 
 spl_autoload_register(function ($class) {
 
     if(file_exists("classes/" . $class . '.php')) {
         
-        require_once $class . '.php';
+        require_once 'classes/' . $class . '.php';
+    } else if(file_exists("controllers/" . $class . '.php')) {
+        require_once 'controllers/' .  $class . '.php';
     }
 });
+
+require_once 'routing/routes.php';
 

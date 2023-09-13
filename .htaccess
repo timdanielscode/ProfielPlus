@@ -1,0 +1,3 @@
+## Redirecting everything to index.php file
+
+FallbackResource /index.php

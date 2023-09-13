@@ -1,4 +1,3 @@
-<?php require_once "classes/autoload.php"; ?>
 <?php require_once "includes/headerOpen.php"; ?>
 <?php Stylesheet::add(['assets/style.css']); ?>
 
