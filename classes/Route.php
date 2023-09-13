@@ -10,7 +10,7 @@ class Route extends Router {
 
     /* Setting route type of get
      *
-     * @param array $paths css file paths + filenames
+     * @param string route path
      * @return object Router
     */
     public static function get($path) {
@@ -19,6 +19,20 @@ class Route extends Router {
 
            $router = new Router();
            return $router->getRoute($path);
+        }
+    }
+
+    /* Setting route type of post
+     *
+     * @param string route path
+     * @return object Router
+    */
+    public static function post($path) {
+
+        if(!empty($path) && $path !== null) {
+
+            $router = new Router();
+            return $router->postRoute($path);
         }
     }
 }

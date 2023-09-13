@@ -9,17 +9,32 @@ class Router {
 
     private $_path;
 
-    /* Setting request uri path
+    /* Setting request uri path for type of request method get
      *
      * @param string $path routing path
      * @return object Router
     */
     public function getRoute($path) {
 
-        if($path === $this->getUri() || '/' . $path === $this->getUri() && $_SERVER['REQUEST_METHOD'] === 'GET') {
+        if($path === $this->getUri() && $_SERVER['REQUEST_METHOD'] === 'GET' || '/' . $path === $this->getUri() && $_SERVER['REQUEST_METHOD'] === 'GET') {
 
             $this->_path = $path;
-        }
+        } 
+
+        return $this;
+    }
+
+    /* Setting request uri path for type of request method post
+     *
+     * @param string $path routing path
+     * @return object Router
+    */
+    public function postRoute($path) {
+
+        if($path === $this->getUri() && $_SERVER['REQUEST_METHOD'] === 'POST' || '/' . $path === $this->getUri() && $_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $this->_path = $path;
+        } 
 
         return $this;
     }

@@ -22,6 +22,7 @@
     <label for="exampleFormControlInput1">Wachtwoord herhalen:</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
   </div>
+  <input type="submit" name="submit" value="Submit"/>
 </form>
 
 <?php require_once "includes/headerClose.php"; ?>

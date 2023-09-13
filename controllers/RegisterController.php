@@ -10,4 +10,9 @@ class RegisterController {
 
         require_once 'register.php';
     }
+
+    public function store() {
+
+        print_r($_POST);
+    }
 }
