@@ -24,7 +24,7 @@ class RegisterController extends Controller {
                 'retypePassword' => ['required' => true, 'max' => 99],
             ]);
 
-            if(Validate::validate() === true) {
+            if(Validate::validated() === true) {
 
                 $user = new User();
                 $user->insert($request);
@@ -32,7 +32,8 @@ class RegisterController extends Controller {
                 header("Location: /");
             } else {
 
-                print_r(Validate::errors());
+                $rules['errors'] = Validate::errors();
+                return $this->view('register', $rules);
             }
         }
     }

@@ -12,9 +12,14 @@ class Controller {
      * @param string $file filename
      * @return void
     */
-    public function view($file) {
+    public function view($file, $data = null) {
 
         if(file_exists('views/' . $file . '.php')) {
+
+            if(!empty($data) && $data !== null) {
+
+                extract($data);
+            }
 
             require_once 'views/' . $file . '.php';
         }

@@ -55,7 +55,7 @@ class Validate {
      * Checking validation
      *
     */
-    public static function validate() {
+    public static function validated() {
 
         if(empty(self::$errors) ) {
 
