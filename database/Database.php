@@ -5,6 +5,7 @@
 */
 class Database {
 
+    public $connection;
     private $_host, $_username, $_password, $_database;
 
     /* 
@@ -17,7 +18,7 @@ class Database {
             $this->set($config);
 
             try {
-                new PDO("mysql:host=$this->_host;dbname=$this->_database", $this->_username, $this->_password);
+                $this->connection = new PDO("mysql:host=$this->_host;dbname=$this->_database", $this->_username, $this->_password);
 
                 echo "Connected successfully";
             } catch(PDOException $e) {

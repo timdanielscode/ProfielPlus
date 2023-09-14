@@ -6,6 +6,7 @@
 */
 
 require_once 'config.php';
+require_once "database/Database.php";
 
 spl_autoload_register(function ($class) {
 
