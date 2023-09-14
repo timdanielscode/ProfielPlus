@@ -14,9 +14,9 @@ class Controller {
     */
     public function view($file) {
 
-        if(file_exists($file . '.php')) {
+        if(file_exists('views/' . $file . '.php')) {
 
-            require_once $file . '.php';
+            require_once 'views/' . $file . '.php';
         }
     }
 }
