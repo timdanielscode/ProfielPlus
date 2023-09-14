@@ -26,28 +26,28 @@ class Validate {
                           
                             if($value === true && empty($_POST[$keys])) {
 
-                                self::$errors[$keys] = 'Field is required!';
+                                self::$errors[$keys] = 'Veld is leeg!';
                             }
                         break;
                         case "max":
                    
                             if(strlen($_POST[$keys]) > $value) {
 
-                                self::$errors[$keys] = 'Too many characters!';
+                                self::$errors[$keys] = 'Te veel veld karakters!';
                             }
                         break;
                         case "min":
                    
                             if(strlen($_POST[$keys]) < $value) {
 
-                                self::$errors[$keys] = 'Field amount characters should be at least ' . $value . '!';
+                                self::$errors[$keys] = 'Aantal veld karakters moet minimaal ' . $value . ' zijn!';
                             }
                         break;
                         case "match":
 
                             if($_POST[$keys] !== $_POST[$value]) {
 
-                                self::$errors[$keys] = 'Field does not match with ' . $value . '!';
+                                self::$errors[$keys] = 'Veld komt niet overeen met het ' . $value . ' veld!';
                             }
                         break;
                     }
