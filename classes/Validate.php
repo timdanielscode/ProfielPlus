@@ -45,9 +45,9 @@ class Validate {
                         break;
                         case "match":
 
-                            if($_POST[$keys] !== $_POST[$value]) {
+                            if($_POST[$keys] !== $_POST[$value[0]]) {
 
-                                self::$errors[$keys] = 'Veld komt niet overeen met het ' . $value . ' veld!';
+                                self::$errors[$keys] = 'Veld komt niet overeen met het ' . $value[1] . ' veld!';
                             }
                         break;
                     }
