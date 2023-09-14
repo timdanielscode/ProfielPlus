@@ -14,6 +14,8 @@ class RegisterController extends Controller {
     public function store($request) {
 
         $user = new User();
-        $user->insert();
+        $user->insert($request);
+
+        header("Location: /");
     }
 }
