@@ -36,6 +36,20 @@ class Validate {
                                 self::$errors[$keys] = 'Too many characters!';
                             }
                         break;
+                        case "min":
+                   
+                            if(strlen($_POST[$keys]) < $value) {
+
+                                self::$errors[$keys] = 'Field amount characters should be at least ' . $value . '!';
+                            }
+                        break;
+                        case "match":
+
+                            if($_POST[$keys] !== $_POST[$value]) {
+
+                                self::$errors[$keys] = 'Field does not match with ' . $value . '!';
+                            }
+                        break;
                     }
                 }
             }

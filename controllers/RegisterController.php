@@ -20,8 +20,8 @@ class RegisterController extends Controller {
                 'firstName' => ['required' => true, 'max' => 30],
                 'lastName' => ['required' => true, 'max' => 50],
                 'email' => ['required' => true, 'max' => 50],
-                'password' => ['required' => true, 'max' => 99],
-                'retypePassword' => ['required' => true, 'max' => 99],
+                'password' => ['required' => true, 'min' => 2, 'max' => 99],
+                'retypePassword' => ['match' => 'password']
             ]);
 
             if(Validate::validated() === true) {
