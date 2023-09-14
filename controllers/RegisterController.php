@@ -17,9 +17,9 @@ class RegisterController extends Controller {
 
             Validate::rules([
 
-                'firstName' => ['required' => true, 'max' => 30],
-                'lastName' => ['required' => true, 'max' => 50],
-                'email' => ['required' => true, 'max' => 50],
+                'firstName' => ['required' => true, 'max' => 30, 'special' => true],
+                'lastName' => ['required' => true, 'max' => 50, 'special' => true],
+                'email' => ['required' => true, 'max' => 50, 'special' => true],
                 'password' => ['required' => true, 'min' => 2, 'max' => 99],
                 'retypePassword' => ['match' => ['password', 'wachtwoord']]
             ]);

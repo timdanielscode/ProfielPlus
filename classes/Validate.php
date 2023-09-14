@@ -22,6 +22,10 @@ class Validate {
                 foreach($values as $key => $value) {
 
                     switch ($key) {
+
+                        /*
+                         * To make input field required 
+                        */
                         case "required":
                           
                             if($value === true && empty($_POST[$keys])) {
@@ -29,6 +33,9 @@ class Validate {
                                 self::$errors[$keys] = 'Veld is leeg!';
                             }
                         break;
+                        /*
+                         * To limit input field amount characters 
+                        */
                         case "max":
                    
                             if(strlen($_POST[$keys]) > $value) {
@@ -36,6 +43,9 @@ class Validate {
                                 self::$errors[$keys] = 'Te veel veld karakters!';
                             }
                         break;
+                        /*
+                         * To ensure minimum input field amount characters are being applied
+                        */
                         case "min":
                    
                             if(strlen($_POST[$keys]) < $value) {
@@ -43,11 +53,25 @@ class Validate {
                                 self::$errors[$keys] = 'Aantal veld karakters moet minimaal ' . $value . ' zijn!';
                             }
                         break;
+                        /*
+                         * Force input field value match an other input value
+                        */
                         case "match":
 
                             if($_POST[$keys] !== $_POST[$value[0]]) {
 
                                 self::$errors[$keys] = 'Veld komt niet overeen met het ' . $value[1] . ' veld!';
+                            }
+                        break;
+                        /*
+                         * Not allowing special characters inside input value
+                        */
+                        case "special":
+
+                            $regex = '/[#$%^&*()+=\\[\]\';,\/{}|":<>?~\\\\]/';
+                            if($value === true && preg_match($regex, $_POST[$keys])) {
+    
+                                self::$errors[$keys] = 'Veld mag geen vreemde karakters bevatten!';
                             }
                         break;
                     }
