@@ -7,7 +7,7 @@
 
 class Router {
 
-    private $_path;
+    private $_path, $_requestData;
 
     /* Setting request uri path for type of request method get
      *
@@ -33,6 +33,7 @@ class Router {
 
         if($path === $this->getUri() && $_SERVER['REQUEST_METHOD'] === 'POST' || '/' . $path === $this->getUri() && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
+            $this->typeOfPostRequestData();
             $this->_path = $path;
         } 
 
@@ -43,9 +44,21 @@ class Router {
      *
      * @return string request uri
     */
-    public function getUri() {
+    private function getUri() {
 
         return $_SERVER['REQUEST_URI'];
+    }
+
+    /* Getting request post data
+     * 
+     * @return void
+    */
+    private function typeOfPostRequestData() {
+
+        if(!empty($_POST) && $_POST !== null) {
+
+            $this->_requestData = ['POSTDATA' => $_POST];
+        }
     }
 
     /* Creating instances of controller classes
@@ -59,8 +72,10 @@ class Router {
 
         if($this->_path !== null) {
 
+            $requestData = $this->_requestData;
+
             $controller = new $class;
-            return $controller->$method();
+            return $controller->$method($requestData['POSTDATA']);
         }
     }
 }

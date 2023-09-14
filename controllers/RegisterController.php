@@ -11,8 +11,8 @@ class RegisterController extends Controller {
         return $this->view('register');
     }
 
-    public function store() {
+    public function store($request) {
 
-        print_r($_POST);
+        print_r($request);
     }
 }
