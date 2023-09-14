@@ -26,14 +26,14 @@ class Validate {
                           
                             if($value === true && empty($_POST[$keys])) {
 
-                                self::$errors[$keys] = $key;
+                                self::$errors[$keys] = 'Field is required!';
                             }
                         break;
                         case "max":
                    
                             if(strlen($_POST[$keys]) > $value) {
 
-                                self::$errors[$keys] = $key;
+                                self::$errors[$keys] = 'Too many characters!';
                             }
                         break;
                     }
