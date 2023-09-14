@@ -4,11 +4,11 @@
  * For registering users
 */
 
-class RegisterController {
+class RegisterController extends Controller {
 
     public function register() {
 
-        require_once 'register.php';
+        return $this->view('register');
     }
 
     public function store() {
