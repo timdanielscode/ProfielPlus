@@ -9,6 +9,14 @@ class Router {
 
     private $_path, $_requestData;
 
+    public function __construct() {
+
+        if($this->_requestData === null) {
+
+            $this->_requestData = [];
+        }
+    }
+
     /* Setting request uri path for type of request method get
      *
      * @param string $path routing path
