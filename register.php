@@ -3,24 +3,24 @@
 
 <form action="" method="POST">
   <div class="form-group">
-    <label for="exampleFormControlInput1">Voornaam:</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <label for="firstName">Voornaam:</label>
+    <input id="firstName" name="firstName" type="text" class="form-control">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Achternaam:</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <label for="lastName">Achternaam:</label>
+    <input id="lastName" name="lastName" type="text" class="form-control">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Email:</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <label for="email">Email:</label>
+    <input id="email" name="email" type="email" class="form-control">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Wachtwoord:</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <label for="password">Wachtwoord:</label>
+    <input id="password" name="password" type="password" class="form-control">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Wachtwoord herhalen:</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <label for="retypePassword">Wachtwoord herhalen:</label>
+    <input id="retypePassword" name="retypePassword" type="password" class="form-control">
   </div>
   <input type="submit" name="submit" value="Submit"/>
 </form>
