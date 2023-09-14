@@ -13,7 +13,7 @@ class User {
     public function insert($data) {
 
         $sql = "INSERT INTO users (firstName, lastName, email, password, retypePassword, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $statement = $this->_db->connection->prepare($sql)->execute([
+        $this->_db->connection->prepare($sql)->execute([
 
             $data['firstName'], 
             $data['lastName'],
