@@ -18,8 +18,8 @@ class User {
             $data['firstName'], 
             $data['lastName'],
             $data['email'], 
-            $data['password'], 
-            $data['retypePassword'], 
+            password_hash($data['password'], PASSWORD_DEFAULT), 
+            password_hash($data['retypePassword'], PASSWORD_DEFAULT),
             date('Y-m-d h:i:s'), 
             date('Y-m-d h:i:s')
         ]);
