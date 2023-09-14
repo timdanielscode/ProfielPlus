@@ -15,7 +15,9 @@ spl_autoload_register(function ($class) {
         require_once 'classes/' . $class . '.php';
     } else if(file_exists("controllers/" . $class . '.php')) {
         require_once 'controllers/' .  $class . '.php';
-    }
+    } else if(file_exists("models/" . $class . '.php')) {
+        require_once 'models/' .  $class . '.php';
+    } 
 });
 
 require_once 'routing/routes.php';
