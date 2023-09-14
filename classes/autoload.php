@@ -5,6 +5,8 @@
  * Currently from following folders + routes.php file: classes, controllers
 */
 
+require_once 'config.php';
+
 spl_autoload_register(function ($class) {
 
     if(file_exists("classes/" . $class . '.php')) {
