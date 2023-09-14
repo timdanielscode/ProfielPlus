@@ -13,7 +13,7 @@ class Router {
 
         if($this->_requestData === null) {
 
-            $this->_requestData = [];
+            $this->_requestData["POSTDATA"] = [];
         }
     }
 
