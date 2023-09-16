@@ -24,4 +24,21 @@ class User {
             date('Y-m-d h:i:s')
         ]);
     }
+
+
+    public function getCredentials ($username, $password) {
+        $sql = "SELECT * FROM users WHERE email=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$username]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user !== false && password_verify($password, $user["password"])) {
+            echo "success";
+        } else {
+            echo "go home filthy hacker";
+        }
+        
+    }
+    
+    
 }

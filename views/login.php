@@ -1,12 +1,11 @@
 <?php 
 
-require_once "classes/autoload.php";
 require_once "includes/headerOpen.php";
 Stylesheet::add(["assets/style.css"]);
 
 ?>
 
-<form action="validate.php" method="POST">
+<form action="" method="POST">
     <div class="form-group">
         <label class="form-label" for="email">Email: </label>
         <input type="text" class="form-control" id="email" name="email">
