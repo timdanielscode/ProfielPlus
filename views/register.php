@@ -1,6 +1,7 @@
 <?php require_once "includes/headerOpen.php"; ?>
 <?php Stylesheet::add(['assets/style.css']); ?>
 
+
 <form action="" method="POST">
   <div class="form-group">
     <label for="firstName">Voornaam:</label>
