@@ -1,4 +1,14 @@
 /*
+    create database
+*/
+
+CREATE DATABASE profileapp;
+
+USE DATABASE profileapp;
+
+
+
+/*
     USERS TABLE
 */
 
@@ -12,3 +22,5 @@ CREATE TABLE users (
     createdAt DATETIME NOT NULL,
     updatedAt DATETIME NOT NULL
 );
+
+
