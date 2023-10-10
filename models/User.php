@@ -1,16 +1,18 @@
 <?php 
 
-class User {
-
+class User
+{
     private $_db;
 
-    public function __construct() {
+    public function __construct()
+    {
 
         $this->_db = new Database();
         $this->_db->connect();
     }
 
-    public function insert($data) {
+    public function insert($data)
+    {
 
         $sql = "INSERT INTO users (firstName, lastName, email, password, retypePassword, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $this->_db->connection->prepare($sql)->execute([
@@ -25,8 +27,18 @@ class User {
         ]);
     }
 
+    public function verify($email)
+    {
+        $sql = "SELECT * FROM users WHERE email=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $user;
+    }
 
-    public function getCredentials ($username, $password) {
+
+    public function getCredentials($username, $password)
+    {
         $sql = "SELECT * FROM users WHERE email=?";
         $stmt = $this->_db->connection->prepare($sql);
         $stmt->execute([$username]);
@@ -37,8 +49,5 @@ class User {
         } else {
             echo "go home filthy hacker";
         }
-        
     }
-    
-    
 }

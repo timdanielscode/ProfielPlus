@@ -36,6 +36,8 @@ Stylesheet::add(["assets/style.css"]);
     </form>
 </main>
 
+<a href="/passwordforgotten">password forgotten</a>
+
 <footer>
     <a href="https://github.com/timdanielscode/SL01-portfolioApp">github repo van dit project</a>
 </footer>
