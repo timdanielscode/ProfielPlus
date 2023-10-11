@@ -40,6 +40,7 @@ class User {
      * Getting user id based on users email 
      *
      * @param string $user user email
+     * return object DB user id
     */
     public function getUserId($user) {
 
@@ -53,6 +54,46 @@ class User {
         }
     }
 
+    /* 
+     * @author Tim Daniëls
+     * Getting user details based on user id
+     *
+     * @param string $user user id
+     * return object DB user record
+    */
+    public function getDetails($userId) {
+
+        if(!empty($userId) && $userId !== null) {
+
+            $sql = "SELECT * FROM users WHERE id = ?";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute([$userId]);
+
+            return $stmt->fetch();
+        }
+    }
+
+    /* 
+     * @author Tim Daniëls
+     * Update user details based on user id
+     *
+     * @param array $details user details (firstname, lastname, email)
+     * @param string $userId user id
+    */
+    public function updateDetails($details, $userId) {
+
+        if(!empty($details) && $details !== null) {
+
+            $sql = "UPDATE users SET firstName=?, lastName=?, email=?, updated_at=? WHERE id = $userId";
+            $this->_db->connection->prepare($sql)->execute([
+    
+                $details['firstName'], 
+                $details['lastName'],
+                $details['email'], 
+                date('Y-m-d h:i:s')
+            ]);
+        }
+    }
 
     public function getCredentials ($email, $password) {
         $sql = "SELECT * FROM users WHERE email=?";
