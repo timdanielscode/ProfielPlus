@@ -1,6 +1,12 @@
-<?php require_once "includes/headerOpen.php"; ?>
-<?php require_once "includes/headerClose.php"; ?>
-<?php require_once "includes/navbar.php"; ?>
+<?php $this->include("headerOpen"); ?>
+
+<?php Stylesheet::add([
+    'assets/style.css'
+    
+]); ?>
+
+<?php $this->include("headerClose"); ?>
+<?php $this->include("navbar"); ?>
 
 <?php
 
@@ -10,3 +16,5 @@
     } 
 
 ?>
+
+<?php $this->include("footer"); ?>

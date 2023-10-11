@@ -18,7 +18,7 @@ class Stylesheet {
 
             foreach($paths as $path) {
 
-                echo '<link rel="stylesheet" href="' . $path . '"></head><body>';
+                echo '<link rel="stylesheet" href="' . $path . '">';
             }
         }
     }
