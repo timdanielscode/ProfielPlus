@@ -4,12 +4,22 @@ class User {
 
     private $_db;
 
+    /* 
+     * @author Tim Daniëls
+     * Creating database instance for the connection
+    */    
     public function __construct() {
 
         $this->_db = new Database();
         $this->_db->connect();
     }
 
+    /* 
+     * @author Tim Daniëls
+     * Inserting users 
+     *
+     * @param array $data user html input data (associative)
+    */
     public function insert($data) {
 
         $sql = "INSERT INTO users (firstName, lastName, email, password, created_at, updated_at, role_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -25,18 +35,37 @@ class User {
         ]);
     }
 
+    /* 
+     * @author Tim Daniëls
+     * Getting user id based on users email 
+     *
+     * @param string $user user email
+    */
+    public function getUserId($user) {
 
-    public function getCredentials ($username, $password) {
+        if(!empty($user) && $user !== null) {
+
+            $sql = "SELECT id FROM users WHERE email = ?";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute([$user]);
+
+            return $stmt->fetch();
+        }
+    }
+
+
+    public function getCredentials ($email, $password) {
         $sql = "SELECT * FROM users WHERE email=?";
         $stmt = $this->_db->connection->prepare($sql);
-        $stmt->execute([$username]);
+        $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user !== false && password_verify($password, $user["password"])) {
 
-            $_SESSION["user"] = $username;
             $_SESSION["loggedIn"] = true;
-
+            $_SESSION["user"] = $email;
+            $_SESSION["userId"] = $this->getUserId($email)['id'];
+           
             redirect('/portfolio');
         } else {
             redirect('/login');
