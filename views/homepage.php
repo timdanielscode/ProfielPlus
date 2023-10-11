@@ -1,7 +1,11 @@
-<?php require_once "includes/headerOpen.php"; ?>
-<?php Stylesheet::add(['assets/style.css']); ?>
-<?php require_once "includes/headerClose.php"; ?>
-<?php require_once "includes/navbar.php"; ?>
+<?php $this->include("headerOpen"); ?>
+<?php Stylesheet::add([
+    
+    'assets/style.css'
+    
+]); ?>
+<?php $this->include("headerClose"); ?>
+<?php $this->include("navbar"); ?>
 
 
 <h1>Homepage</h1>
