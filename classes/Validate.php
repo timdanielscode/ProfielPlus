@@ -74,6 +74,16 @@ class Validate {
                                 self::$errors[$keys] = 'Veld mag geen vreemde karakters bevatten!';
                             }
                         break;
+                        /*
+                         * Checking if html input value is unqiue based
+                        */
+                        case "unique":
+
+                            if(!empty($value)) {
+
+                                self::$errors[$keys] = 'Veld moet uniek zijn!';
+                            }
+                        break;
                     }
                 }
             }

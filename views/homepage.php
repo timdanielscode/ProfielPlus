@@ -10,3 +10,6 @@
 
 <h1>Homepage</h1>
 <!-- Homepage content -->
+
+
+<?php $this->include("footer"); ?>

@@ -95,6 +95,26 @@ class User {
         }
     }
 
+    /* 
+     * @author Tim Daniëls
+     * Checking for existing email based on user email and user id
+     *
+     * @param string $email user email
+     * @param string $userId user id
+     * @return mixed object user record | object empty record
+    */    
+    public function getUniqueEmail($email, $userId) {
+
+        if(!empty($email) && $email !== null) {
+
+            $sql = "SELECT email FROM users WHERE email = ? AND NOT id = ?";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute([$email, $userId]);
+    
+            return $stmt->fetch();
+        }
+    }
+
     public function getCredentials ($email, $password) {
         $sql = "SELECT * FROM users WHERE email=?";
         $stmt = $this->_db->connection->prepare($sql);
