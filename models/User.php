@@ -33,6 +33,10 @@ class User {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user !== false && password_verify($password, $user["password"])) {
+
+            $_SESSION["user"] = $username;
+            $_SESSION["loggedIn"] = true;
+
             redirect('/portfolio');
         } else {
             redirect('/login');
