@@ -16,9 +16,28 @@ class ProfileController extends Controller {
 
     public function update($request) {
 
-        $user = new User();
-        $user->updateDetails($request, $_SESSION['userId']);
+        if(isset($request['submit']) === true) {
 
-        redirect('/profile/' . $_SESSION['userId']);
+            Validate::rules([
+
+                'firstName' => ['required' => true, 'max' => 30, 'special' => true],
+                'lastName' => ['required' => true, 'max' => 50, 'special' => true],
+                'email' => ['required' => true, 'max' => 50, 'special' => true]
+            ]);
+
+            if(Validate::validated() === true) {
+
+                $user = new User();
+                $user->updateDetails($request, $_SESSION['userId']);
+
+                redirect('/profile/' . $_SESSION['userId']);
+            } else {
+
+                $data['errors'] = Validate::errors();
+                $data['details'] = $request;
+
+                return $this->view('profile/edit', $data);
+            }
+        }
     }
 }
