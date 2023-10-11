@@ -66,10 +66,10 @@ class User {
             $_SESSION["user"] = $email;
             $_SESSION["userId"] = $this->getUserId($email)['id'];
            
-            redirect('/portfolio');
-        } else {
-            redirect('/login');
-        }
+            return true;
+        } 
+
+        return false;
     }
     
     

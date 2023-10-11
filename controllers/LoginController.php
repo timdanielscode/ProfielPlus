@@ -13,7 +13,13 @@ class LoginController extends Controller {
         if (isset($login["submit"])) {
             $user = new User();
 
-            $user->getCredentials($login["email"], $login["password"]);
+            if($user->getCredentials($login["email"], $login["password"]) === true) {
+
+                redirect('/portfolio');
+            } else {
+
+                return $this->view('/login');
+            }
         }
     }
     
