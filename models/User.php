@@ -33,11 +33,10 @@ class User {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user !== false && password_verify($password, $user["password"])) {
-            echo "success";
+            redirect('/portfolio');
         } else {
-            echo "go home filthy hacker";
+            redirect('/login');
         }
-        
     }
     
     
