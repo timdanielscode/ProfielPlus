@@ -12,16 +12,16 @@ class User {
 
     public function insert($data) {
 
-        $sql = "INSERT INTO users (firstName, lastName, email, password, retypePassword, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (firstName, lastName, email, password, created_at, updated_at, role_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $this->_db->connection->prepare($sql)->execute([
 
             $data['firstName'], 
             $data['lastName'],
             $data['email'], 
             password_hash($data['password'], PASSWORD_DEFAULT), 
-            password_hash($data['retypePassword'], PASSWORD_DEFAULT),
             date('Y-m-d h:i:s'), 
-            date('Y-m-d h:i:s')
+            date('Y-m-d h:i:s'),
+            1
         ]);
     }
 
