@@ -17,6 +17,8 @@ if(isset($_SESSION['userId']) === true) {
 
     Route::get('/profile/' . $_SESSION['userId'])->add('ProfileController', 'edit');
     Route::post('/profile/' . $_SESSION['userId'])->add('ProfileController', 'update');
+    Route::get('/profile/' . $_SESSION['userId'] . '/change-password')->add('ProfileController', 'editPassword');
+    Route::post('/profile/' . $_SESSION['userId'] . '/change-password')->add('ProfileController', 'updatePassword');
 }
 
 

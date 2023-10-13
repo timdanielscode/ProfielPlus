@@ -43,4 +43,53 @@ class ProfileController extends Controller {
             }
         }
     }
+
+    public function editPassword() {
+
+        return $this->view('profile/changePassword');
+    }
+
+    public function updatePassword($request) {
+
+        if($this->verifyPassword($request['currentPassword']) === true) {
+
+            Validate::rules([
+
+                'newPassword' => ['required' => true, 'min' => '1', 'max' => 99],
+                'newPasswordRetype' => ['match' => ['newPassword', 'wachtwoord']]
+            ]);
+
+            if(Validate::validated() === true) {
+
+                $user = new User();
+                $user->updatePassword(password_hash($request['newPassword'], PASSWORD_DEFAULT), $_SESSION['userId']);
+
+                redirect('/logout');
+            } else {
+
+                $data['errors'] = Validate::errors();
+                return $this->view('profile/changePassword', $data);
+            }
+        }
+    }
+
+    public function verifyPassword($password) {
+
+        Validate::rules([
+
+            'currentPassword' => ['required' => true, 'min' => '1', 'max' => 99]
+        ]);
+
+        $user = new User();
+
+        if($user->getCredentials($_SESSION['user'], $password) === true && Validate::validated() === true) {
+
+            return true;
+
+        } else {
+
+            $data['errors'] = ['currentPassword' => 'Verkeed wachtwoord!'];
+            return $this->view('profile/changePassword', $data);
+        }
+    }
 }

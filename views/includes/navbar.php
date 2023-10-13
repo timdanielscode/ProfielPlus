@@ -1,6 +1,7 @@
 <nav>
     <img src="" alt="logo of our team">
     <ul>
+      <li><a href="/"><img src="assets/images/233333.webp"/></a></li>
       <li>
         <a href="/login">login</a>
       </li>
@@ -10,7 +11,10 @@
       <?php if(isset($_SESSION['loggedIn']) === true && isset($_SESSION['user']) === true && isset($_SESSION["userId"]) === true) { ?>
         <li>
             <a href="/profile/<?php echo $_SESSION["userId"]; ?>"><?php echo substr($_SESSION['user'], 0, 1); ?></a>
-      </li>
+        </li>
+        <li>
+            <a href="/profile/<?php echo $_SESSION["userId"]; ?>/change-password">Change password</a>
+        </li>
       <?php } ?>
     </ul>
 </nav>    
