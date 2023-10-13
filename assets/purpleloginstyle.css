@@ -1,0 +1,132 @@
+/* 
+    animations
+*/
+@keyframes formbutton {
+    0% {background-color: rgb(88, 19, 94); color: azure;}
+    100% {background-color: #FAF9F6; color: rgb(88, 19, 94)}
+}
+
+/* 
+    Default stylesheet
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
+}
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 60px 1fr 100px;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 300px;
+    background-color: rgb(88, 19, 94);
+    color: azure;
+    /* color: rgb(112, 146, 190); */
+}
+nav ul {
+    grid-column: 3;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin-right: 10px;
+    padding: 10px;
+}
+nav a, footer a {
+    text-decoration: none;
+    color: azure;
+    /* color: rgb(112, 146, 190); */
+}
+
+/*
+    styling the login form
+*/
+form {
+    box-shadow: 8px 8px 15px 8px rgb(82, 82, 82);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 600px;
+    /* width: fit-content; */
+    padding: 10px 20px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: #FAF9F6;
+    /* background-color: rgb(240, 240, 240); */
+}
+
+form > * {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    align-self: start;
+}
+
+input {
+    display: block;
+    padding: 8px;
+    width: 100%;
+}
+
+footer {
+    background-color: rgb(88, 19, 94);
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+footer a {
+    margin-top: 20px;
+}
+
+#submitLogin, #submitResgister {
+    padding: 10px 60px;
+    width: fit-content;
+    border-radius: 2px;
+    background-color: rgb(88, 19, 94);
+    border: rgb(88, 19, 94);
+    color: azure;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#submitLogin:hover, #submitResgister:hover {
+    animation-name: formbutton;
+    animation-duration: .82s;
+    background-color: #FAF9F6; 
+    color:rgb(88, 19, 94);
+    border: 1px solid rgb(88, 19, 94);
+    cursor: pointer;
+}
+
+/* make responsive */
+
+@media only screen and (max-width: 520px) {
+    .row {
+        height: 110px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }    
+    nav {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
