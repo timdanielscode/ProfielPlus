@@ -7,7 +7,9 @@ Stylesheet::add(["assets/purpleloginstyle.css"]);
 
 <header>
   <nav>
-    <img src="" alt="logo of our team">
+    <div class="imgContainer">
+      <img src="./views/includes/coat_logo.png" alt="logo of our team">
+    </div>
     <ul>
       <li>
         <a href="/login">login</a>
@@ -21,6 +23,7 @@ Stylesheet::add(["assets/purpleloginstyle.css"]);
 
 <main>
     <form method="POST">
+      <h1>Login</h1>
             <label class="form-label" for="email">Email: </label>
             <input type="text" class="form-control" id="email" name="email">
             <label class="form-label" for="password">Wachtwoord: </label>
