@@ -88,7 +88,3 @@ CREATE TABLE educations_schools_users (
     user_id INT(11) NOT NULL
 );
 
-CREATE TABLE subjects_users (
-    subject_id int(11) NOT NULL,
-    user_id int(11) NOT NULL,
-)
