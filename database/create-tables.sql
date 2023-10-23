@@ -40,6 +40,7 @@ CREATE TABLE job_titles (
     job_title VARCHAR(255) NOT NULL
 );
 
+
 CREATE TABLE schools (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
     school VARCHAR(255) NOT NULL,
@@ -71,7 +72,7 @@ CREATE TABLE diplomas_achieved (
 
 CREATE TABLE educations_schools_subjects (
     education_id INT(11) NOT NULL,
-    hobby_id INT(11) NOT NULL,
+    school_id INT(11) NOT NULL,
     user_id INT(11) NOT NULL
 );
 
@@ -81,7 +82,13 @@ CREATE TABLE marks_subjects_users (
     user_id INT(11) NOT NULL
 );
 
-CREATE TABLE subjects_users (
-    subject_id INT(11) NOT NULL,
+CREATE TABLE educations_schools_users (
+    education_id INT(11) NOT NULL,
+    school_id INT(11) NOT NULL,
     user_id INT(11) NOT NULL
 );
+
+CREATE TABLE subjects_users (
+    subject_id int(11) NOT NULL,
+    user_id int(11) NOT NULL,
+)

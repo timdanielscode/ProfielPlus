@@ -14,7 +14,6 @@
 
         echo $_SESSION['user'];
     } 
-
 ?>
 
 <?php $this->include("footer"); ?>
