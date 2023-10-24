@@ -159,5 +159,171 @@ class Education {
         
         
      }
+
+/**
+ * ___________________________________________________________________________________________________
+ * 
+ * ----------------- getting data for editSchool methods: ------------------
+ * 
+ */
     
+ /**
+  * select all subject id's and marks of a certain user
+  */
+
+/**
+ * method for selecting al subjects wit marks
+ */  
+  public function getUserSubjectsWithMarks($userId) {
+    $sql = "SELECT * FROM marks_subjects_users WHERE mark > 0";
+    $stmt = $this->_db->connection->prepare($sql);
+    $stmt->execute([]);
+    $subjectsWithMarks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $subjectsWithMarks;
+  }
+
+
+/**
+ * method for selecting al subjects without marks
+ */
+  public function getUserSubjectsWithoutMarks($userId) {
+
+  $sql = "SELECT * FROM marks_subjects_users WHERE mark = 0";
+  $stmt = $this->_db->connection->prepare($sql);
+  $stmt->execute([]);
+  $subjectsWithoutMarks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+  return $subjectsWithoutMarks;
+  }
+    
+
+/**
+ * selecting all educations of a certain user
+ */
+
+ public function getUserEducations($userId) {
+    $sql = "SELECT * FROM educations_schools_users WHERE user_id=?";
+    $stmt = $this->_db->connection->prepare($sql);
+    $stmt->execute([$userId]);
+    $educations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $achievedRaw = [];
+    $notAchievedRaw = [];
+
+    foreach($educations as $education) {
+        $sql = "SELECT * FROM diplomas_achieved 
+        WHERE user_id=? AND school_id=? AND education_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$userId, $education['school_id'], $education['education_id']]);
+        
+        $isAchieved = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        
+        if($isAchieved == false) {
+            array_push($notAchievedRaw, $education);
+        } else {
+            array_push($achievedRaw, $education);
+        }
+    }
+
+    $achieved = [];
+    $notAchieved = [];
+
+    foreach ($notAchievedRaw as $singleNotAchievedRaw) {
+        $sql = "SELECT education_name FROM educations WHERE id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$singleNotAchievedRaw['education_id']]);
+
+        $educationName = $stmt->fetch(PDO::FETCH_ASSOC)['education_name'];
+
+
+        $sql = "SELECT school FROM schools WHERE id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$singleNotAchievedRaw['school_id']]);
+
+        $schoolName = $stmt->fetch(PDO::FETCH_ASSOC)['school'];
+
+        array_push($notAchieved, ["education" => "$educationName", "school" => "$schoolName"]);
+
+
+    }
+
+
+    foreach ($achievedRaw as $singleAchievedRaw) {
+        $sql = "SELECT education_name FROM educations WHERE id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$singleAchievedRaw['education_id']]);
+
+        $educationName = $stmt->fetch(PDO::FETCH_ASSOC)['education_name'];
+
+
+        $sql = "SELECT school FROM schools WHERE id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$singleAchievedRaw['school_id']]);
+
+        $schoolName = $stmt->fetch(PDO::FETCH_ASSOC)['school'];
+
+        array_push($achieved, ["education" => "$educationName", "school" => "$schoolName"]);
+
+
+    }
+
+    return array($achieved, $notAchieved);
+
+  }
+
+
+  /**
+   * ----------------- editSchool methods: ------------------
+   */
+
+   /**
+    * method to update the Selected row if the data is not dulicate
+    */
+    public function editEducation($institute, $education, $diplomaAchieved, $userId, $oldEducation, $oldSchool) {
+
+        $schoolId = $this->getSchoolId($institute);
+        $educationId = $this->getEducationId($education);
+
+        $oldSchoolId = $this->getSchoolId($oldSchool);
+        $oldEducationId = $this->getEducationId($oldEducation);
+        
+        // first checking if there is allready a reccord in the db with this info
+        $sql = "SELECT * FROM educations_schools_users 
+        WHERE education_id=? AND school_id=? AND user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$educationId, $schoolId, $userId]);
+
+
+        // updating the table with the new info if that info is no duplicate info
+        if ($stmt->fetch(PDO::FETCH_ASSOC) == false) {
+            $sql = "UPDATE educations_schools_users
+            SET education_id=? AND school_id=?
+            WHERE education_id=? AND school_id=? AND user_id=?";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute([
+                $educationId, 
+                $schoolId,
+                $oldEducationId,
+                $oldSchoolId,
+                $userId]);
+        }
+
+        $sql = "SELECT * FROM diplomas_achieved 
+        WHERE education_id=? AND school_id=? AND user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$educationId, $schoolId, $userId]);
+
+        if ($stmt->fetch(PDO::FETCH_ASSOC) == false) {
+            $sql = "INSERT INTO diplomas_achieved (education_id, school_id, user_id)
+            VALUES (?, ?, ?)";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute([$educationId, $schoolId, $userId]);
+        }
+        header("Location: /edit-schools");
+
+    }
+
+
+  
 }
