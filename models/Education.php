@@ -86,16 +86,48 @@ class Education {
 
         $schoolId = $this->getSchoolId($schoolName);
         $educationId = $this->getEducationId($educationName);
-        
+
+        $sql = "SELECT * FROM educations_schools_users 
+        WHERE education_id=? AND school_id=? AND user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$educationId, $schoolId, $userId]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+        // if there is no row with this combination of id's
+        if ($result == false) {
         // inserting user into the "educations_schools_users" table
         $sql = "INSERT INTO educations_schools_users (education_id, school_id, user_id)
         VALUES (?, ?, ?)";
         $stmt = $this->_db->connection->prepare($sql);
         $stmt->execute([$educationId, $schoolId, $userId]);
+        }
+        
+        
+        
+        // check if the diploma already was achieved if not update the DB
+        $sql = "SELECT * FROM diplomas_achieved 
+        WHERE education_id=? AND school_id=? AND user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$educationId, $schoolId, $userId]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($hasDiploma == "ja") {
+        /**
+         * check if the user does not already own a version of this diploma 
+         * and if he/she sais that they achieved this diploma
+         */
+        if($result == false && $hasDiploma == "ja"){
             $sql = "INSERT INTO diplomas_achieved (school_id, education_id, user_id)
             VALUES (?, ?, ?)";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute([$schoolId, $educationId, $userId]);
+
+            /**
+             * if user has diploma registered in the db but now filled in no 
+             * then the diploma will be removed from the database 
+             * */ 
+        } else if ($result != false && $hasDiploma == "nee") {
+            $sql = "DELETE FROM diplomas_achieved WHERE school_id=? AND education_id=? AND user_id=?";
             $stmt = $this->_db->connection->prepare($sql);
             $stmt->execute([$schoolId, $educationId, $userId]);
         }

@@ -16,7 +16,7 @@
             <a href="/profile/<?php echo $_SESSION["userId"]; ?>/change-password">Change password</a>
         </li>
         <li>
-            <a href="<?= $_SESSION["userId"] ?>/edit-schools">Edit school</a>
+            <a href="/edit-schools">Edit school</a>
         </li>
       <?php } ?>
     </ul>
