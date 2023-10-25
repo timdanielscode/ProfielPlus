@@ -54,7 +54,6 @@ class Education {
         $stmt->execute([$name]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['id'];
-        var_dump($result);
 
     }
 
@@ -131,6 +130,7 @@ class Education {
             $stmt = $this->_db->connection->prepare($sql);
             $stmt->execute([$schoolId, $educationId, $userId]);
         }
+        header("Location: /edit-schools");
     }
 
     /**
@@ -287,18 +287,20 @@ class Education {
 
         $oldSchoolId = $this->getSchoolId($oldSchool);
         $oldEducationId = $this->getEducationId($oldEducation);
-        
+
         // first checking if there is allready a reccord in the db with this info
         $sql = "SELECT * FROM educations_schools_users 
         WHERE education_id=? AND school_id=? AND user_id=?";
         $stmt = $this->_db->connection->prepare($sql);
         $stmt->execute([$educationId, $schoolId, $userId]);
 
+        $isduplcate = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // updating the table with the new info if that info is no duplicate info
-        if ($stmt->fetch(PDO::FETCH_ASSOC) == false) {
+
+        // // updating the table with the new info if that info is no duplicate info
+        if ($isduplcate == false) {
             $sql = "UPDATE educations_schools_users
-            SET education_id=? AND school_id=?
+            SET education_id=?, school_id=?
             WHERE education_id=? AND school_id=? AND user_id=?";
             $stmt = $this->_db->connection->prepare($sql);
             $stmt->execute([
@@ -313,10 +315,16 @@ class Education {
         WHERE education_id=? AND school_id=? AND user_id=?";
         $stmt = $this->_db->connection->prepare($sql);
         $stmt->execute([$educationId, $schoolId, $userId]);
+        $hasDiploma = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($stmt->fetch(PDO::FETCH_ASSOC) == false) {
+        if ($hasDiploma == false && $diplomaAchieved == "ja") {
             $sql = "INSERT INTO diplomas_achieved (education_id, school_id, user_id)
             VALUES (?, ?, ?)";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute([$educationId, $schoolId, $userId]);
+        } else if ($hasDiploma !== false && $diplomaAchieved == "nee") {
+            $sql = "DELETE FROM diplomas_achieved 
+            WHERE education_id=? AND school_id=? AND user_id=?";
             $stmt = $this->_db->connection->prepare($sql);
             $stmt->execute([$educationId, $schoolId, $userId]);
         }
@@ -324,6 +332,44 @@ class Education {
 
     }
 
+/**
+ * ----------------- Delete School methods: ------------------
+ */
+public function deleteSchool($school, $education, $userId) {
+    
+    $schoolId = $this->getSchoolId($school);
+    $educationId = $this->getEducationId($education);
+
+    $sql = "SELECT * FROM educations_schools_users 
+    WHERE education_id=? AND school_id=? AND user_id=?";
+    $stmt = $this->_db->connection->prepare($sql);
+    $stmt->execute([$educationId, $schoolId, $userId]);
+
+    $exists = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $sql = "SELECT * FROM diplomas_achieved 
+    WHERE education_id=? AND school_id=? AND user_id=?";
+    $stmt = $this->_db->connection->prepare($sql);
+    $stmt->execute([$educationId, $schoolId, $userId]);
+
+    $hasDiploma = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($exists !== false) {
+        $sql = "DELETE FROM educations_schools_users 
+        WHERE education_id=? AND school_id=? AND user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$educationId, $schoolId, $userId]);
+
+        if ($hasDiploma !== false) {
+            $sql = "DELETE FROM diplomas_achieved 
+            WHERE education_id=? AND school_id=? AND user_id=?";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute([$educationId, $schoolId, $userId]);
+        }
+    }
+    header("Location: /edit-schools");
+
+}
 
   
 }

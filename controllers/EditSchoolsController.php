@@ -32,8 +32,8 @@ class EditSchoolsController extends Controller {
     }
 
     public function editOrDelete($data) {
-        if ($data['updateEducation'] == "Update") {
-            // now we update the db with newly selected items but only if the data is not duplicate
+        if (isset($data['updateEducation'])) {
+           
             $this->education->editEducation(
                 $data['instituutSelect'], 
                 $data['educationSelect'], 
@@ -42,7 +42,14 @@ class EditSchoolsController extends Controller {
                 $data['oldeducationSelect'], 
                 $data['oldInstituutSelect']
             );
+        } else if (isset($data['deleteEducation'])) {
+            $this->education->deleteSchool(
+                $data['instituutSelect'], 
+                $data['educationSelect'], 
+                $_SESSION['userId']
+            );
         }
+
     }
 
 }
