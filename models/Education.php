@@ -23,7 +23,7 @@ class Education {
     
 
     /**
-    * retrieving all educations from certain institute
+    * retrieving all educations
     */
     public function getEducations() {
         $sql = "SELECT education_name FROM educations";
@@ -41,8 +41,45 @@ class Education {
         $stmt = $this->_db->connection->prepare($sql);
         $stmt->execute([]);
 
-        $subjects = $stmt->fetchaLL(PDO::FETCH_ASSOC);
+        $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $subjects;
+    }
+
+    /**
+     * getting the name of a subject by ID
+     */
+    private function getSubjectById($id) {
+        $sql = "SELECT subject_name FROM subjects WHERE id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$id]);
+
+        $subject = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $subject;
+    }
+
+    /**
+     * retreving all marks, subject_id's from the logged in user 
+     */
+    public function getUserSubjectsMarks($userId) {
+        $sql = "SELECT * FROM marks_subjects_users WHERE user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$userId]);
+
+        $subjectWithMark = [];
+        $subjectWithoutMark = [];
+
+        $subjectObjectsRaw = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($subjectObjectsRaw as $subjectObjectRaw) {
+            $mark = $subjectObjectRaw['mark'];
+            $subject = $this->getSubjectById($subjectObjectRaw['subject_id'])["subject_name"];
+
+            if ($subjectObjectRaw['mark'] < 10) {
+                array_push($subjectWithoutMark, ["subject" => $subject, "mark" => ""]);
+            } else {
+                array_push($subjectWithMark, ["subject" => $subject, "mark" => ($mark / 10)]);
+            }
+        }
+        return array("with" => $subjectWithMark, "without" => $subjectWithoutMark);
     }
 
     /**
@@ -145,6 +182,8 @@ class Education {
         $stmt = $this->_db->connection->prepare($sql);
         $stmt->execute([$subjectId, $userId]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $mark *= 10;
 
         if ($result == false) {
             $sql = "INSERT INTO marks_subjects_users (mark, subject_id, user_id)
