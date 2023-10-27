@@ -6,6 +6,14 @@
 
 class WorkExperienceController extends Controller {
 
+    public function index() {
+
+        $workExpierence = new WorkExperience();
+        $data['jobExperiences'] = $workExpierence->getAll();
+
+        return $this->view('work-experience/index', $data);
+    }
+
     public function create() {
 
         $data = [];
@@ -44,9 +52,22 @@ class WorkExperienceController extends Controller {
 
     public function edit() {
 
+        $id = $_GET['id'];
+
         $workExpierence = new WorkExperience();
-        $data['jobExperiences'] = $workExpierence->getAll();
+        $data['jobExperience'] = $workExpierence->get($id);
 
         return $this->view('work-experience/edit', $data);
+    }
+
+    public function update($request) {
+
+        if(isset($request['submit']) === true) {
+
+            $workExpierence = new WorkExperience();
+            $workExpierence->updateOnId($request, $request['id']);
+
+            redirect('/profile/' . $_SESSION['userId'] . '/work-experience');
+        }
     }
 }

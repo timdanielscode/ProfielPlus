@@ -2,24 +2,32 @@
 <?php Stylesheet::add(['assets/style.css']); ?>
 <?php $this->include("headerClose"); ?>
 
-<h1>Werkervaring overzicht</h1>
-<table>
-    <tr>
-        <th>Werkgever</th>
-        <th>Functie</th>
-        <th>Startdatum</th>
-        <th>Einddatum</th>
-        <th>Details</th>
-    </tr>
-    <?php foreach($jobExperiences as $key => $value) { ?>
-    <tr>
-        <td><?php echo $value['employer']; ?></td>
-        <td><?php echo $value['job_title']; ?></td>
-        <td><?php echo $value['start_date']; ?></td>
-        <td><?php echo $value['end_date']; ?></td>
-        <td><?php echo $value['details']; ?></td>
-    </tr>
-    <?php } ?>
-</table> 
+<h1>Werkervaring aanpassen</h1>
+<form action="/profile/<?php echo $_SESSION['userId']; ?>/work-experience/update" method="POST">
+    <div class="form-parts">
+        <label for="employer">Werkgever:</label>
+        <input id="employer" name="employer" value="<?php echo $jobExperience['employer']; ?>"/>
+    </div>
+    <div class="form-parts">
+        <label for="jobTitle">Functie:</label>
+        <input id="jobTitle" name="jobTitle" value="<?php echo $jobExperience['job_title']; ?>"/>
+    </div>
+    <div class="form-parts">
+        <label for="startDate">Startdatum:</label>
+        <input id="startDate" type="date" name="startDate" value="<?php echo $jobExperience['start_date']; ?>">
+    </div>
+    <div class="form-parts">
+        <label for="endDate">Einddatum:</label>
+        <input id="endDate" type="date" name="endDate" value="<?php echo $jobExperience['end_date']; ?>">
+    </div>
+    <div class="form-parts">
+        <label for="details">Details:</label>
+        <textarea id="details" name="details"><?php echo $jobExperience['details']; ?></textarea>
+    </div>
+    <input type="hidden" name="id" value="<?php echo $jobExperience['id']; ?>"/>
+    <input type="submit" name="submit" value="Aanpassen"/>
+</form>
+
+
 
 <?php $this->include("footer"); ?>

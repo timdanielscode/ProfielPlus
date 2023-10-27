@@ -26,9 +26,13 @@ if(isset($_SESSION['userId']) === true) {
     Route::post('/add-schools') -> add('AddSchoolsController', 'addSchoolOrSubject');
 
     
+    Route::get('/profile/' . $_SESSION['userId'] . '/work-experience')->add('WorkExperienceController', 'index');
+
+
     Route::get('/profile/' . $_SESSION['userId'] . '/work-experience/create')->add('WorkExperienceController', 'create');
     Route::post('/profile/' . $_SESSION['userId'] . '/work-experience/create')->add('WorkExperienceController', 'store');
     Route::get('/profile/' . $_SESSION['userId'] . '/work-experience/edit')->add('WorkExperienceController', 'edit');
+    Route::post('/profile/' . $_SESSION['userId'] . '/work-experience/update')->add('WorkExperienceController', 'update');
 }
 
 

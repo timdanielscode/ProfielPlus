@@ -48,4 +48,40 @@ class WorkExperience {
         return $stmt->fetchAll();
     }
 
+    /* 
+     * @author Tim Daniëls
+     * Fetching work experiences on id
+     * 
+     * @param string $id experiences id
+    */   
+    public function get($id) {
+
+        $sql = "SELECT * FROM job_experiences WHERE id = $id";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute();
+    
+        return $stmt->fetch();
+    }
+
+    /* 
+     * @author Tim Daniëls
+     * Update work experiences on id
+     * 
+     * @param array $data experience data
+     * @param string $id experiences id
+    */   
+    public function updateOnId($data, $id) {
+
+        $sql = "UPDATE job_experiences SET employer=?, job_title=?, start_date=?, end_date=?, details=?, updated_at=? WHERE id = $id";
+        $this->_db->connection->prepare($sql)->execute([
+    
+            $data['employer'], 
+            $data['jobTitle'],
+            $data['startDate'], 
+            $data['endDate'], 
+            $data['details'], 
+            date('Y-m-d h:i:s')
+        ]);
+    }
+
 }
