@@ -20,8 +20,10 @@ class WorkExperienceController extends Controller {
             Validate::rules([
 
                 'employer' => ['required' => true, 'max' => 30, 'special' => true],
+                'jobTitle' => ['required' => true, 'max' => 50, 'special' => true],
                 'startDate' => ['required' => true],
-                'endDate' => ['required' => true, 'later' => [$request['startDate']]]
+                'endDate' => ['required' => true, 'later' => [$request['startDate']]],
+                'details' => ['required' => true, 'max' => 250, 'special' => true]
             ]);
 
             if(Validate::validated() === true) {

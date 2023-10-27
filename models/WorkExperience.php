@@ -21,16 +21,17 @@ class WorkExperience {
     */
     public function insert($data, $userId) {
 
-        $sql = "INSERT INTO job_experiences (job_id, user_id, employer, start_date, end_date, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO job_experiences (user_id, job_title, employer, start_date, end_date, details, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $this->_db->connection->prepare($sql)->execute([
 
-            1, 
             $userId,
+            $data['jobTitle'], 
             $data['employer'], 
             $data['startDate'],
             $data['endDate'], 
+            $data['details'],
             date('Y-m-d h:i:s'), 
-            date('Y-m-d h:i:s'),
+            date('Y-m-d h:i:s')
         ]);
     }
 
