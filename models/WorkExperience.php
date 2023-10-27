@@ -12,13 +12,20 @@ class WorkExperience {
         $this->_db->connect();
     }
 
-    public function insert($data) {
+    /* 
+     * @author Tim Daniëls
+     * Inserting work experiences
+     *
+     * @param array $data user html input data (associative)
+     * @param string $userId user session id
+    */
+    public function insert($data, $userId) {
 
         $sql = "INSERT INTO job_experiences (job_id, user_id, employer, start_date, end_date, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $this->_db->connection->prepare($sql)->execute([
 
             1, 
-            $_SESSION['userId'],
+            $userId,
             $data['employer'], 
             $data['startDate'],
             $data['endDate'], 
