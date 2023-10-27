@@ -6,6 +6,14 @@
 
 class WorkExperienceController extends Controller {
 
+    private function redirect($inputName, $path) {
+
+        if(isset($inputName) === false) {
+            
+            redirect($path);
+        }
+    }
+
     public function index() {
 
         $workExpierence = new WorkExperience();
@@ -23,30 +31,29 @@ class WorkExperienceController extends Controller {
 
     public function store($request) {
 
-        if(isset($request['submit']) === true) {
+        $this->redirect('submit', '/profile/' . $_SESSION['userId'] . '/work-experience');
 
-            Validate::rules([
+        Validate::rules([
 
-                'employer' => ['required' => true, 'max' => 30, 'special' => true],
-                'jobTitle' => ['required' => true, 'max' => 50, 'special' => true],
-                'startDate' => ['required' => true],
-                'endDate' => ['required' => true, 'later' => [$request['startDate']]],
-                'details' => ['required' => true, 'max' => 250, 'special' => true]
-            ]);
+            'employer' => ['required' => true, 'max' => 30, 'special' => true],
+            'jobTitle' => ['required' => true, 'max' => 50, 'special' => true],
+            'startDate' => ['required' => true],
+            'endDate' => ['required' => true, 'later' => [$request['startDate']]],
+            'details' => ['required' => true, 'max' => 250, 'special' => true]
+        ]);
 
-            if(Validate::validated() === true) {
+        if(Validate::validated() === true) {
 
-                $workExpierence = new WorkExperience();
-                $workExpierence->insert($request, $_SESSION['userId']);
+            $workExpierence = new WorkExperience();
+            $workExpierence->insert($request, $_SESSION['userId']);
 
-                redirect('/profile/' . $_SESSION['userId'] . '/work-experience');
-            } else {
+            redirect('/profile/' . $_SESSION['userId'] . '/work-experience');
+        } else {
 
-                $data['errors'] = Validate::errors();
-                $data['data'] = $request;
+            $data['errors'] = Validate::errors();
+            $data['data'] = $request;
 
-                return $this->view('work-experience/create', $data);
-            }
+            return $this->view('work-experience/create', $data);
         }
     }
 
@@ -62,12 +69,29 @@ class WorkExperienceController extends Controller {
 
     public function update($request) {
 
-        if(isset($request['submit']) === true) {
+        $this->redirect('submit', '/profile/' . $_SESSION['userId'] . '/work-experience');
 
-            $workExpierence = new WorkExperience();
+        $workExpierence = new WorkExperience();
+        
+        Validate::rules([
+
+            'employer' => ['required' => true, 'max' => 30, 'special' => true],
+            'jobTitle' => ['required' => true, 'max' => 50, 'special' => true],
+            'startDate' => ['required' => true],
+            'endDate' => ['required' => true, 'later' => [$request['startDate']]],
+            'details' => ['required' => true, 'max' => 250, 'special' => true]
+        ]);
+
+        if(Validate::validated() === true) {
+
             $workExpierence->updateOnId($request, $request['id']);
-
             redirect('/profile/' . $_SESSION['userId'] . '/work-experience');
+        } else {
+
+            $data['errors'] = Validate::errors();
+            $data['jobExperience'] = $workExpierence->get($request['id']);
+
+            return $this->view('work-experience/edit', $data);
         }
     }
 }
