@@ -6,11 +6,11 @@
 
 class WorkExperienceController extends Controller {
 
-    private function redirect($inputName, $path) {
+    private function redirect($path, $inputName = null) {
 
-        if(isset($inputName) === false) {
-            
-            redirect($path);
+        if(isset($_POST[$inputName]) === false && $inputName !== null) {
+
+            redirect($path) . exit();
         }
     }
 
@@ -31,6 +31,11 @@ class WorkExperienceController extends Controller {
         $workExpierence = new WorkExperience();
         $data['jobExperiences'] = $workExpierence->getAll();
 
+        if(empty($workExpierence->getAll()) || $workExpierence->getAll() === null) {
+
+            redirect('/profile/' . $_SESSION['userId'] . '/work-experience/create');
+        }
+
         return $this->view('work-experience/index', $data);
     }
 
@@ -43,7 +48,7 @@ class WorkExperienceController extends Controller {
 
     public function store($request) {
 
-        $this->redirect('submit', '/profile/' . $_SESSION['userId'] . '/work-experience');
+        $this->redirect('/profile/' . $_SESSION['userId'] . '/work-experience', 'submit');
         $this->validationRules($request['startDate']);
 
         if(Validate::validated() === true) {
@@ -74,7 +79,7 @@ class WorkExperienceController extends Controller {
 
     public function update($request) {
 
-        $this->redirect('submit', '/profile/' . $_SESSION['userId'] . '/work-experience');
+        $this->redirect('/profile/' . $_SESSION['userId'] . '/work-experience', 'submit');
         $this->validationRules($request['startDate']);
 
         $workExpierence = new WorkExperience();
