@@ -15,7 +15,7 @@ class LoginController extends Controller {
 
             if($user->getCredentials($login["email"], $login["password"]) === true) {
 
-                redirect('/portfolio');
+                redirect('/profile/' . $_SESSION["userId"]);
             } else {
 
                 return $this->view('/login');

@@ -6,6 +6,11 @@
 
 class ProfileController extends Controller {
 
+    public function index() {
+
+        return $this->view('profile/index');
+    }
+
     public function edit() {
 
         $user = new User();
@@ -33,7 +38,7 @@ class ProfileController extends Controller {
                 $user = new User();
                 $user->updateDetails($request, $_SESSION['userId']);
 
-                redirect('/profile/' . $_SESSION['userId']);
+                redirect('/profile/' . $_SESSION['userId'] . '/edit');
             } else {
 
                 $data['errors'] = Validate::errors();
