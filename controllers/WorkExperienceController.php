@@ -14,6 +14,18 @@ class WorkExperienceController extends Controller {
         }
     }
 
+    private function validationRules($startDate) {
+
+        return Validate::rules([
+
+            'employer' => ['required' => true, 'max' => 30, 'special' => true],
+            'jobTitle' => ['required' => true, 'max' => 50, 'special' => true],
+            'startDate' => ['required' => true],
+            'endDate' => ['required' => true, 'later' => [$startDate]],
+            'details' => ['required' => true, 'max' => 250, 'special' => true]
+        ]);
+    }
+
     public function index() {
 
         $workExpierence = new WorkExperience();
@@ -32,15 +44,7 @@ class WorkExperienceController extends Controller {
     public function store($request) {
 
         $this->redirect('submit', '/profile/' . $_SESSION['userId'] . '/work-experience');
-
-        Validate::rules([
-
-            'employer' => ['required' => true, 'max' => 30, 'special' => true],
-            'jobTitle' => ['required' => true, 'max' => 50, 'special' => true],
-            'startDate' => ['required' => true],
-            'endDate' => ['required' => true, 'later' => [$request['startDate']]],
-            'details' => ['required' => true, 'max' => 250, 'special' => true]
-        ]);
+        $this->validationRules($request['startDate']);
 
         if(Validate::validated() === true) {
 
@@ -70,17 +74,9 @@ class WorkExperienceController extends Controller {
     public function update($request) {
 
         $this->redirect('submit', '/profile/' . $_SESSION['userId'] . '/work-experience');
+        $this->validationRules($request['startDate']);
 
         $workExpierence = new WorkExperience();
-        
-        Validate::rules([
-
-            'employer' => ['required' => true, 'max' => 30, 'special' => true],
-            'jobTitle' => ['required' => true, 'max' => 50, 'special' => true],
-            'startDate' => ['required' => true],
-            'endDate' => ['required' => true, 'later' => [$request['startDate']]],
-            'details' => ['required' => true, 'max' => 250, 'special' => true]
-        ]);
 
         if(Validate::validated() === true) {
 
