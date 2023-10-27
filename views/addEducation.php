@@ -64,7 +64,7 @@
         </select>
 
         <label for="mark">Cijfer</label>
-        <input type="number" name="mark" id="mark" step="0.01" min="0" max="10" placeholder="8.2">
+        <input type="number" name="mark" id="mark" step="0.1" min="0" max="10" placeholder="8.2">
         
         <input type="submit" name="addSubject" id="addSubject" value="submit">
 

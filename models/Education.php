@@ -410,5 +410,71 @@ public function deleteSchool($school, $education, $userId) {
 
 }
 
-  
+
+/**
+ * ----------------- Edit subject, methods: ------------------
+ */
+
+ /**
+  * function to update the selected subject in the database
+  */
+public function editSubject($subject, $mark, $oldSubject, $userId) {
+    // getting the ids of ythe new and old subjects
+    $newSubjectId = $this->getsubjectId($subject);
+    $oldSubjectId = $this->getsubjectId($oldSubject);
+    
+    $mark *= 10;
+
+    // checking if the new subject is already registered in the database
+    $sql = "SELECT * FROM marks_subjects_users 
+    WHERE subject_id=? AND user_id=?";
+    $stmt = $this->_db->connection->prepare($sql);
+    $stmt->execute([$newSubjectId, $userId]);
+
+    $exists = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if($exists == false) {
+        $sql = "UPDATE marks_subjects_users
+        SET subject_id=?, user_id=?, mark=?
+        WHERE subject_id=? AND user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$newSubjectId, $userId, $mark, $oldSubjectId, $userId]);
+    } else {
+        $sql = "UPDATE marks_subjects_users
+        SET mark=?
+        WHERE subject_id=? AND user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$mark, $newSubjectId, $userId]);
+    }
+
+    header('Location: /edit-schools');
 }
+
+/**
+  * function to delete the selected subject in the database
+  */
+  public function deleteSubject($subject, $userId) {
+    $SubjectId = $this->getsubjectId($subject);
+
+    // check if the selected subject is registered under this user
+    $sql = "SELECT * FROM marks_subjects_users 
+    WHERE subject_id=? AND user_id=?";
+    $stmt = $this->_db->connection->prepare($sql);
+    $stmt->execute([$SubjectId, $userId]);
+
+    $exists = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($exists !== false) {
+        $sql = "DELETE FROM marks_subjects_users
+        WHERE subject_id=? AND user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$SubjectId, $userId]);
+    }
+
+    header('Location: /edit-schools');
+
+    }
+
+    
+  }
+

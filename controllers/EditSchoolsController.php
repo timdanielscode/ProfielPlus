@@ -11,10 +11,6 @@ class EditSchoolsController extends Controller {
     public function show () {
 
 
-        // getting all the subjects and their marks
-        $data['subjectsWithMarks'] = $this->education->getUserSubjectsWithMarks($_SESSION['userId']);
-        $data['subjectsWithoutMarks'] = $this->education->getUserSubjectsWithoutMarks($_SESSION['userId']);
-        
         /**
          *  getting all institutes, education programs of a certain user and 
          *  store them in the achieved array if they have a diploma for it
@@ -23,10 +19,11 @@ class EditSchoolsController extends Controller {
         $data['schoolsNotAchieved'] = $this->education->getUserEducations($_SESSION['userId'])[1];
 
         /**
-         * getting all institutes and education programs
+         * getting all institutes, education programs and subjects
          */
         $data['institutes'] = $this->education->getInstitutes();
         $data['educations'] = $this->education->getEducations();
+        $data['subjects'] = $this->education->getSubjects();
 
         /**
          * getting all the subjects and marks from current user
@@ -52,6 +49,18 @@ class EditSchoolsController extends Controller {
             $this->education->deleteSchool(
                 $data['instituutSelect'], 
                 $data['educationSelect'], 
+                $_SESSION['userId']
+            );
+        } else if (isset($data['updateSubject'])) {
+            $this->education->editSubject(
+                $data['subjectSelect'], 
+                $data['mark'], 
+                $data['oldSubject'], 
+                $_SESSION['userId']
+            );
+        } else if (isset($data['deleteSubject'])) {
+            $this->education->deleteSubject(
+                $data['subjectSelect'], 
                 $_SESSION['userId']
             );
         }

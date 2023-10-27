@@ -153,6 +153,97 @@
             
         </table>
     </section>
+    <section>
+        <table>
+            <tr>
+                <th>Vak</th>
+                <th>Cijfer</th>
+                <th>Edit/Delete</th>
+            </tr>
+            <!-- first put the rows with marks in the table -->
+            <?php
+
+            foreach ($subjectsWithMarks as $userSubject) {
+                ?>
+
+                <tr>
+                    <form method="POST">
+                        <td>
+                            <select name="subjectSelect" id="subjectSelect">
+                                <option value="<?= $userSubject['subject'] ?>"><?= $userSubject['subject'] ?></option>
+                                <?php 
+
+                                foreach ($subjects as $subject) {
+                                    $subjectName = $subject['subject_name'];
+
+                                    echo "<option value='$subjectName'>$subjectName</option>";
+                                }
+                                
+                                ?>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" value="<?= $userSubject['mark'] ?>" name="mark" id="mark" step="0.1">
+                        </td>
+
+                        <td>
+                            <input type="submit" name="deleteSubject" value="Delete">
+                            <input type="submit" name="updateSubject" value="Update">
+                        </td>
+                        
+                        <input type="hidden" name="oldSubject" value="<?= $userSubject['subject'] ?>">
+
+                    </form>
+                </tr>
+                
+                <?php
+            }
+            
+
+            foreach ($subjectsWithoutMarks as $userSubject) {
+                ?>
+
+                <tr>
+                    <form method="POST">
+                        <td>
+                            <select name="subjectSelect" id="subjectSelect">
+                                <option value="<?= $userSubject['subject'] ?>"><?= $userSubject['subject'] ?></option>
+                                <?php 
+
+                                foreach ($subjects as $subject) {
+                                    $subjectName = $subject['subject_name'];
+
+                                    echo "<option value='$subjectName'>$subjectName</option>";
+                                }
+                                
+                                ?>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" value="<?= $userSubject['mark'] ?>" name="mark" id="mark" placeholder="vul hier uw cijfer in" step="0.1">
+                        </td>
+
+                        <td>
+                            <input type="submit" name="deleteSubject" value="Delete">
+                            <input type="submit" name="updateSubject" value="Update">
+                        </td>
+
+                        <input type="hidden" name="oldSubject" value="<?= $userSubject['subject'] ?>">
+
+                    </form>
+                </tr>
+                
+                <?php
+            }
+            
+            ?>
+            
+            ?>
+
+
+            
+        </table>
+    </section>
     
     </main>
 </body>
