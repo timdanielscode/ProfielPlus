@@ -2,6 +2,10 @@
 <?php Stylesheet::add(['assets/style.css']); ?>
 <?php $this->include("headerClose"); ?>
 
+<?php echo Message::success('create'); ?>
+<?php echo Message::success('update'); ?>
+<?php echo Message::success('delete'); ?>
+
 <h1>Werkervaring overzicht</h1>
 <table>
     <tr>
@@ -21,7 +25,7 @@
         <td><?php $dateTime = new DateTime($value['end_date']); echo $dateTime->format('d-m-Y'); ?></td>
         <td><?php echo $value['details']; ?></td>
         <td><form action="/profile/<?php echo $_SESSION['userId']; ?>/work-experience/edit" method="GET"><input type="hidden" name="id" value="<?php echo $value['id']; ?>"/><input type="submit" name="edit" value="Gegevens aanpassen"/></form></td>
-        <td><form action="/profile/<?php echo $_SESSION['userId']; ?>/work-experience/delete" method="POST"><input type="hidden" name="id" value="<?php echo $value['id']; ?>"/><input type="submit" name="delete" value="Verwijderen"/></form></td>
+        <td><form action="/profile/<?php echo $_SESSION['userId']; ?>/work-experience/delete" method="POST"><input type="hidden" name="id" value="<?php echo $value['id']; ?>"/><input type="submit" name="delete" value="Verwijderen" onclick="return confirm('Zeker weten verwijderen?')"/></form></td>
     </tr>
     <?php } ?>
 </table> 

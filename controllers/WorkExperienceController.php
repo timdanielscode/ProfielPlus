@@ -51,6 +51,7 @@ class WorkExperienceController extends Controller {
             $workExpierence = new WorkExperience();
             $workExpierence->insert($request, $_SESSION['userId']);
 
+            $_SESSION['create'] = 'Successvol nieuwe werkervaring toegevoegd!';
             redirect('/profile/' . $_SESSION['userId'] . '/work-experience');
         } else {
 
@@ -81,6 +82,7 @@ class WorkExperienceController extends Controller {
         if(Validate::validated() === true) {
 
             $workExpierence->updateOnId($request, $request['id']);
+            $_SESSION['update'] = 'Successvol werkervaring aangepast!';
             redirect('/profile/' . $_SESSION['userId'] . '/work-experience');
         } else {
 
@@ -95,6 +97,7 @@ class WorkExperienceController extends Controller {
 
         $workExpierence = new WorkExperience();
         $workExpierence->delete($request['id']);
+        $_SESSION['delete'] = 'Successvol werkervaring verwijderd!';
 
         redirect('/profile/' . $_SESSION['userId'] . '/work-experience');
     }
