@@ -41,4 +41,12 @@ class WorkExperienceController extends Controller {
             }
         }
     }
+
+    public function edit() {
+
+        $workExpierence = new WorkExperience();
+        $data['jobExperiences'] = $workExpierence->getAll();
+
+        return $this->view('work-experience/edit', $data);
+    }
 }

@@ -34,4 +34,4 @@
 
 
 
-
+<?php $this->include("footer"); ?>

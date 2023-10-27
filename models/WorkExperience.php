@@ -35,5 +35,17 @@ class WorkExperience {
         ]);
     }
 
+    /* 
+     * @author Tim Daniëls
+     * Fetching work experiences
+    */
+    public function getAll() {
+
+        $sql = "SELECT * FROM job_experiences";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute();
+    
+        return $stmt->fetchAll();
+    }
 
 }
