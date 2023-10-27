@@ -16,16 +16,16 @@
     </div>
     <div class="form-parts">
         <label for="startDate">Startdatum:</label>
-        <input id="startDate" type="date" name="startDate" value="<?php echo $jobExperience['start_date']; ?>">
+        <input id="startDate" type="date" name="startDate" value="<?php $dateTime = new DateTime($jobExperience['start_date']); echo $dateTime->format('Y-m-d'); ?>">
         <?php if(!empty($errors['startDate'])) { echo $errors['startDate']; } ?>
     </div>
     <div class="form-parts">
         <label for="endDate">Einddatum:</label>
-        <input id="endDate" type="date" name="endDate" value="<?php echo $jobExperience['end_date']; ?>">
+        <input id="endDate" type="date" name="endDate" value="<?php $dateTime = new DateTime($jobExperience['end_date']); echo $dateTime->format('Y-m-d'); ?>">
         <?php if(!empty($errors['endDate'])) { echo $errors['endDate']; } ?>
     </div>
     <div class="form-parts">
-        <label for="details">Details:</label>
+        <label for="details">Omschrijving:</label>
         <textarea id="details" name="details"><?php echo $jobExperience['details']; ?></textarea>
         <?php if(!empty($errors['details'])) { echo $errors['details']; } ?>
     </div>

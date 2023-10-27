@@ -2,7 +2,6 @@
 <?php Stylesheet::add(['assets/style.css']); ?>
 <?php $this->include("headerClose"); ?>
 
-
 <h1>Werkervaring overzicht</h1>
 <table>
     <tr>
@@ -10,7 +9,7 @@
         <th>Functie</th>
         <th>Startdatum</th>
         <th>Einddatum</th>
-        <th>Details</th>
+        <th>Omschrijving</th>
         <th></th>
         <th></th>
     </tr>
@@ -18,8 +17,8 @@
     <tr>
         <td><?php echo $value['employer']; ?></td>
         <td><?php echo $value['job_title']; ?></td>
-        <td><?php echo $value['start_date']; ?></td>
-        <td><?php echo $value['end_date']; ?></td>
+        <td><?php $dateTime = new DateTime($value['start_date']); echo $dateTime->format('d-m-Y'); ?></td>
+        <td><?php $dateTime = new DateTime($value['end_date']); echo $dateTime->format('d-m-Y'); ?></td>
         <td><?php echo $value['details']; ?></td>
         <td><form action="/profile/<?php echo $_SESSION['userId']; ?>/work-experience/edit" method="GET"><input type="hidden" name="id" value="<?php echo $value['id']; ?>"/><input type="submit" name="edit" value="Gegevens aanpassen"/></form></td>
         <td><form action="/profile/<?php echo $_SESSION['userId']; ?>/work-experience/delete" method="POST"><input type="hidden" name="id" value="<?php echo $value['id']; ?>"/><input type="submit" name="delete" value="Verwijderen"/></form></td>

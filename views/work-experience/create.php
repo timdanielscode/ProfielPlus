@@ -16,16 +16,16 @@
     </div>
     <div class="form-parts">
         <label for="startDate">Startdatum:</label>
-        <input id="startDate" type="date" name="startDate" value="<?php if(!empty($data['startDate']) ) { echo $data['startDate']; } ?>">
+        <input id="startDate" type="date" name="startDate" value="<?php echo date("Y-m-d"); ?>">
         <?php if(!empty($errors['startDate'])) { echo $errors['startDate']; } ?>
     </div>
     <div class="form-parts">
         <label for="endDate">Einddatum:</label>
-        <input id="endDate" type="date" name="endDate" value="<?php if(!empty($data['endDate']) ) { echo $data['endDate']; } ?>">
+        <input id="endDate" type="date" name="endDate" value="<?php echo date("Y-m-d"); ?>">
         <?php if(!empty($errors['endDate'])) { echo $errors['endDate']; } ?>
     </div>
     <div class="form-parts">
-        <label for="details">Details:</label>
+        <label for="details">Omschrijving:</label>
         <textarea id="details" name="details"><?php if(!empty($data['details']) ) { echo $data['details']; } ?></textarea>
         <?php if(!empty($errors['details'])) { echo $errors['details']; } ?>
     </div>
@@ -34,4 +34,4 @@
 
 
 
-<?php $this->include("footer"); ?>
+<?php $this->include("headerClose"); ?>
