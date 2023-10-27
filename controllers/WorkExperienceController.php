@@ -90,4 +90,12 @@ class WorkExperienceController extends Controller {
             return $this->view('work-experience/edit', $data);
         }
     }
+
+    public function delete($request) {
+
+        $workExpierence = new WorkExperience();
+        $workExpierence->delete($request['id']);
+
+        redirect('/profile/' . $_SESSION['userId'] . '/work-experience');
+    }
 }

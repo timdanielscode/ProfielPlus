@@ -84,4 +84,15 @@ class WorkExperience {
         ]);
     }
 
+    /* 
+     * @author Tim Daniëls
+     * Delete work experiences on id
+     * 
+     * @param string $id experiences id
+    */   
+    public function delete($id) {
+
+        $sql = "DELETE FROM job_experiences WHERE id = $id";
+        $this->_db->connection->prepare($sql)->execute();
+    }
 }

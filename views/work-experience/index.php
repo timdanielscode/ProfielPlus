@@ -22,6 +22,7 @@
         <td><?php echo $value['end_date']; ?></td>
         <td><?php echo $value['details']; ?></td>
         <td><form action="/profile/<?php echo $_SESSION['userId']; ?>/work-experience/edit" method="GET"><input type="hidden" name="id" value="<?php echo $value['id']; ?>"/><input type="submit" name="edit" value="Gegevens aanpassen"/></form></td>
+        <td><form action="/profile/<?php echo $_SESSION['userId']; ?>/work-experience/delete" method="POST"><input type="hidden" name="id" value="<?php echo $value['id']; ?>"/><input type="submit" name="delete" value="Verwijderen"/></form></td>
     </tr>
     <?php } ?>
 </table> 
