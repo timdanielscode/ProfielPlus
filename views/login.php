@@ -1,7 +1,7 @@
 <?php 
 
 require_once "includes/headerOpen.php";
-//Stylesheet::add(["assets/purpleloginstyle.css"]);
+Stylesheet::add(["assets/purpleloginstyle.css"]);
 
 ?>
 
@@ -19,7 +19,7 @@ require_once "includes/headerOpen.php";
             <input type="password" class="form-control" id="password" name="password">
             <div class="row">
               <input type="submit" name="submit" id="submitLogin" value="Login">
-              <input type="submit" name="submit" id="submitResgister" value="Register">
+              <input type="submit" name="submit" id="submitRegister" value="Register">
             </div>
             
     </form>

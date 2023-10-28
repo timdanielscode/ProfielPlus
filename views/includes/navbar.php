@@ -1,9 +1,9 @@
 <nav>
-    
+  
     <ul>
       <li>
-        <a href="/"><img src="/assets/images/Coat logo strak.png"alt="logo of our team"></a> 
-      <li>
+        <a href="/"><img src="/assets/images/Coat_logo_strak_MConverter.eu_1.png"alt="logo of our team"></a> 
+      </li>
         <a href="/register">register</a>
       </li>
       <li>
