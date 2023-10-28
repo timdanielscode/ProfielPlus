@@ -11,7 +11,9 @@ class ProfileController extends Controller {
         $user = new User();
         $workExperience = new WorkExperience();
         $education = new Education();
-        
+        $subject = new Subject();
+
+        $data['subjecsMarks'] = $subject->getSubjectMarksOnUserId($_SESSION['userId']);
         $data['educationSchools'] = $education->getEducationSchoolOnUserId($_SESSION['userId']);
         $data['jobExperiences'] = $workExperience->getOnUserId($_SESSION['userId']);
         $data['user'] = $user->getDetails($_SESSION['userId']);

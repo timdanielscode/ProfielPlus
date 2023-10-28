@@ -23,12 +23,25 @@
 
     <h3 class="educationTitle">Opleidingen</h3>
 
-    <?php foreach($educationSchools as $data) { ?>
+    <?php foreach($educationSchools as $educationSchool) { ?>
 
-        <div class="education accordionButton"><?php echo $data['education_name']; ?></div>
+        <div class="education accordionButton"><?php echo $educationSchool['education_name']; ?></div>
         <div class="schoolsContainer accordionItem display-none">
             <div class="container">
-                <span class="jobTitle"><?php echo $data['school']; ?></span>
+                <span class="jobTitle"><?php echo $educationSchool['school']; ?></span>
+                <?php foreach($subjecsMarks as $subjectMark) { ?>
+
+                    <div class="subjectsContainer">
+
+                        <span class="subject"><?php echo $subjectMark['subject_name']; ?></span>
+                        <div class="marksContainer">
+                            <?php //if($educationSchool['subject_id'] === $subjectMark['id']) { ?>
+                                <span class="mark"><?php echo $subjectMark['mark']; ?></span>
+                            <?php //} ?>
+                        </div>
+                    </div>
+
+                <?php } ?>
             </div>
         </div>
     <?php } ?>

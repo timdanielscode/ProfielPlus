@@ -68,7 +68,7 @@ CREATE TABLE diplomas_achieved (
 CREATE TABLE educations_schools_subjects (
     education_id INT(11) NOT NULL,
     school_id INT(11) NOT NULL,
-    user_id INT(11) NOT NULL
+    subject_id INT(11) NOT NULL
 );
 
 CREATE TABLE marks_subjects_users (
