@@ -1,9 +1,12 @@
 <?php $this->include("headerOpen"); ?>
 
 <?php Stylesheet::add([
-    'assets/style.css'
+    '/assets/style.css'
     
 ]); ?>
+
+<script type="text/javascript" src="/assets/js/profile/Accordion.js" defer></script>
+<script type="text/javascript" src="/assets/js/profile/main.js" defer></script>
 
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
@@ -18,8 +21,8 @@
 
     <?php foreach($jobExperiences as $jobExperience) { ?>
 
-        <div class="employer"><?php echo $jobExperience['employer']; ?></div>
-        <div class="jobExperienceContainer">
+        <div class="employer accordionButton"><?php echo $jobExperience['employer']; ?></div>
+        <div class="jobExperienceContainer accordionItem display-none">
             <div class="container">
                 <span class="jobTitle"><?php echo $jobExperience['job_title']; ?></span>
                 <div class="dateContainer">
