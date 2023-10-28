@@ -8,12 +8,29 @@
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 
-<?php
+<div class="profileDetails">
+    <span class="userDetails"><?php echo $user['firstName'] . ' ' . $user['lastName']; ?></span>
+</div>
 
-    if($_SESSION['loggedIn'] === true && isset($_SESSION['user'])) {
+<?php if(!empty($jobExperiences) && $jobExperiences !== null) { ?>
 
-        echo $_SESSION['user'];
-    } 
-?>
+    <h3 class="jobExperienceTitle">Werkervaring</h3>
+
+    <?php foreach($jobExperiences as $jobExperience) { ?>
+
+        <div class="employer"><?php echo $jobExperience['employer']; ?></div>
+        <div class="jobExperienceContainer">
+            <div class="container">
+                <span class="jobTitle"><?php echo $jobExperience['job_title']; ?></span>
+                <div class="dateContainer">
+                    <?php $dateTime = new DateTime($jobExperience['start_date']); echo $dateTime->format('d-m-Y'); ?>
+                    <?php $dateTime = new DateTime($jobExperience['end_date']); echo $dateTime->format('d-m-Y'); ?>
+                </div>
+            </div>
+            <span class="details"><?php echo $jobExperience['details']; ?></span>
+        </div>
+
+    <?php } ?>
+<?php } ?>
 
 <?php $this->include("footer"); ?>

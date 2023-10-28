@@ -8,7 +8,13 @@ class ProfileController extends Controller {
 
     public function index() {
 
-        return $this->view('profile/index');
+        $user = new User();
+        $workExperience = new WorkExperience();
+
+        $data['jobExperiences'] = $workExperience->getOnUserId($_SESSION['userId']);
+        $data['user'] = $user->getDetails($_SESSION['userId']);
+
+        return $this->view('profile/index', $data);
     }
 
     public function edit() {
