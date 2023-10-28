@@ -1,0 +1,40 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #350139b7;
+    width: 100%;
+  }
+  
+  li {
+    float: right;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  
+  li a:hover {
+    background-color: #1f0121bd;
+  }
+
+  img {
+    /* border: 1px solid #ddd; */
+    border-radius: 8px;
+    padding: 5px;
+    width: 150px;
+    display: block;
+    
+  }
+  
+  li:nth-child(1) {
+    float: left;
+
+  }
+  

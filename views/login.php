@@ -1,22 +1,14 @@
 <?php 
 
 require_once "includes/headerOpen.php";
-Stylesheet::add(["assets/purpleloginstyle.css"]);
+//Stylesheet::add(["assets/purpleloginstyle.css"]);
 
 ?>
 
 <header>
-  <nav>
-    <img src="" alt="logo of our team">
-    <ul>
-      <li>
-        <a href="/login">login</a>
-      </li>
-      <li>
-        <a href="/register">register</a>
-      </li>
-    </ul>
-  </nav>    
+ <?php
+ $this->include("navbar");
+ ?>
 </header>
 
 <main>

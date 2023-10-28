@@ -8,7 +8,35 @@
 <?php $this->include("navbar"); ?>
 
 
-<h1>Homepage</h1>
+<main>
+        <div id='text-box'>
+            <section class='text'>
+                <h2> Text 1 Title</h2>
+                <img src="" alt="">
+                <p> Text 1 text paragraph</p>
+            </section>
+            <section class='text'>
+                <h2> Text 2 Title</h2>
+                <img src="" alt="">
+                <p> Text 2 text paragraph</p>
+            </section>
+            <section class='text'>
+                <h2> Text 3 Title</h2>
+                <img src="" alt="">
+                <p> Text 3 text paragraph</p>
+            </section>
+            <section class='text'>
+                <h2> Text 4 Title</h2>
+                <img src="" alt="">
+                <p> Text 4 text paragraph</p>
+            </section>
+            <section class='text'>
+                <h2> Text 5 Title</h2>
+                <img src="" alt="">
+                <p> Text 5 text paragraph</p>
+            </section>
+        </div>
+    </main>    
 <!-- Homepage content -->
 
 

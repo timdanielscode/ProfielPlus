@@ -1,11 +1,13 @@
 <nav>
-    <img src="" alt="logo of our team">
+    
     <ul>
       <li>
-        <a href="/login">login</a>
-      </li>
+        <a href="/"><img src="/assets/images/Coat logo strak.png"alt="logo of our team"></a> 
       <li>
         <a href="/register">register</a>
+      </li>
+      <li>
+        <a href="/login">login</a>
       </li>
       <?php if(isset($_SESSION['loggedIn']) === true && isset($_SESSION['user']) === true && isset($_SESSION["userId"]) === true) { ?>
         <li>
