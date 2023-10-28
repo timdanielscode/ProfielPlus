@@ -2,7 +2,7 @@
  * Accordion functionality
 */
 
-class Accordion {
+class AccordionButton {
 
     constructor() {
 
@@ -11,7 +11,6 @@ class Accordion {
     }
 
     /* 
-     * @author Tim Daniëls
      * Setting elements
     */
     setElements() {
@@ -20,10 +19,9 @@ class Accordion {
     }
 
     /* 
-     * @author Tim Daniëls
      * Getting elements
      * 
-     * @return object Accordion elements
+     * @return object AccordionButton elements
     */
     getElements() {
 
@@ -34,19 +32,20 @@ class Accordion {
     }
 
     /* 
-     * @author Tim Daniëls
      * Setting onclick event toggle display-none on accordion items
     */
-    setOnclickEvents() {
+    setOnclickEvents(accordionItem) {
 
         for(var element of this.getElements()) {
 
             element.addEventListener('click', function() { 
 
-                if(this.nextElementSibling.classList.contains('accordionItem')) {
+                accordionItem.reset();
+
+                if(this.nextElementSibling.classList.contains('accordionItem') === true) {
 
                     this.nextElementSibling.classList.toggle('display-none');
-                }
+                } 
             });
         }
     }

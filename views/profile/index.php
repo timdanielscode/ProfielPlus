@@ -4,8 +4,8 @@
     '/assets/style.css'
     
 ]); ?>
-
-<script type="text/javascript" src="/assets/js/profile/Accordion.js" defer></script>
+<script type="text/javascript" src="/assets/js/profile/AccordionItem.js" defer></script>
+<script type="text/javascript" src="/assets/js/profile/AccordionButton.js" defer></script>
 <script type="text/javascript" src="/assets/js/profile/main.js" defer></script>
 
 <?php $this->include("headerClose"); ?>

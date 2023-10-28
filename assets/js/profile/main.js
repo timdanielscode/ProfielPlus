@@ -1,2 +1,2 @@
-var accordion = new Accordion();
-accordion.setOnclickEvents();
+var accordion = new AccordionButton();
+accordion.setOnclickEvents(new AccordionItem());
