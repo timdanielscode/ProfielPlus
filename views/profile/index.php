@@ -19,6 +19,21 @@
     <span class="userDetails"><?php echo $user['firstName'] . ' ' . $user['lastName']; ?></span>
 </div>
 
+<?php if(!empty($educationSchools) && $educationSchools !== null) { ?>
+
+    <h3 class="educationTitle">Opleidingen</h3>
+
+    <?php foreach($educationSchools as $data) { ?>
+
+        <div class="education accordionButton"><?php echo $data['education_name']; ?></div>
+        <div class="schoolsContainer accordionItem display-none">
+            <div class="container">
+                <span class="jobTitle"><?php echo $data['school']; ?></span>
+            </div>
+        </div>
+    <?php } ?>
+<?php } ?>
+
 <?php if(!empty($jobExperiences) && $jobExperiences !== null) { ?>
 
     <h3 class="jobExperienceTitle">Werkervaring</h3>
@@ -30,8 +45,8 @@
             <div class="container">
                 <span class="jobTitle"><?php echo $jobExperience['job_title']; ?></span>
                 <div class="dateContainer">
-                    <?php $dateTime = new DateTime($jobExperience['start_date']); echo $dateTime->format('d-m-Y'); ?>
-                    <?php $dateTime = new DateTime($jobExperience['end_date']); echo $dateTime->format('d-m-Y'); ?>
+                    <span>Van: </span><?php $dateTime = new DateTime($jobExperience['start_date']); echo $dateTime->format('d-m-Y'); ?>
+                    <span>Tot: </span><?php $dateTime = new DateTime($jobExperience['end_date']); echo $dateTime->format('d-m-Y'); ?>
                 </div>
             </div>
             <span class="details"><?php echo $jobExperience['details']; ?></span>

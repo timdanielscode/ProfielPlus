@@ -10,7 +10,9 @@ class ProfileController extends Controller {
 
         $user = new User();
         $workExperience = new WorkExperience();
-
+        $education = new Education();
+        
+        $data['educationSchools'] = $education->getEducationSchoolOnUserId($_SESSION['userId']);
         $data['jobExperiences'] = $workExperience->getOnUserId($_SESSION['userId']);
         $data['user'] = $user->getDetails($_SESSION['userId']);
 
