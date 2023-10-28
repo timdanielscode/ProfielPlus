@@ -4,9 +4,13 @@
     '/assets/style.css'
     
 ]); ?>
-<script type="text/javascript" src="/assets/js/profile/AccordionItem.js" defer></script>
-<script type="text/javascript" src="/assets/js/profile/AccordionButton.js" defer></script>
-<script type="text/javascript" src="/assets/js/profile/main.js" defer></script>
+
+<?php Script::add([
+
+    '/assets/js/profile/AccordionItem.js' => true,
+    '/assets/js/profile/AccordionButton.js' => true,
+    '/assets/js/profile/main.js' => true
+]); ?>
 
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
