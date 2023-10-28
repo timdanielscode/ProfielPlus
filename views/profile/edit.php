@@ -4,7 +4,7 @@
 
 <h1>Profile</h1>
 
-<form method="POST" action="">
+<form method="POST" action="/profile/<?php echo $_SESSION['userId']; ?>/update">
     <div class="form-parts">
         <label for="firstName">Firstname:</label>
         <input id="firstName" type="text" name="firstName" value="<?php echo $details['firstName']; ?>"/>
