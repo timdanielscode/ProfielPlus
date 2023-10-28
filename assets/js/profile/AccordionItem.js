@@ -33,12 +33,14 @@ class AccordionItem {
 
     /* 
      * Adding class display-none on elements
+     *
+     * @param object html element current clicked element
     */
-    reset() {
+    reset(currentElement) {
 
         for(var element of this.getElements()) {
 
-            if(element.classList.contains('display-none') === false) {
+            if(element.classList.contains('display-none') === false && element !== currentElement) {
 
                 element.classList.add('display-none');
             }

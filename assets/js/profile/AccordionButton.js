@@ -40,7 +40,7 @@ class AccordionButton {
 
             element.addEventListener('click', function() { 
 
-                accordionItem.reset();
+                accordionItem.reset(this.nextElementSibling);
 
                 if(this.nextElementSibling.classList.contains('accordionItem') === true) {
 
