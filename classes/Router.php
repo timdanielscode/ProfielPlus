@@ -54,6 +54,11 @@ class Router {
     */
     private function getUri() {
 
+        if(strpos($_SERVER['REQUEST_URI'], '?')) {
+
+            return substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], "?"));
+        }
+
         return $_SERVER['REQUEST_URI'];
     }
 

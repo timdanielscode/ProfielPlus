@@ -26,20 +26,15 @@ CREATE TABLE hobby_user (
 
 CREATE TABLE job_experiences (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
-    job_id INT(11) NOT NULL,
     user_id INT(11) NOT NULL,
+    job_title VARCHAR(255) NOT NULL,
     employer VARCHAR(255) NOT NULL,
     start_date DATETIME NOT NULL,
     end_date DATETIME NOT NULL,
+    details VARCHAR(255) NOT NULL,
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL
 );
-
-CREATE TABLE job_titles (
-    id INT(11) AUTO_INCREMENT PRIMARY KEY,
-    job_title VARCHAR(255) NOT NULL
-);
-
 
 CREATE TABLE schools (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,

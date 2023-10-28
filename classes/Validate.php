@@ -84,6 +84,17 @@ class Validate {
                                 self::$errors[$keys] = 'Veld moet uniek zijn!';
                             }
                         break;
+                        /*
+                         * Checking if html input end date value is greater than start date input value
+                        */
+                        case "later":
+
+                            if($value[0] > $_POST[$keys]) {
+
+                                self::$errors[$keys] = 'Einddatum veld kan niet eerder zijn dan startdatum!';
+                            }
+    
+                        break;
                     }
                 }
             }
