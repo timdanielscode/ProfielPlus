@@ -29,14 +29,12 @@
             <?php foreach($educationSchools as $educationSchool) { ?>
                 <div class="education accordionButton"><span class="text"><?php echo $educationSchool['education_name']; ?></span></div>
                     <div class="schoolsContainer accordionItem display-none">
-                        <span class="jobTitle"><?php echo $educationSchool['school']; ?></span>
+                        <span class="title"><?php echo $educationSchool['school']; ?></span>
                         <?php foreach($subjecsMarks as $subjectMark) { ?>
                             <?php if($educationSchool['id'] === $subjectMark['education_id']) { ?>
                                 <div class="subjectsContainer">
                                     <span class="subject"><?php echo $subjectMark['subject_name']; ?></span>
-                                    <div class="marksContainer"> 
-                                        <span class="mark"><?php echo $subjectMark['mark']; ?></span>
-                                    </div>
+                                    <span class="mark"><?php echo $subjectMark['mark']; ?></span>
                                 </div>
                             <?php } ?>
                         <?php } ?>
@@ -52,7 +50,7 @@
                 <?php foreach($jobExperiences as $jobExperience) { ?>
                     <div class="employer accordionButton"><span class="text"><?php echo $jobExperience['employer']; ?></span></div>
                     <div class="jobExperienceContainer accordionItem display-none">
-                        <span class="jobTitle"><?php echo $jobExperience['job_title']; ?></span>
+                        <span class="title"><?php echo $jobExperience['job_title']; ?></span>
                             <div class="dateContainer">
                                 <div class="text"><span>Van: </span><?php $dateTime = new DateTime($jobExperience['start_date']); echo $dateTime->format('d-m-Y'); ?></div>
                                 <div class="text"><span>Tot: </span><?php $dateTime = new DateTime($jobExperience['end_date']); echo $dateTime->format('d-m-Y'); ?></div>
