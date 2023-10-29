@@ -1,0 +1,97 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #3E195A;
+    color: azure;
+    align-items: center;
+}
+.imgContainer {
+    margin-left: 10px;
+    width: 60px;
+    height: 60px;
+}
+
+.imgContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: auto 0;
+    margin-right: 10px;
+    align-items: center;
+}
+nav a, footer a {
+    text-decoration: none;
+    color: azure;
+}
+
+nav li {
+    display: inline-block;
+    text-align: center;
+}
+
+nav ul a {
+    display: inline-block;
+    height: 100%;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+nav ul, nav li {
+    height: 100%;
+}
+#profileBtn {
+    width: 60px;
+    height: 100%;
+    background-color: white;
+    border-radius: 100%;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#profileBtn h1 {
+    color: #7092BE;
+}
+
+#profileBtn:hover {
+    cursor: pointer;
+}
+
+.profileMenu {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    right: 0;
+}
+
+.profileMenu li a{
+    color: black;
+    width: 100%;
+    margin: 0;
+}
+
+.profileMenu li{
+    color: black;
+    height: 60px;
+    width: 100%;
+}
+
+.profileMenu {
+    color: black;
+    height: fit-content;
+    max-height: 250px;
+    overflow: visible; 
+    border: 1px solid #3E195A;
+    margin: 0;
+
+}

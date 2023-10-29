@@ -1,7 +1,13 @@
 <?php 
 
 require_once "includes/headerOpen.php";
-Stylesheet::add(["assets/purpleloginstyle.css"]);
+
+Stylesheet::add([
+    
+  'assets/default.css',
+  "assets/navbar.css"
+  
+]);
 
 ?>
 
@@ -28,7 +34,7 @@ Stylesheet::add(["assets/purpleloginstyle.css"]);
             <input type="text" class="form-control" id="email" name="email">
             <label class="form-label" for="password">Wachtwoord: </label>
             <input type="password" class="form-control" id="password" name="password">
-            <div class="row">
+            <div class="buttonRow">
               <input type="submit" name="submit" id="submitLogin" value="Login">
               <input type="submit" name="submit" id="submitResgister" value="Register">
             </div>

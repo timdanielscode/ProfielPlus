@@ -1,0 +1,9 @@
+footer {
+    background-color: rgb(88, 19, 94);
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+footer a {
+    margin-top: 20px;
+}
