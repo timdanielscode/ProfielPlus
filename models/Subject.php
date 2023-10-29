@@ -12,16 +12,15 @@ class Subject {
 
     /* 
      * @author Tim Daniëls
-     * Getting subject id name, marks_subjects mark on user id 
+     * Getting educations_schools_subjects education_id, subjects name, marks_subjects mark
      *
-     * @param string $user user id
      * return object DB subject
     */
-    public function getSubjectMarksOnUserId($id) {
+    public function getSubjectMarksOnUserId() {
 
-        $sql = "SELECT subjects.id, subjects.subject_name, marks_subjects_users.mark FROM subjects INNER JOIN marks_subjects_users ON marks_subjects_users.subject_id = subjects.id WHERE marks_subjects_users.user_id = ?";
+        $sql = "SELECT educations_schools_subjects.education_id, subjects.subject_name, marks_subjects_users.mark FROM subjects INNER JOIN educations_schools_subjects ON educations_schools_subjects.subject_id = subjects.id INNER JOIN marks_subjects_users ON marks_subjects_users.subject_id = subjects.id ";
         $stmt = $this->_db->connection->prepare($sql);
-        $stmt->execute([$id]);
+        $stmt->execute();
 
         return $stmt->fetchAll();
     }

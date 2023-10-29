@@ -480,14 +480,14 @@ public function editSubject($subject, $mark, $oldSubject, $userId) {
 
     /* 
      * @author Tim Daniëls
-     * Getting education id name, school id school on user id 
+     * Getting educations id education_name, schools school on user id 
      *
      * @param string $user user id
      * return object DB education
     */
     public function getEducationSchoolOnUserId($id) {
 
-        $sql = "SELECT educations.id, educations.education_name, schools.id, schools.school FROM educations INNER JOIN educations_schools_users ON educations.id = educations_schools_users.education_id INNER JOIN schools ON schools.id = educations_schools_users.school_id WHERE educations_schools_users.user_id = ?";
+        $sql = "SELECT educations.id, educations.education_name, schools.school FROM educations INNER JOIN educations_schools_users ON educations.id = educations_schools_users.education_id INNER JOIN schools ON schools.id = educations_schools_users.school_id WHERE educations_schools_users.user_id = ?";
         $stmt = $this->_db->connection->prepare($sql);
         $stmt->execute([$id]);
 

@@ -1,3 +1,6 @@
+/*
+    Test data (type of admin user is intended to store data for schools, educations and subjects)
+*/
 INSERT INTO schools (school, created_at, updated_at)
 VALUES 
 ('windesheim', '2023-10-28', '2023-10-28'),

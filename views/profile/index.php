@@ -29,16 +29,16 @@
         <div class="schoolsContainer accordionItem display-none">
             <div class="container">
                 <span class="jobTitle"><?php echo $educationSchool['school']; ?></span>
-                <?php //foreach($subjecsMarks as $subjectMark) { ?>
-                    <!--<div class="subjectsContainer">-->
-                        <!--<span class="subject"><?php //echo $subjectMark['subject_name']; ?></span>-->
-                        <!--<div class="marksContainer"> -->
-                            <?php //if($educationSchool['subject_id'] === $subjectMark['id']) { ?>
-                                <!--<span class="mark">--><?php //echo $subjectMark['mark']; ?><!--</span>-->
-                            <?php //} ?>
-                        <!--</div>-->
-                    <!--</div>-->
-                <?php //} ?>
+                <?php foreach($subjecsMarks as $subjectMark) { ?>
+                    <?php if($educationSchool['id'] === $subjectMark['education_id']) { ?>
+                        <div class="subjectsContainer">
+                            <span class="subject"><?php echo $subjectMark['subject_name']; ?></span>
+                            <div class="marksContainer"> 
+                                <span class="mark"><?php echo $subjectMark['mark']; ?></span>
+                            </div>
+                        </div>
+                    <?php } ?>
+                <?php } ?>
             </div>
         </div>
     <?php } ?>

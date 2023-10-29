@@ -13,7 +13,7 @@ class ProfileController extends Controller {
         $education = new Education();
         $subject = new Subject();
 
-        $data['subjecsMarks'] = $subject->getSubjectMarksOnUserId($_SESSION['userId']);
+        $data['subjecsMarks'] = $subject->getSubjectMarksOnUserId();
         $data['educationSchools'] = $education->getEducationSchoolOnUserId($_SESSION['userId']);
         $data['jobExperiences'] = $workExperience->getOnUserId($_SESSION['userId']);
         $data['user'] = $user->getDetails($_SESSION['userId']);
