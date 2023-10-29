@@ -3,7 +3,8 @@
 <?php Stylesheet::add([
 
     '/assets/style.css',
-    '/assets/accordion.css'
+    '/assets/accordion.css',
+    '/assets/slider.css'
 ]); ?>
 
 <?php Script::add([
@@ -22,7 +23,7 @@
 
 <div class="row">
     <div class="col6">
-        <div class="container">
+        <div class="educationSchoolDataContainer">
         <?php if(!empty($educationSchools) && $educationSchools !== null) { ?>
             <h3 class="educationTitle">Opleidingen</h3>
             <div class="accordionContainer">
@@ -43,7 +44,7 @@
             <?php } ?>
             </div>
         </div>
-        <div class="container">
+        <div class="jobExperienceDataContainer">
             <?php if(!empty($jobExperiences) && $jobExperiences !== null) { ?>
                 <h3 class="jobExperienceTitle">Werkervaring</h3>
                 <div class="accordionContainer">
@@ -63,8 +64,20 @@
         </div>
     </div>
     <div class="col6">
-        <div class="hobbyContainer">
-
+        <div class="hobbyDataContainer">
+            <?php if(!empty($hobbies) && $hobbies !== null) { ?>
+                <div class="slider">
+                    <?php foreach($hobbies as $hobby) { ?>
+                        <div class="slide">
+                            <img src="/assets/img/<?php echo $hobby['hobby'] . '-' . $hobby['user_id'] . $hobby['file_extension']; ?>"/>
+                            <span class="hobbyText"><?php echo $hobby['hobby']; ?></span>
+                        </div>
+                    <?php } ?>
+                </div>
+                <?php if(!empty($hobbyDescription) && $hobbyDescription !== null) { ?>
+                    <div class="hobbys_description"><?php echo $hobbyDescription['hobbys_description']; ?></div>
+                <?php } ?>
+            <?php } ?>
         </div>
     </div>
 </div>

@@ -12,10 +12,13 @@ class ProfileController extends Controller {
         $workExperience = new WorkExperience();
         $education = new Education();
         $subject = new Subject();
+        $hobby = new Hobby();
 
         $data['subjecsMarks'] = $subject->getSubjecstMarks();
         $data['educationSchools'] = $education->getEducationSchoolOnUserId($_SESSION['userId']);
         $data['jobExperiences'] = $workExperience->getOnUserId($_SESSION['userId']);
+        $data['hobbies'] = $hobby->getHobbyUserId($_SESSION['userId']);
+        $data['hobbyDescription'] = $hobby->getHobbyDescription($_SESSION['userId']);
         $data['user'] = $user->getDetails($_SESSION['userId']);
 
         return $this->view('profile/index', $data);
