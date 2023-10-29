@@ -5,9 +5,6 @@ const profileMenu = document.getElementById("profileMenu");
 function toggleProfileMenu() {
     profileMenu.classList.toggle("profileMenu");
 
-    // console.log("hi");
-
-    
 }
 
 profileBtn.addEventListener("click", toggleProfileMenu)
