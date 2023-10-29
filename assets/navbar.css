@@ -72,6 +72,13 @@ nav ul, nav li {
     position: fixed;
     top: 60px;
     right: 0;
+    color: black;
+    height: fit-content;
+    max-height: 250px;
+    overflow: visible; 
+    border: 1px solid #3E195A;
+    margin: 0;
+
 }
 
 .profileMenu li a{
@@ -84,14 +91,4 @@ nav ul, nav li {
     color: black;
     height: 60px;
     width: 100%;
-}
-
-.profileMenu {
-    color: black;
-    height: fit-content;
-    max-height: 250px;
-    overflow: visible; 
-    border: 1px solid #3E195A;
-    margin: 0;
-
 }
