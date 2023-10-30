@@ -1,3 +1,13 @@
 .slide img {
     max-width: 500px;
 }
+.slider .slide {
+    display: none;
+}
+.slider .slide.active {
+    display: block;
+}
+.controls {
+    font-size: 28px;
+    font-weight: bold;
+}

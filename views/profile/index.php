@@ -9,9 +9,12 @@
 
 <?php Script::add([
 
-    '/assets/js/profile/AccordionItem.js' => true,
-    '/assets/js/profile/AccordionButton.js' => true,
-    '/assets/js/profile/main.js' => true
+    '/assets/js/profile/accordion/AccordionItem.js' => true,
+    '/assets/js/profile/accordion/AccordionButton.js' => true,
+    '/assets/js/profile/accordion/main.js' => true,
+    '/assets/js/profile/slider/Slide.js' => true,
+    '/assets/js/profile/slider/Slider.js' => true,
+    '/assets/js/profile/slider/main.js' => true
 ]); ?>
 
 <?php $this->include("headerClose"); ?>
@@ -73,6 +76,10 @@
                             <span class="hobbyText"><?php echo $hobby['hobby']; ?></span>
                         </div>
                     <?php } ?>
+                    <div class="controls">
+                        <span class="previous"><</span>
+                        <span class="next">></span>
+                    </div>
                 </div>
                 <?php if(!empty($hobbyDescription) && $hobbyDescription !== null) { ?>
                     <div class="hobbys_description"><?php echo $hobbyDescription['hobbys_description']; ?></div>
