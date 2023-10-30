@@ -34,10 +34,15 @@
       <?php } ?>
     </ul>
     <ul class="inActive" id="profileMenu">
-      <li><a href="">edit hobby</a></li>
-      <li><a href="">edit educatie</a></li>
-      <li><a href="">edit profile</a></li>
-      <li><a href="">edit werkervaring</a></li>
+      <li><a id="editDropdownBtn">Edit</a></li>
+      <li><a href="">wachtwoord veranderen</a></li>
+      <li><a href="">Uit loggen</a></li>
+    </ul>
+
+    <ul class="inActive" id="editLinkMenu">
+      <li><a href="">Edit Educaties</a></li>
+      <li><a href="">Edit Werkervaring</a></li>
+      <li><a href="">Edit hobby's</a></li>
     </ul>
 </nav>    
 
