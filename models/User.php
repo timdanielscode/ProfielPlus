@@ -169,17 +169,33 @@ class User {
      * delete Selected User and all its data
     */
     public function deleteUser($email) {
-        $userId = getUserId($email);
+        $userId = $this->getUserId($email)['id'];
 
-        $sql = "DELETE FROM users WHERE id=?;
-        DELETE FROM education_schools_users WHERE user_id=?;
-        DELETE FROM diplomas_achieved WHERE user_id=?;
-        DELETE FROM hobby_user WHERE user_id=?;
-        DELETE FROM job_experiences WHERE user_id=?;
-        DELETE FROM marks_subjects_users WHERE user_id=?;
-        ";
+        $sql = "DELETE FROM users WHERE id=?";
         $stmt = $this->_db->connection->prepare($sql);
-        $stmt->execute([$userId, $userId, $userId, $userId, $userId, $userId]);
+        $stmt->execute([$userId]);
+
+        $sql = "DELETE FROM educations_schools_users WHERE user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$userId]);
+
+        $sql = "DELETE FROM diplomas_achieved WHERE user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$userId]);
+
+        $sql = "DELETE FROM hobby_user WHERE user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$userId]);
+
+        $sql = "DELETE FROM job_experiences WHERE user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$userId]);
+
+        $sql = "DELETE FROM marks_subjects_users WHERE user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$userId]);
+
+        header("Location: /admin");
         
     }
     

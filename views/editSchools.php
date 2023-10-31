@@ -8,10 +8,7 @@
 <?php $this->include("navbar"); ?>
 
     <main>
-        <?php var_dump("with: ", $subjectsWithMarks) ?>
-        <br>
-        <?php var_dump("without: ", $subjectsWithoutMarks) ?>
-
+        
     <section>
         <table>
             <tr>
