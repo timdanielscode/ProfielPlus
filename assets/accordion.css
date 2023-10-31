@@ -3,12 +3,12 @@
     background: rgb(247, 247, 247);
     padding-bottom: 50px;
     margin: 0 auto;
-    width: 80%;
+    width: 95%;
     display: block;
     border: 1px solid #d7d7d7;
 }
 .educationSchoolDataContainer {
-    margin-bottom: 50px;
+    margin-bottom: 5%;
 }
 .educationSchoolDataContainer h3, .jobExperienceDataContainer h3 {
     font-size: 26px;

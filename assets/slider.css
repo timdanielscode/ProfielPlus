@@ -1,8 +1,8 @@
 .hobbyDataContainer {
     background: rgb(247, 247, 247);
-    padding: 25px;
+    padding: 25px 0;
     margin: 0 auto;
-    width: 80%;
+    width: 95%;
     display: block;
     border: 1px solid #d7d7d7;
 }
@@ -18,8 +18,8 @@
     display: block;
     margin: 0 auto;
     background: #000;
-    height: 50%;
-    width: 50%;
+    height: 300px;
+    width: 450px;
 }
 .slider .slide {
     display: none;
@@ -48,12 +48,26 @@
     font-size: 20px;
     margin-top: 50px;
     background: #fff;
-    width: 100%;
-    padding: 25px;
-    width: 63%;
+    padding: 2.5%;
+    width: 90%;
     display: block;
-    margin: 0 auto;
-    margin-top: 0px;
-    margin-top: 50px;
+    margin: 50px auto 0 auto;
     border: 1px solid #d7d7d7;
+}
+
+/*
+    Profile details section
+*/
+.profileDetails {
+    background: rgb(247, 247, 247);
+    display: block;
+    margin: 0 auto 2.5% auto;
+    width: 97.5%;
+    padding: 20px 0;
+    border: 1px solid #d7d7d7;
+    text-align: center;
+}
+.profileDetails .userDetails {
+    font-size: 22px;
+    color: #5f5f5f;
 }
