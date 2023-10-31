@@ -17,15 +17,24 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `profileapp`
---
+CREATE TABLE job_experiences (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(11) NOT NULL,
+    job_title VARCHAR(255) NOT NULL,
+    employer VARCHAR(255) NOT NULL,
+    start_date DATETIME NOT NULL,
+    end_date DATETIME NOT NULL,
+    details VARCHAR(255) NOT NULL,
+    created_at DATETIME NOT NULL,
+    updated_at DATETIME NOT NULL
+);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `diplomas_achieved`
---
+CREATE TABLE schools (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    school VARCHAR(255) NOT NULL,
+    created_at DATETIME NOT NULL,
+    updated_at DATETIME NOT NULL
+);
 
 CREATE TABLE `diplomas_achieved` (
   `school_id` int(11) NOT NULL,

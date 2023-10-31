@@ -1,35 +1,14 @@
 /* 
     animations
 */
-@keyframes formbutton {
-    0% {background-color: rgb(88, 19, 94); color: azure;}
-    100% {background-color: #FAF9F6; color: rgb(88, 19, 94)}
+@keyframes formbuttonLogin {
+    0% {background-color: #001195; color: azure;}
+    100% {background-color: #FAF9F6; color: rgb(88, 19, 94);border: 1px solid rgb(88, 19, 94)}
 }
 
-/* 
-    Default stylesheet
-*/
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-html {
-    font-family: 'Roboto', sans-serif;
-}
-body {
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: 60px 1fr 100px;
-}
-
-
-nav a, footer a {
-    text-decoration: none;
-    color: azure;
-    /* color: rgb(112, 146, 190);*/
+@keyframes formbuttonRegister {
+    0% {background-color: #7092BE; color: azure;}
+    100% {background-color: #FAF9F6; color: rgb(88, 19, 94);border: 1px solid rgb(88, 19, 94)}
 }
 
 /*
@@ -43,18 +22,18 @@ form {
     align-items: center;
     width: 80%;
     max-width: 600px;
-    /* width: fit-content; */
     padding: 10px 20px;
     margin: auto;
     margin-top: 20px;
     background-color: #FAF9F6;
-    /* background-color: rgb(240, 240, 240); */
 }
 
 form > * {
     margin: 10px;
     display: flex;
     flex-direction: column;
+    color: #001195;
+    
 }
 
 form label {
@@ -65,17 +44,10 @@ input {
     display: block;
     padding: 8px;
     width: 100%;
+    border: 1px solid #7092BE;
 }
 
-footer {
-    background-color: rgb(88, 19, 94);
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-footer a {
-    margin-top: 20px;
-}
+
 
 #submitLogin, #submitResgister {
     padding: 10px 60px;
@@ -86,33 +58,47 @@ footer a {
     color: azure;
 }
 
-.row {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+#submitLogin {
+    background-color: #00129A;
+}
+
+#submitResgister {
+    background-color: #7092BE;
+}
+
+
+#submitLogin:hover {
+    animation-name: formbuttonLogin;
+    animation-duration: .82s;
+}
+
+#submitResgister:hover {
+    animation-name: formbuttonRegister;
+    animation-duration: .82s;
 }
 
 #submitLogin:hover, #submitResgister:hover {
-    animation-name: formbutton;
-    animation-duration: .82s;
+    
     background-color: #FAF9F6; 
     color:rgb(88, 19, 94);
     border: 1px solid rgb(88, 19, 94);
     cursor: pointer;
 }
 
-/* make responsive */
+.buttonRow {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
 
 @media only screen and (max-width: 520px) {
-    .row {
+    .buttonRow {
         height: 110px;
         /* flex-direction: column; */
         align-items: center;
         justify-content: space-around;
     }    
-    /* nav {
-        grid-template-columns: 1fr 1fr 1fr;
-    } */
+    
 }
 

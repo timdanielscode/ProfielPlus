@@ -1,23 +1,40 @@
 <?php 
 
 require_once "includes/headerOpen.php";
-Stylesheet::add(["assets/purpleloginstyle.css"]);
+
+Stylesheet::add([
+    
+  'assets/default.css',
+  "assets/navbar.css"
+  
+]);
 
 ?>
 
 <header>
- <?php
- $this->include("navbar");
- ?>
+  <nav>
+    <div class="imgContainer">
+      <img src="./views/includes/coat_logo.png" alt="logo of our team">
+    </div>
+    <ul>
+      <li>
+        <a href="/login">login</a>
+      </li>
+      <li>
+        <a href="/register">register</a>
+      </li>
+    </ul>
+  </nav>    
 </header>
 
 <main>
     <form method="POST">
+      <h1>Login</h1>
             <label class="form-label" for="email">Email: </label>
             <input type="text" class="form-control" id="email" name="email">
             <label class="form-label" for="password">Wachtwoord: </label>
             <input type="password" class="form-control" id="password" name="password">
-            <div class="row">
+            <div class="buttonRow">
               <input type="submit" name="submit" id="submitLogin" value="Login">
               <input type="submit" name="submit" id="submitRegister" value="Register">
             </div>

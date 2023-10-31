@@ -105,13 +105,33 @@ class User {
     */    
     public function getUniqueEmail($email, $userId) {
 
-        if(!empty($email) && $email !== null) {
+        if(!empty($email) && $email !== null && !empty($userId) && $userId !== null) {
 
             $sql = "SELECT email FROM users WHERE email = ? AND NOT id = ?";
             $stmt = $this->_db->connection->prepare($sql);
             $stmt->execute([$email, $userId]);
     
             return $stmt->fetch();
+        }
+    }
+
+    /* 
+     * @author Tim Daniëls
+     * Updating user password
+     *
+     * @param string $password user password
+     * @param string $userId user id
+    */       
+    public function updatePassword($password, $userId) {
+
+        if(!empty($password) && $password !== null && !empty($userId) && $userId !== null) {
+
+            $sql = "UPDATE users SET password=?,updated_at=? WHERE id = $userId";
+            $this->_db->connection->prepare($sql)->execute([
+    
+                $password, 
+                date('Y-m-d h:i:s')
+            ]);
         }
     }
 
