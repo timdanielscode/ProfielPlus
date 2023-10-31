@@ -1,7 +1,7 @@
 <?php 
 
 /* @author Tim Daniëls
- * Edit profile functionality
+ * Profile functionality
 */
 
 class ProfileController extends Controller {
@@ -40,6 +40,15 @@ class ProfileController extends Controller {
                 redirect('/profile/' . $id);
             } 
         }
+    }
+
+    public function profiles() {
+
+        $user = new User();
+        
+        $data['users'] = $user->getAllWhereNot($_SESSION['userId']);
+
+        return $this->view('/profile/profiles', $data);
     }
 
     public function edit() {

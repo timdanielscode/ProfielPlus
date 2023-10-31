@@ -15,8 +15,8 @@ Route::get('/logout')->add('LogoutController', 'logout');
 
 if(isset($_SESSION['userId']) === true) {
 
-   
     Route::get('/profile/' . $_SESSION['userId'])->add('ProfileController', 'index');
+    Route::get('/profile/' . $_SESSION['userId'] . '/profiles')->add('ProfileController', 'profiles');
     Route::get('/profile/' . $_SESSION['userId'] . '/edit')->add('ProfileController', 'edit');
     Route::post('/profile/' . $_SESSION['userId'] . '/update')->add('ProfileController', 'update');
     Route::get('/profile/' . $_SESSION['userId'] . '/change-password')->add('ProfileController', 'editPassword');

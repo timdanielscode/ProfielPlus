@@ -80,15 +80,29 @@ class User {
      * @param string $user user id
      * return object DB user record
     */
-    public function getDetails($userId) {
+    public function getDetails($id) {
 
-        if(!empty($userId) && $userId !== null) {
+        if(!empty($id) && $id !== null) {
 
             $sql = "SELECT * FROM users WHERE id = ?";
             $stmt = $this->_db->connection->prepare($sql);
-            $stmt->execute([$userId]);
+            $stmt->execute([$id]);
 
             return $stmt->fetch();
+        }
+    }
+
+
+
+    public function getAllWhereNot($id) {
+
+        if(!empty($id) && $id !== null) {
+
+            $sql = "SELECT * FROM users WHERE id != $id";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
         }
     }
 
