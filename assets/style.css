@@ -11,3 +11,10 @@ body {
 .col6 {
     flex: 50%;
 }
+
+@media screen and (max-width: 600px) {
+
+    .col6 {
+        flex: 100%;
+    }
+}

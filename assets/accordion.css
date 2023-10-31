@@ -97,3 +97,10 @@
     margin-left: 25px;
     margin-top: 10px;
 }
+
+@media screen and (max-width: 600px) {
+
+    .educationSchoolDataContainer, .jobExperienceDataContainer {
+        margin-bottom: 2.5%;
+    }
+}
