@@ -45,7 +45,7 @@
     <ul class="inActive" id="editLinkMenu">
       <li><a href="">Edit Educaties</a></li>
       <li><a href="">Edit Werkervaring</a></li>
-      <li><a href="">Edit hobby's</a></li>
+      <li><a href="/profile/<?=$_SESSION['userId']?>/hobby/edit">Edit hobby's</a></li>
     </ul>
 </nav>    
 

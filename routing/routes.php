@@ -20,6 +20,7 @@ if(isset($_SESSION['userId']) === true) {
     Route::post('/profile/' . $_SESSION['userId'] .'/hobby/store')->add('HobbyController', 'store');
     Route::get('/profile/' . $_SESSION['userId'] .'/hobby/edit')->add('HobbyController', 'edit');
     Route::post('/profile/' . $_SESSION['userId'] .'/hobby/edit')->add('HobbyController', 'edit');
+    Route::post('/profile/' . $_SESSION['userId'] . '/update-description')->add('ProfileController', 'updateDescription');
     Route::get('/profile/' . $_SESSION['userId'])->add('ProfileController', 'index');
     Route::get('/profile/' . $_SESSION['userId'] . '/edit')->add('ProfileController', 'edit');
     Route::post('/profile/' . $_SESSION['userId'] . '/update')->add('ProfileController', 'update');

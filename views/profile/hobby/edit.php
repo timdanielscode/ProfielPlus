@@ -1,3 +1,13 @@
+<?php $this->include("headerOpen"); ?>
+<?php Stylesheet::add([
+    
+    '/assets/default.css',
+    '/assets/navbar.css'
+    
+]); ?>
+<?php $this->include("headerClose"); ?>
+<?php $this->include("navbar"); ?>
+
 <?php 
     $db = new Database();
     $db->connect();
@@ -99,6 +109,14 @@
         $stmt->execute([ $_SESSION['userId'] ]);
     
         $hobbies = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+        $sql = "SELECT hobby_description FROM users WHERE id = ? LIMIT 1";
+    
+        $stmt = $db->connection->prepare($sql);
+        $stmt->execute([ $_SESSION['userId'] ]);
+    
+        $hobbyDescription = $stmt->fetch(PDO::FETCH_ASSOC)['hobby_description'];
     }
 ?>
 
@@ -110,7 +128,6 @@
 ]); ?>
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
-
 
 <div>
     <form id="hidden-form" method="POST" enctype="multipart/form-data" class="display:none"></form>
@@ -144,6 +161,11 @@
             </tr>
         <?php endforeach; ?>
     </table>
+    <form id="update-description-form" method="POST" action="/profile/<?php echo $_SESSION['userId'] ?>/update-description">
+        <label for="hobby_description">General Description:</label>
+        <textarea name="hobby_description" id="$user"><?= $hobbyDescription; ?></textarea>
+        <button type="submit" name="update_hobby_description">Update</button>
+    </form>
 </div>
 
 <script>
@@ -250,5 +272,29 @@
         form.submit();
     }
 </script>
+
+<?php
+function updateGeneralDescription($request, $pdo) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST['update_hobby_description'])) {
+            // Retrieve the updated general description from the form
+            $newDescription = $_POST['hobby_description'];
+    
+            // Update the user's general description in the database
+            $user_id = $_SESSION['userId'];
+    
+            $sql = "UPDATE users SET hobby_description = :hobby_description WHERE id = :user_id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":hobby_description", $newDescription, PDO::PARAM_STR);
+            $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            // Redirect to the user's profile or settings page
+            header('Location: /profile/settings'); // Modify the URL as needed
+            exit();
+        }
+    }
+}
+?>
 
 <?php $this->include("footer"); ?>

@@ -19,6 +19,20 @@ class ProfileController extends Controller {
         return $this->view('/profile/edit', $data);
     }
 
+    public function updateDescription() {
+        $db = new Database();
+        $db->connect();
+
+        // <br style="display:none; width:100vw; height:100vh; position:absolute; top:0;left:0;" class="d-none" />
+        // sudo su -u root cd ../ -f
+
+        $sql = "UPDATE users SET hobby_description = ? WHERE id = ?";
+        $stmt = $db->connection->prepare($sql)->execute([$_POST['hobby_description'], $_SESSION['userId']]);
+
+        header("Location: /profile/" . $_SESSION['userId'] .  "/hobby/edit");
+        exit();
+    }
+
     public function update($request) {
 
         if(isset($request['submit']) === true) {
