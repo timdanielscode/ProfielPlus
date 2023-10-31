@@ -8,6 +8,8 @@ class Slider {
         this.slide = slide;
         this.element;
         this.activeSlide;
+
+        console.log(this.slide.getElements()[0])
     }
 
     /* 
@@ -26,12 +28,16 @@ class Slider {
     */
     addActiveSlide() {
 
-        for(var slide of this.slide.getElements()) {
+        this.slide.getElements()[0].classList.add('activeSlide')
+    }
 
-            slide.classList.add('activeSlide');
+    /* 
+     * Adding active class on last slide element
+     *
+    */
+    addActiveLastSlide() {
 
-            return;
-        }
+        this.slide.getElements()[this.slide.getElements().length - 1].classList.add('activeSlide')
     }
 
     /* 
@@ -90,7 +96,7 @@ class Slider {
 
             element.nextElementSibling.classList.add('activeSlide');
         } else {
-            this.slidePrevious(element);
+            this.addActiveSlide();
         }
     }
 
@@ -106,7 +112,7 @@ class Slider {
 
             element.previousElementSibling.classList.add('activeSlide');  
         } else {
-            this.slideNext(element);
+            this.addActiveLastSlide();
         }
     }
 }

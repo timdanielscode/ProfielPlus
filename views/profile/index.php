@@ -70,10 +70,12 @@
             <?php if(!empty($hobbies) && $hobbies !== null) { ?>
                 <div class="slider">
                     <h3>Hobbys</h3>
+                    <?php for($i = 0; $i < 3; $i++) { ?>
                     <?php foreach($hobbies as $hobby) { ?>
                         <div class="slide">
                             <img src="/assets/img/<?php echo $hobby['hobby'] . '-' . $hobby['user_id'] . $hobby['file_extension']; ?>"/>
                         </div>
+                    <?php } ?>
                     <?php } ?>
                     <span class="previous"><</span>
                     <span class="next">></span>
@@ -82,6 +84,7 @@
                     <div class="hobbys_description"><?php echo $hobbyDescription['hobbys_description']; ?></div>
                 <?php } ?>
             <?php } ?>
+           
         </div>
     </div>
 </div>
