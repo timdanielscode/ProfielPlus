@@ -65,6 +65,21 @@ class WorkExperience {
 
     /* 
      * @author Tim Daniëls
+     * Fetching work experiences on user id
+     * 
+     * @param string $id experiences user id
+    */   
+    public function getOnUserId($id) {
+
+        $sql = "SELECT * FROM job_experiences WHERE user_id = $id";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute();
+    
+        return $stmt->fetchAll();
+    }
+
+    /* 
+     * @author Tim Daniëls
      * Update work experiences on id
      * 
      * @param array $data experience data
