@@ -153,5 +153,34 @@ class User {
         return false;
     }
     
+
+    /**
+     * fetching all email adresses into an array
+     */
+    public function getAllEmailAdresses() {
+        $sql = "SELECT email from users";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
+    /**
+     * delete Selected User and all its data
+    */
+    public function deleteUser($email) {
+        $userId = getUserId($email);
+
+        $sql = "DELETE FROM users WHERE id=?;
+        DELETE FROM education_schools_users WHERE user_id=?;
+        DELETE FROM diplomas_achieved WHERE user_id=?;
+        DELETE FROM hobby_user WHERE user_id=?;
+        DELETE FROM job_experiences WHERE user_id=?;
+        DELETE FROM marks_subjects_users WHERE user_id=?;
+        ";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$userId, $userId, $userId, $userId, $userId, $userId]);
+        
+    }
     
 }

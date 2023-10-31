@@ -11,6 +11,7 @@ Route::post('/register')->add('RegisterController', 'store');
 Route::get('/login')->add('LoginController', 'show');
 Route::post('/login')->add('LoginController', 'authenticate');
 Route::get('/logout')->add('LogoutController', 'logout');
+Route::get('/admin')->add('AdminController', 'show');
 
 
 if(isset($_SESSION['userId']) === true) {

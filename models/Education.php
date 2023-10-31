@@ -116,8 +116,32 @@ class Education {
     }
 
     /**
-     * user adding an education to his account
+     * updating the educations_schools_subjects table
      */
+    public function updateEducationsSchoolsSubjects($subjectsArray, $schoolName, $educationName) {
+        $schoolId = $this->getSchoolId($schoolName);
+        $educationId = $this->getEducationId($educationName);
+
+        foreach ($subjectsArray as $subject) {
+            $subjectId = $this->getsubjectId($subject['subject']);
+            
+            $sql = "SELECT * FROM educations_schools_subjects 
+            WHERE education_id=? AND school_id=? AND subject_id=?";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute([$educationId, $schoolId, $subjectId]);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if ($result == false) {
+                $sql = "INSERT INTO educations_schools_subjects (education_id, school_id, subject_id)
+                VALUES (?, ?, ?)";
+                $stmt = $this->_db->connection->prepare($sql);
+                $stmt->execute([$educationId, $schoolId, $subjectId]);
+            }
+        }
+    }
+
+     
+     
     public function userAddsSchool($userId, $hasDiploma, $schoolName, $educationName) {
 
         $schoolId = $this->getSchoolId($schoolName);
@@ -167,36 +191,38 @@ class Education {
             $stmt = $this->_db->connection->prepare($sql);
             $stmt->execute([$schoolId, $educationId, $userId]);
         }
-        header("Location: /edit-schools");
     }
 
     /**
      * user adding a subject to his account
      */
-     public function userAddsSubject($userId, $subjectName, $mark) {
+     public function userAddsSubject($userId, $subjectsArray) {
 
-        $subjectId = $this->getsubjectId($subjectName);
+        foreach ($subjectsArray as $subject) {
+            $subjectId = $this->getsubjectId($subject['subject']);
+            $mark = $subject['mark'];
+
 
         // checking if the already has this subject added to his account and if so update the mark
-        $sql = "SELECT * FROM marks_subjects_users WHERE subject_id=? AND user_id=?";
-        $stmt = $this->_db->connection->prepare($sql);
-        $stmt->execute([$subjectId, $userId]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        $mark *= 10;
-
-        if ($result == false) {
-            $sql = "INSERT INTO marks_subjects_users (mark, subject_id, user_id)
-            VALUES (?, ?, ?)";
-            $stmt = $this-> _db->connection->prepare($sql);
-            $stmt->execute([$mark, $subjectId, $userId]);
-        } else {
-            $sql = "UPDATE marks_subjects_users SET mark=? WHERE subject_id=? AND user_id=?";
+            $sql = "SELECT * FROM marks_subjects_users WHERE subject_id=? AND user_id=?";
             $stmt = $this->_db->connection->prepare($sql);
-            $stmt->execute([$mark, $subjectId, $userId]);
+            $stmt->execute([$subjectId, $userId]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $mark *= 10;
+
+            if ($result == false) {
+                $sql = "INSERT INTO marks_subjects_users (mark, subject_id, user_id)
+                VALUES (?, ?, ?)";
+                $stmt = $this-> _db->connection->prepare($sql);
+                $stmt->execute([$mark, $subjectId, $userId]);
+            } else {
+                $sql = "UPDATE marks_subjects_users SET mark=? WHERE subject_id=? AND user_id=?";
+                $stmt = $this->_db->connection->prepare($sql);
+                $stmt->execute([$mark, $subjectId, $userId]);
+            }
+
         }
-        
-        
      }
 
 /**
@@ -474,6 +500,8 @@ public function editSubject($subject, $mark, $oldSubject, $userId) {
     header('Location: /edit-schools');
 
     }
+
+
 
     
   }
