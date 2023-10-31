@@ -3,15 +3,15 @@
 class HobbyController extends Controller {
 
     public function create() {
-
-
         return $this->view('profile/hobby/create');
+    }
+
+    public function edit() {
+        return $this->view('profile/hobby/edit');
     }
     
     public function store($request) {
            print_r($request);
-
-
     }
 
     public function insert() {
@@ -22,7 +22,7 @@ class HobbyController extends Controller {
             // Your database connection and insertion code
             $host = "localhost";
             $username = "root";
-            $password = "password";
+            $password = "";
             $database = "profileapp";
 
             try {

@@ -15,7 +15,10 @@
             <a href="/profile/<?php echo $_SESSION["userId"]; ?>/change-password">Change password</a>
         </li>
         <li>
-            <a href="/edit-schools">Edit school</a>
+            <a href="/profile/<?php echo $_SESSION["userId"]; ?>/hobby/create">Create Hobby</a>
+        </li>
+        <li>
+            <a href="/edit-schools">Edit School</a>
         </li>
         <li>
           <div id="profileBtn">
