@@ -129,43 +129,93 @@
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 
+
+<style>
+    center div {
+        display: flex;
+    }
+
+    center div div {
+        flex-basis: 35%;
+        margin: auto 4%;
+        display: block;
+    }
+
+    table {
+        background-color: #ddd;
+    }
+
+    /* table row */
+    tr {
+        border: 1px solid black;
+    }
+
+    /* table header */
+    th {
+        border: 1px solid black;
+    }
+
+    /* table dumbbel */
+    td {
+        border: 1px solid black;
+    }
+
+    /* table dumbbel button */
+    td button {
+
+    }
+
+    
+</style>
+
 <div>
     <form id="hidden-form" method="POST" enctype="multipart/form-data" class="display:none"></form>
 
-    <div>
-        <h1>Hobby's</h1> 
-        <button onclick="createItem()">toevoegen</button>
-    </div>
-    <table id="table">
-        <tr>
-            <th>Hobby</th>
-            <th>Image</th>
-            <th>Update</th>
-            <th>Delete</th>
-        </tr>
-        <?php foreach($hobbies as $hobby): ?>
-            <tr id="<?= $hobby['hobby_id']; ?>">
-                <td><input type="text" name="name" id="<?= $hobby['hobby_id']; ?>-text" value="<?= $hobby["hobby"]; ?>" /></td>
+    <center>
+        <div>
+            <div>
+                <div>
+                    <h1>Hobby's</h1>
+                    <button onclick="createItem()">toevoegen</button>
+                </div>
+                <br>
 
-                <td style="position: relative">
-                    <input type="file" onchange="updateImage(`<?= $hobby['hobby_id']; ?>`)" name="image" class="hidden_file_input" id="<?= $hobby['hobby_id']; ?>-image-upload" />
-                    <img width=100 height=100 style="background-size: 100px 100px;" id="<?= $hobby['hobby_id']; ?>-image" src='/<?= $hobby["file_path"]; ?>' />
-                </td>
+                <table id="table">
+                    <tr>
+                        <th>Hobby</th>
+                        <th>Image</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                    <?php foreach($hobbies as $hobby): ?>
+                        <tr id="<?= $hobby['hobby_id']; ?>">
+                            <td><input type="text" name="name" id="<?= $hobby['hobby_id']; ?>-text" value="<?= $hobby["hobby"]; ?>" /></td>
 
-                <td><button onclick="update('<?= $hobby['hobby_id']; ?>')">update</button></td>
+                            <td style="position: relative">
+                                <input type="file" onchange="updateImage(`<?= $hobby['hobby_id']; ?>`)" name="image" class="hidden_file_input" id="<?= $hobby['hobby_id']; ?>-image-upload" />
+                                <img width=100 height=100 style="background-size: 100px 100px;" id="<?= $hobby['hobby_id']; ?>-image" src='/<?= $hobby["file_path"]; ?>' />
+                            </td>
 
-                <td><button onclick="deleteItem('<?= $hobby['hobby_id']; ?>')">delete</button></td>
+                            <td><button onclick="update('<?= $hobby['hobby_id']; ?>')">update</button></td>
 
-                <input name="id" type="hidden" id="<?= $hobby['hobby_id']; ?>-id" value="<?= $hobby['hobby_id']; ?>" />
-                <input name="image_id" type="hidden" id="<?= $hobby['hobby_id']; ?>-image-id" value="<?= $hobby['image_id']; ?>" />
-            </tr>
-        <?php endforeach; ?>
-    </table>
-    <form id="update-description-form" method="POST" action="/profile/<?php echo $_SESSION['userId'] ?>/update-description">
-        <label for="hobby_description">General Description:</label>
-        <textarea name="hobby_description" id="$user"><?= $hobbyDescription; ?></textarea>
-        <button type="submit" name="update_hobby_description">Update</button>
-    </form>
+                            <td><button onclick="deleteItem('<?= $hobby['hobby_id']; ?>')">delete</button></td>
+
+                            <input name="id" type="hidden" id="<?= $hobby['hobby_id']; ?>-id" value="<?= $hobby['hobby_id']; ?>" />
+                            <input name="image_id" type="hidden" id="<?= $hobby['hobby_id']; ?>-image-id" value="<?= $hobby['image_id']; ?>" />
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+
+            <div>
+                <form id="update-description-form" method="POST" action="/profile/<?php echo $_SESSION['userId'] ?>/update-description">
+                    <label for="hobby_description">General Description:</label><br>
+                    <textarea name="hobby_description" rows="12" cols="50" id="$user"><?= $hobbyDescription; ?></textarea><br>
+                    <button type="submit" name="update_hobby_description">Update</button>
+                </form>
+            </div>
+        </div>
+    </center>
 </div>
 
 <script>
