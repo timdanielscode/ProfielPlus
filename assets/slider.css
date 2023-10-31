@@ -24,7 +24,7 @@
 .slider .slide {
     display: none;
 }
-.slider .slide.active {
+.slider .slide.activeSlide {
     display: block;
 }
 .next {

@@ -28,7 +28,7 @@ class Slider {
 
         for(var slide of this.slide.getElements()) {
 
-            slide.classList.add('active');
+            slide.classList.add('activeSlide');
 
             return;
         }
@@ -40,7 +40,7 @@ class Slider {
     */
     setActiveSlide() {
 
-        this.activeSlide = document.querySelector('.active');
+        this.activeSlide = document.querySelector('.activeSlide');
     }
 
     /*  
@@ -84,11 +84,11 @@ class Slider {
     */
     slideNext(element) {
 
-        element.classList.remove('active');
+        element.classList.remove('activeSlide');
 
         if(element.nextElementSibling.classList.contains('slide')) {
 
-            element.nextElementSibling.classList.add('active');
+            element.nextElementSibling.classList.add('activeSlide');
         } else {
             this.slidePrevious(element);
         }
@@ -100,11 +100,11 @@ class Slider {
     */
     slidePrevious(element) {
 
-        element.classList.remove('active');
+        element.classList.remove('activeSlide');
 
-        if(element.previousElementSibling !== null) {
+        if(element.previousElementSibling.classList.contains('slide')) {
 
-            element.previousElementSibling.classList.add('active');  
+            element.previousElementSibling.classList.add('activeSlide');  
         } else {
             this.slideNext(element);
         }
