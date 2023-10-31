@@ -2,6 +2,8 @@
 
 class WorkExperience {
 
+    private $_db;
+
     /* 
      * @author Tim Daniëls
      * Creating database instance for the connection

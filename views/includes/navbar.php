@@ -36,7 +36,7 @@
     <ul class="inActive" id="profileMenu">
       <li><a id="editDropdownBtn">Edit</a></li>
       <li><a href="">wachtwoord veranderen</a></li>
-      <li><a href="">Uit loggen</a></li>
+      <li><a href="/logout">Uit loggen</a></li>
     </ul>
 
     <ul class="inActive" id="editLinkMenu">

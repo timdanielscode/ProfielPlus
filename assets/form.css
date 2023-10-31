@@ -49,35 +49,34 @@ input {
 
 
 
-#submitLogin, #submitResgister {
+.formBtn {
     padding: 10px 60px;
     width: fit-content;
     border-radius: 2px;
-    background-color: rgb(88, 19, 94);
     border: rgb(88, 19, 94);
     color: azure;
 }
 
-#submitLogin {
+.primaryFormBtn {
     background-color: #00129A;
 }
 
-#submitResgister {
+.secondaryFormBtn {
     background-color: #7092BE;
 }
 
 
-#submitLogin:hover {
+.primaryFormBtn:hover {
     animation-name: formbuttonLogin;
     animation-duration: .82s;
 }
 
-#submitResgister:hover {
+.secondaryFormBtn:hover {
     animation-name: formbuttonRegister;
     animation-duration: .82s;
 }
 
-#submitLogin:hover, #submitResgister:hover {
+.formBtn:hover {
     
     background-color: #FAF9F6; 
     color:rgb(88, 19, 94);

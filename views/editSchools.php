@@ -1,7 +1,9 @@
 <?php $this->include("headerOpen"); ?>
 <?php Stylesheet::add([
     
-    'assets/style.css'
+    'assets/default.css',
+    'assets/navbar.css',
+    'assets/footer.css',
     
 ]); ?>
 <?php $this->include("headerClose"); ?>

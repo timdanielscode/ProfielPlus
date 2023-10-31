@@ -1,8 +1,14 @@
 <?php $this->include("headerOpen"); ?>
-<?php $this->include("headerOpen"); ?>
-
+<?php Stylesheet::add([
+    
+    'assets/default.css',
+    'assets/navbar.css',
+    'assets/footer.css',
+    
+]); ?>
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
+
 
 <form method="POST">
         <h1>Voeg een educatie toe</h1>
