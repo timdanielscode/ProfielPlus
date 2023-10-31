@@ -17,6 +17,7 @@ Route::get('/admin')->add('AdminController', 'show');
 if(isset($_SESSION['userId']) === true) {
 
     Route::get('/profile/' . $_SESSION['userId'])->add('ProfileController', 'index');
+    Route::get('/profile/' . $_SESSION['userId'] . '/profiles')->add('ProfileController', 'profiles');
     Route::get('/profile/' . $_SESSION['userId'] . '/edit')->add('ProfileController', 'edit');
     Route::post('/profile/' . $_SESSION['userId'] . '/update')->add('ProfileController', 'update');
     Route::get('/profile/' . $_SESSION['userId'] . '/change-password')->add('ProfileController', 'editPassword');
@@ -25,6 +26,7 @@ if(isset($_SESSION['userId']) === true) {
     Route::post('/edit-schools') -> add('EditSchoolsController', 'editOrDelete');
     Route::get('/add-schools') -> add('AddSchoolsController', 'show');
     Route::post('/add-schools') -> add('AddSchoolsController', 'addSchoolOrSubject');
+
 
     Route::get('/profile/' . $_SESSION['userId'] . '/work-experience')->add('WorkExperienceController', 'index');
     Route::get('/profile/' . $_SESSION['userId'] . '/work-experience/create')->add('WorkExperienceController', 'create');

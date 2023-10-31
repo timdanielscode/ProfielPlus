@@ -16,12 +16,14 @@ CREATE TABLE roles (
 
 CREATE TABLE hobbies (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
-    hobby VARCHAR(255) NOT NULL
+    hobby VARCHAR(255) NOT NULL,
+    file_extension VARCHAR(4) NOT NULL,
+    user_id INT(11) NOT NULL
 );
 
-CREATE TABLE hobby_user (
-    hobby_id INT(11) NOT NULL,
-    user_id INT(11) NOT NULL
+CREATE TABLE hobby_description (
+    user_id INT(11) NOT NULL,
+    hobbys_description VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE job_experiences (
@@ -68,7 +70,7 @@ CREATE TABLE diplomas_achieved (
 CREATE TABLE educations_schools_subjects (
     education_id INT(11) NOT NULL,
     school_id INT(11) NOT NULL,
-    user_id INT(11) NOT NULL
+    subject_id INT(11) NOT NULL
 );
 
 CREATE TABLE marks_subjects_users (
