@@ -6,6 +6,8 @@
 
 class ProfileController extends Controller {
 
+    private $_userId;
+
     public function index() {
 
         $user = new User();
@@ -14,14 +16,30 @@ class ProfileController extends Controller {
         $subject = new Subject();
         $hobby = new Hobby();
 
-        $data['subjecsMarks'] = $subject->getSubjecstMarksOnUserId($_SESSION['userId']);
-        $data['educationSchools'] = $education->getEducationSchoolOnUserId($_SESSION['userId']);
-        $data['jobExperiences'] = $workExperience->getOnUserId($_SESSION['userId']);
-        $data['hobbies'] = $hobby->getHobbyUserId($_SESSION['userId']);
-        $data['hobbyDescription'] = $hobby->getHobbyDescription($_SESSION['userId']);
-        $data['user'] = $user->getDetails($_SESSION['userId']);
+        $this->_userId = $_SESSION['userId'];
+        $this->viewOtherProfiles($user, $this->_userId);
+
+        $data['subjecsMarks'] = $subject->getSubjecstMarksOnUserId($this->_userId);
+        $data['educationSchools'] = $education->getEducationSchoolOnUserId($this->_userId);
+        $data['jobExperiences'] = $workExperience->getOnUserId($this->_userId);
+        $data['hobbies'] = $hobby->getHobbyUserId($this->_userId);
+        $data['hobbyDescription'] = $hobby->getHobbyDescription($this->_userId);
+        $data['user'] = $user->getDetails($this->_userId);
 
         return $this->view('profile/index', $data);
+    }
+
+    private function viewOtherProfiles($user, $id) {
+
+        if(!empty($_GET['view']) && $_GET['view'] !== null) {
+
+            if(!empty($user->checkUserId($_GET['view'])) && $user->checkUserId($_GET['view'])['id'] !== $id) {
+
+                $this->_userId = $_GET['view'];
+            }  else {
+                redirect('/profile/' . $id);
+            } 
+        }
     }
 
     public function edit() {

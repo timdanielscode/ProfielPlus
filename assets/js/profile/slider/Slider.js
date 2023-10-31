@@ -8,8 +8,6 @@ class Slider {
         this.slide = slide;
         this.element;
         this.activeSlide;
-
-        console.log(this.slide.getElements()[0])
     }
 
     /* 

@@ -56,6 +56,25 @@ class User {
 
     /* 
      * @author Tim Daniëls
+     * If user exists
+     *
+     * @param string $id user id
+     * return object DB user id
+    */
+    public function checkUserId($id) {
+
+        if(!empty($id) && $id !== null) {
+
+            $sql = "SELECT id FROM users WHERE id = ?";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute([$id]);
+
+            return $stmt->fetch();
+        }
+    }
+
+    /* 
+     * @author Tim Daniëls
      * Getting user details based on user id
      *
      * @param string $user user id
