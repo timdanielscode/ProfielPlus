@@ -23,7 +23,6 @@
 <div class="profileDetails">
     <span class="userDetails"><?php echo $user['firstName'] . ' ' . $user['lastName']; ?></span>
 </div>
-
 <div class="row">
     <div class="col6">
         <div class="educationSchoolDataContainer">
@@ -70,16 +69,14 @@
         <div class="hobbyDataContainer">
             <?php if(!empty($hobbies) && $hobbies !== null) { ?>
                 <div class="slider">
+                    <h3>Hobbys</h3>
                     <?php foreach($hobbies as $hobby) { ?>
                         <div class="slide">
                             <img src="/assets/img/<?php echo $hobby['hobby'] . '-' . $hobby['user_id'] . $hobby['file_extension']; ?>"/>
-                            <span class="hobbyText"><?php echo $hobby['hobby']; ?></span>
                         </div>
                     <?php } ?>
-                    <div class="controls">
-                        <span class="previous"><</span>
-                        <span class="next">></span>
-                    </div>
+                    <span class="previous"><</span>
+                    <span class="next">></span>
                 </div>
                 <?php if(!empty($hobbyDescription) && $hobbyDescription !== null) { ?>
                     <div class="hobbys_description"><?php echo $hobbyDescription['hobbys_description']; ?></div>
