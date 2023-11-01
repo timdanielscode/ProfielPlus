@@ -1,12 +1,14 @@
 <?php $this->include("headerOpen"); ?>
-
 <?php Stylesheet::add([
-
-    '/assets/style.css'
+    
+    'assets/default.css',
+    'assets/navbar.css',
+    'assets/footer.css',
+    'assets/style.css'
 ]); ?>
-
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
+
 
 <table>
     <tr>

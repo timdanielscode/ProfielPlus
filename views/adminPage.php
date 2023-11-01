@@ -1,13 +1,12 @@
  <?php 
  
  $this->include("headerOpen");
- $this->include("headerOpen");
  Stylesheet::add([
     
     'assets/default.css',
     "assets/navbar.css",
-
-    
+    'assets/form.css',
+    'assets/admin.css',
   ]);
   
 $this->include("headerClose"); 
@@ -28,27 +27,28 @@ $this->include("navbar");
                 }
             ?>
         </select>
-        <input type="submit" class="deleteBtn" name="deleteBtn" value="Delete">
+        <input type="submit" class="deleteBtn formBtn" name="deleteBtn" value="Delete">
     </form>
 
     <form method="POST">
         <h2>voeg school, opleiding of vak toe</h2>
+        
         <label for="addSchool">School toevoegen</label>
         <br>
         <input type="text" name="addSchool" id="addSchool">
-        <input type="submit" name="submitNewSchool" id="submitNewSchool" value="submit">
+        <input type="submit" name="submitNewSchool" id="submitNewSchool" class="formBtn submitBtn" value="submit">
         <br>
 
         <label for="addEducation">Educatie toevoegen</label>
         <br>
         <input type="text" name="addEducation" id="addEducation">
-        <input type="submit" name="submitNewEducation" id="submitNewEducation" value="submit">
+        <input type="submit" name="submitNewEducation" class="formBtn submitBtn" id="submitNewEducation" value="submit">
         <br>
 
         <label for="addSubject">Vak toevoegen</label>
         <br>
         <input type="text" name="addSubject" id="addSubject">
-        <input type="submit" name="submitNewSubject" id="submitNewSubject" value="submit">
+        <input type="submit" name="submitNewSubject" class="formBtn submitBtn" id="submitNewSubject" value="submit">
         <br>
 
     </form>
@@ -69,7 +69,7 @@ $this->include("navbar");
             }
             ?>
         </select>
-        <input type="submit" name="deleteSchool" value="delete">
+        <input type="submit" name="deleteSchool"  class="deleteBtn formBtn" value="delete">
         <br>
 
 
@@ -85,7 +85,7 @@ $this->include("navbar");
             }
             ?>
         </select>
-        <input type="submit" name="deleteEducation" value="delete">
+        <input type="submit" name="deleteEducation" class="deleteBtn formBtn" value="delete">
         <br>
 
 
@@ -102,7 +102,7 @@ $this->include("navbar");
             }
             ?>
         </select>
-        <input type="submit" name="deleteSubject" value="delete">
+        <input type="submit" name="deleteSubject"  class="deleteBtn formBtn" value="delete">
         <br>
 
     </form>

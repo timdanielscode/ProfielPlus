@@ -40,14 +40,12 @@ form label {
     align-self: start;
 }
 
-input {
+input, select {
     display: block;
     padding: 8px;
     width: 100%;
     border: 1px solid #7092BE;
 }
-
-
 
 .formBtn {
     padding: 10px 60px;
@@ -91,6 +89,12 @@ input {
     justify-content: space-around;
 }
 
+.submitBtn {
+    background-color: green;
+    border-radius: 3px;
+}
+
+
 @media only screen and (max-width: 520px) {
     .buttonRow {
         height: 110px;
@@ -100,4 +104,5 @@ input {
     }    
     
 }
+
 

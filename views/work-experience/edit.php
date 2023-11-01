@@ -1,6 +1,4 @@
-<?php $this->include("headerOpen"); ?>
-<?php Stylesheet::add(['assets/style.css']); ?>
-<?php $this->include("headerClose"); ?>
+
 
 <h1>Werkervaring aanpassen</h1>
 <form action="/profile/<?php echo $_SESSION['userId']; ?>/work-experience/update" method="POST">

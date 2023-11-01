@@ -1,6 +1,15 @@
 <?php $this->include("headerOpen"); ?>
+<?php Stylesheet::add([
+    
+    'assets/default.css',
+    'assets/navbar.css',
+    'assets/footer.css',
+    'assets/style.css'
+]); ?>
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
+
+
 
 <h1>Huidig Wachtwoord wijzigen</h1>
 
