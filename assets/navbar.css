@@ -1,3 +1,8 @@
+@keyframes movingOutNav {
+    from {top: 60px;}
+    to {top: 241px}
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -77,6 +82,7 @@ nav ul, nav li {
     max-height: 250px;
     overflow: auto; 
     border: 2px solid #3E195A;
+    background-color: #3e195a;
     margin: 0;
     width: 143px; 
     border-radius: 3px;
@@ -118,6 +124,25 @@ nav ul, nav li {
     border-radius: 3px;
     height: 37px;
     max-height: fit-content;
+}
+
+/* ___________media queries___________ */
+@media only screen and (max-width: 400px) {
+    .profileMenu {
+        width: 100%;
+        max-height: fit-content;
+        z-index: 1;
+    }
+    .editLinkMenu {
+        position: fixed;
+        left: 0;
+        align-items: center;
+        width: 100%;
+        max-height: fit-content;
+        background-color: #4f3762;
+        animation: movingOutNav 1s;
+        top: 241px;
+    }
 }
 
 
