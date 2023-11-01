@@ -1,17 +1,18 @@
 <?php $this->include("headerOpen"); ?>
 <?php Stylesheet::add([
     
-    'assets/style.css'
+    'assets/default.css',
+    'assets/navbar.css',
+    'assets/footer.css',
+    'assets/form.css',
+    'assets/admin.css',
     
 ]); ?>
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 
     <main>
-        <?php var_dump("with: ", $subjectsWithMarks) ?>
-        <br>
-        <?php var_dump("without: ", $subjectsWithoutMarks) ?>
-
+        
     <section>
         <table>
             <tr>
@@ -78,9 +79,8 @@
                         
                         <td>
                             <input type="submit" name="deleteEducation" value="Delete">
-                            <input type="submit" name="updateEducation" value="Update">
+                            <input type="submit" name="updateEducation" class="formBtn submitBtn" value="Update">
                         </td>
-                        
                     </form>
                     </tr>
                     <?php

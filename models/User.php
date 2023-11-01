@@ -56,20 +56,53 @@ class User {
 
     /* 
      * @author Tim Daniëls
+     * If user exists
+     *
+     * @param string $id user id
+     * return object DB user id
+    */
+    public function checkUserId($id) {
+
+        if(!empty($id) && $id !== null) {
+
+            $sql = "SELECT id FROM users WHERE id = ?";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute([$id]);
+
+            return $stmt->fetch();
+        }
+    }
+
+    /* 
+     * @author Tim Daniëls
      * Getting user details based on user id
      *
      * @param string $user user id
      * return object DB user record
     */
-    public function getDetails($userId) {
+    public function getDetails($id) {
 
-        if(!empty($userId) && $userId !== null) {
+        if(!empty($id) && $id !== null) {
 
             $sql = "SELECT * FROM users WHERE id = ?";
             $stmt = $this->_db->connection->prepare($sql);
-            $stmt->execute([$userId]);
+            $stmt->execute([$id]);
 
             return $stmt->fetch();
+        }
+    }
+
+
+
+    public function getAllWhereNot($id) {
+
+        if(!empty($id) && $id !== null) {
+
+            $sql = "SELECT * FROM users WHERE id != $id";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
         }
     }
 
@@ -169,17 +202,33 @@ class User {
      * delete Selected User and all its data
     */
     public function deleteUser($email) {
-        $userId = getUserId($email);
+        $userId = $this->getUserId($email)['id'];
 
-        $sql = "DELETE FROM users WHERE id=?;
-        DELETE FROM education_schools_users WHERE user_id=?;
-        DELETE FROM diplomas_achieved WHERE user_id=?;
-        DELETE FROM hobby_user WHERE user_id=?;
-        DELETE FROM job_experiences WHERE user_id=?;
-        DELETE FROM marks_subjects_users WHERE user_id=?;
-        ";
+        $sql = "DELETE FROM users WHERE id=?";
         $stmt = $this->_db->connection->prepare($sql);
-        $stmt->execute([$userId, $userId, $userId, $userId, $userId, $userId]);
+        $stmt->execute([$userId]);
+
+        $sql = "DELETE FROM educations_schools_users WHERE user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$userId]);
+
+        $sql = "DELETE FROM diplomas_achieved WHERE user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$userId]);
+
+        $sql = "DELETE FROM hobby_user WHERE user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$userId]);
+
+        $sql = "DELETE FROM job_experiences WHERE user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$userId]);
+
+        $sql = "DELETE FROM marks_subjects_users WHERE user_id=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$userId]);
+
+        header("Location: /admin");
         
     }
     

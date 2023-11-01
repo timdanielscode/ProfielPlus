@@ -477,7 +477,7 @@ public function editSubject($subject, $mark, $oldSubject, $userId) {
 }
 
 /**
-  * function to delete the selected subject in the database
+  * function to delete the selected subject from user in the database
   */
   public function deleteSubject($subject, $userId) {
     $SubjectId = $this->getsubjectId($subject);
@@ -501,8 +501,136 @@ public function editSubject($subject, $mark, $oldSubject, $userId) {
 
     }
 
+// ________________________ admin methods to create new educations, schools or subjects ________________________
+    /* 
+     * @author Tim Daniëls
+     * Getting educations id education_name, schools school on user id 
+     *
+     * @param string $user user id
+     * return object DB education
+    */
+    public function getEducationSchoolOnUserId($id) {
+
+        $sql = "SELECT educations.id, educations.education_name, schools.school FROM educations INNER JOIN educations_schools_users ON educations.id = educations_schools_users.education_id INNER JOIN schools ON schools.id = educations_schools_users.school_id WHERE educations_schools_users.user_id = ?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$id]);
+
+        return $stmt->fetchAll();
+    }
 
 
+/**
+ * create new School
+ */
+public function createNewSchool($name) {
+    // check if there is not already a reccord in the database of this school
+    $sql = "SELECT * FROM schools WHERE school=?";
+    $stmt = $this->_db->connection->prepare($sql);
+    $stmt->execute([$name]);
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result == false) {
+        $sql = "INSERT INTO schools (school)
+        VALUES (?)";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$name]);
+    }
     
-  }
+}
 
+/**
+ * create new Education
+ */
+public function createNewEducation($name) {
+    // check if there is not already a reccord in the database of this school
+    $sql = "SELECT * FROM educations WHERE education_name=?";
+    $stmt = $this->_db->connection->prepare($sql);
+    $stmt->execute([$name]);
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result == false) {
+        $sql = "INSERT INTO educations (education_name)
+        VALUES (?)";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$name]);
+    }
+    
+}
+
+/**
+ * create new Subject
+ */
+public function createNewSubject($name) {
+    // check if there is not already a reccord in the database of this school
+    $sql = "SELECT * FROM subjects WHERE subject_name=?";
+    $stmt = $this->_db->connection->prepare($sql);
+    $stmt->execute([$name]);
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result == false) {
+        $sql = "INSERT INTO subjects (subject_name)
+        VALUES (?)";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$name]);
+    }
+    
+}
+
+
+// ________________________ admin methods to delete new educations, schools or subjects ________________________
+/**
+ * function for an admin to delete a school
+ */
+
+public function adminDeleteSchool($name) {
+    $schoolId = $this->getSchoolId($name);
+
+    $sql = "DELETE FROM diplomas_achieved WHERE school_id=?";
+    $this->_db->connection->prepare($sql)->execute([$schoolId]);
+
+    $sql = "DELETE FROM educations_schools_subjects WHERE school_id=?";
+    $this->_db->connection->prepare($sql)->execute([$schoolId]);
+
+    $sql = "DELETE FROM educations_schools_users WHERE school_id=?";
+    $this->_db->connection->prepare($sql)->execute([$schoolId]);
+
+    $sql = "DELETE FROM schools WHERE id=?";
+    $this->_db->connection->prepare($sql)->execute([$schoolId]);
+
+}
+
+public function adminDeleteEducation($name) {
+    $educationId = $this->getEducationId($name);
+
+    $sql = "DELETE FROM diplomas_achieved WHERE education_id=?";
+    $this->_db->connection->prepare($sql)->execute([$educationId]);
+
+    $sql = "DELETE FROM educations_schools_subjects WHERE education_id=?";
+    $this->_db->connection->prepare($sql)->execute([$educationId]);
+
+    $sql = "DELETE FROM educations_schools_users WHERE education_id=?";
+    $this->_db->connection->prepare($sql)->execute([$educationId]);
+
+    $sql = "DELETE FROM educations WHERE id=?";
+    $this->_db->connection->prepare($sql)->execute([$educationId]);
+
+}
+
+public function adminDeleteSubject($name) {
+    $subjectId = $this->getsubjectId($name);
+
+    $sql = "DELETE FROM marks_subjects_users WHERE subject_id=?";
+    $this->_db->connection->prepare($sql)->execute([$subjectId]);
+
+    $sql = "DELETE FROM educations_schools_subjects WHERE subject_id=?";
+    $this->_db->connection->prepare($sql)->execute([$subjectId]);
+
+    $sql = "DELETE FROM subjects WHERE id=?";
+    $this->_db->connection->prepare($sql)->execute([$subjectId]);
+
+}
+
+}

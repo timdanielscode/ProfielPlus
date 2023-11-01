@@ -9,4 +9,23 @@ body {
     height: 100px;
     width: 100px;
     opacity: 0;
+    margin: 0;
+}
+
+.display-none {
+    display: none;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.col6 {
+    flex: 50%;
+}
+
+@media screen and (max-width: 600px) {
+
+    .col6 {
+        flex: 100%;
+    }
 }

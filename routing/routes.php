@@ -12,6 +12,7 @@ Route::get('/login')->add('LoginController', 'show');
 Route::post('/login')->add('LoginController', 'authenticate');
 Route::get('/logout')->add('LogoutController', 'logout');
 Route::get('/admin')->add('AdminController', 'show');
+Route::post('/admin')->add('AdminController', 'adminAction');
 
 
 if(isset($_SESSION['userId']) === true) {
@@ -23,6 +24,7 @@ if(isset($_SESSION['userId']) === true) {
     Route::post('/profile/' . $_SESSION['userId'] .'/hobby/edit')->add('HobbyController', 'edit');
     Route::post('/profile/' . $_SESSION['userId'] . '/update-description')->add('ProfileController', 'updateDescription');
     Route::get('/profile/' . $_SESSION['userId'])->add('ProfileController', 'index');
+    Route::get('/profile/' . $_SESSION['userId'] . '/profiles')->add('ProfileController', 'profiles');
     Route::get('/profile/' . $_SESSION['userId'] . '/edit')->add('ProfileController', 'edit');
     Route::post('/profile/' . $_SESSION['userId'] . '/update')->add('ProfileController', 'update');
     Route::get('/profile/' . $_SESSION['userId'] . '/change-password')->add('ProfileController', 'editPassword');
@@ -31,6 +33,7 @@ if(isset($_SESSION['userId']) === true) {
     Route::post('/edit-schools') -> add('EditSchoolsController', 'editOrDelete');
     Route::get('/add-schools') -> add('AddSchoolsController', 'show');
     Route::post('/add-schools') -> add('AddSchoolsController', 'addSchoolOrSubject');
+
 
     Route::get('/profile/' . $_SESSION['userId'] . '/work-experience')->add('WorkExperienceController', 'index');
     Route::get('/profile/' . $_SESSION['userId'] . '/work-experience/create')->add('WorkExperienceController', 'create');

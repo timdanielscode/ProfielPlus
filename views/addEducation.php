@@ -1,8 +1,15 @@
 <?php $this->include("headerOpen"); ?>
-<?php $this->include("headerOpen"); ?>
-
+<?php Stylesheet::add([
+    
+    'assets/default.css',
+    'assets/navbar.css',
+    'assets/form.css',
+    'assets/footer.css',
+    
+]); ?>
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
+
 
 <form method="POST">
         <h1>Voeg een educatie toe</h1>
@@ -32,17 +39,21 @@
             }
             ?>
         </select>
-            <label for="hasDiploma">Diploma behaald?</label>
-        <input type="radio" id="yes" name="hasDiploma" value="ja">
-        <label for="ja">Ja</label>
 
-        <input type="radio" id="No" name="hasDiploma" value="nee">
-        <label for="nee">Nee</label>
-
+        <label for="hasDiploma">Diploma behaald?</label>
+        <select name="hasDiploma" id="diplomaAchievedBiasYes">
+            <option value="ja">Ja</option>
+            <option value="nee">Nee</option>
+        </select>
+        
+        
         <!-- question on how many subject the user is following -->
         <label for="subjectsCount">Hoeveel vakken volg je bij deze opleiding?</label>
-        <input type="number" name="subjectsCount" id="subjectsCount" value="<?php if (isset($subjectCount)) {echo $subjectCount;} ?>">
-        <input type="submit" name="subjectCountSend" value="submitsubject">
+        <div class="buttonRow">
+            <input type="number" name="subjectsCount" id="subjectsCount" value="<?php if (isset($subjectCount)) {echo $subjectCount;} ?>">
+            <input type="submit" name="subjectCountSend" value="submitsubject">
+        </div>
+        
 
         <!-- ___________vakken___________ -->
          <?php
@@ -72,6 +83,7 @@
                  
                 <?php
             }
+            echo '<input type="submit" name="addEducation" class="formBtn submitBtn" id="addEducation" value="submit">';
         }
         
         ?>
@@ -80,7 +92,7 @@
         
 
 
-        <input type="submit" name="addEducation" id="addEducation" value="submit">
+        
 
 </form>
 

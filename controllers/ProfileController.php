@@ -1,14 +1,54 @@
 <?php 
 
 /* @author Tim Daniëls
- * Edit profile functionality
+ * Profile functionality
 */
 
 class ProfileController extends Controller {
 
+    private $_userId;
+
     public function index() {
 
-        return $this->view('profile/index');
+        $user = new User();
+        $workExperience = new WorkExperience();
+        $education = new Education();
+        $subject = new Subject();
+        $hobby = new Hobby();
+
+        $this->_userId = $_SESSION['userId'];
+        $this->viewOtherProfiles($user, $this->_userId);
+
+        $data['subjecsMarks'] = $subject->getSubjecstMarksOnUserId($this->_userId);
+        $data['educationSchools'] = $education->getEducationSchoolOnUserId($this->_userId);
+        $data['jobExperiences'] = $workExperience->getOnUserId($this->_userId);
+        $data['hobbies'] = $hobby->getHobbyUserId($this->_userId);
+        $data['hobbyDescription'] = $hobby->getHobbyDescription($this->_userId);
+        $data['user'] = $user->getDetails($this->_userId);
+
+        return $this->view('profile/index', $data);
+    }
+
+    private function viewOtherProfiles($user, $id) {
+
+        if(!empty($_GET['view']) && $_GET['view'] !== null) {
+
+            if(!empty($user->checkUserId($_GET['view'])) && $user->checkUserId($_GET['view'])['id'] !== $id) {
+
+                $this->_userId = $_GET['view'];
+            }  else {
+                redirect('/profile/' . $id);
+            } 
+        }
+    }
+
+    public function profiles() {
+
+        $user = new User();
+        
+        $data['users'] = $user->getAllWhereNot($_SESSION['userId']);
+
+        return $this->view('/profile/profiles', $data);
     }
 
     public function edit() {
