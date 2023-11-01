@@ -1,12 +1,4 @@
-<?php $this->include("headerOpen"); ?>
-<?php Stylesheet::add([
-    
-    '/assets/default.css',
-    '/assets/navbar.css'
-    
-]); ?>
-<?php $this->include("headerClose"); ?>
-<?php $this->include("navbar"); ?>
+
 
 <?php 
     $db = new Database();
@@ -122,54 +114,24 @@
 
 <?php $this->include("headerOpen"); ?>
 <?php Stylesheet::add([
-
-    '/assets/style.css'
+    
+    '/assets/default.css',
+    '/assets/navbar.css',
+    '/assets/footer.css',
+    '/assets/form.css',
+    '/assets/admin.css',
+    '/assets/style.css',
+    '/assets/hobbyedit.css'
     
 ]); ?>
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 
 
-<style>
-    center div {
-        display: flex;
-    }
-
-    center div div {
-        flex-basis: 35%;
-        margin: auto 4%;
-        display: block;
-    }
-
-    table {
-        background-color: #ddd;
-    }
-
-    /* table row */
-    tr {
-        border: 1px solid black;
-    }
-
-    /* table header */
-    th {
-        border: 1px solid black;
-    }
-
-    /* table dumbbel */
-    td {
-        border: 1px solid black;
-    }
-
-    /* table dumbbel button */
-    td button {
-
-    }
-
-    
-</style>
 
 <div>
-    <form id="hidden-form" method="POST" enctype="multipart/form-data" class="display:none"></form>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <form id="hidden-form" method="POST" enctype="multipart/form-data" style="display:none"></form>
 
     <center>
         <div>

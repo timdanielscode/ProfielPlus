@@ -1,0 +1,56 @@
+
+center div{
+    flex-direction:column;
+    display: flex;
+}
+
+@media only screen and (min-width: 768px) {
+    center div {
+        flex-direction:row;
+
+    }
+}
+
+center div div {
+    flex-basis: 35%;
+    margin: auto 4%;
+    display: block;
+}
+
+table {
+    box-shadow: 8px 8px 15px 8px rgb(82, 82, 82);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 600px;
+    padding: 10px 20px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: #FAF9F6;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+/* table row */
+tr {
+    border-collapse: collapse;
+}
+
+/* table header */
+th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+/* table dumbbel */
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+/* table dumbbel button */
+td button {
+    border: 1px solid black;
+}
