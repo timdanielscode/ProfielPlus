@@ -35,7 +35,8 @@ class Hobby {
     */
     public function getHobbyDescription($userId) {
 
-        $sql = "SELECT hobbys_description from hobby_description WHERE user_id = $userId";
+        // previously used table: hobby_description, changed to users table 
+        $sql = "SELECT hobby_description from users WHERE id = $userId";
         $stmt = $this->_db->connection->prepare($sql);
         $stmt->execute();
 
