@@ -1,3 +1,33 @@
+<?php $this->include("headerOpen"); ?>
+ <?php Stylesheet::add([
+     
+     '/assets/default.css',
+     '/assets/navbar.css',
+     '/assets/footer.css',
+     '/assets.form.css',
+     '/assets/admin.css',
+     '/assets/style.css',
+     '/assets/hobbyedit.css',
+     '/assets/accordion.css',
+     '/assets/slider.css'
+          
+ ]); ?>
+
+<?php script::add([
+    '/assets/js/profile/accordion/AccordionItem.js' => true,
+    '/assets/js/profile/accordion/AccordionButton.js' => true,
+    '/assets/js/profile/accordion/main.js' => true,
+    '/assets/js/profile/slider/Slide.js' => true,
+    '/assets/js/profile/slider/Slider.js' => true,
+    '/assets/js/profile/slider/main.js' => true,
+    '/assets/navbar.js'=> true
+   
+ ]);
+?>
+
+ <?php $this->include("headerClose"); ?>
+ <?php $this->include("navbar"); ?>
+
 
 
 <?php 
@@ -112,26 +142,49 @@
     }
 ?>
 
-<?php $this->include("headerOpen"); ?>
-<?php Stylesheet::add([
-    
-    '/assets/default.css',
-    '/assets/navbar.css',
-    '/assets/footer.css',
-    '/assets/form.css',
-    '/assets/admin.css',
-    '/assets/style.css',
-    '/assets/hobbyedit.css'
-    
-]); ?>
-<?php $this->include("headerClose"); ?>
-<?php $this->include("navbar"); ?>
 
 
+
+<style>
+    center div {
+        display: flex;
+    }
+
+    center div div {
+        flex-basis: 35%;
+        margin: auto 4%;
+        display: block;
+    }
+
+    table {
+        background-color: #ddd;
+    }
+
+    /* table row */
+    tr {
+        border: 1px solid black;
+    }
+
+    /* table header */
+    th {
+        border: 1px solid black;
+    }
+
+    /* table dumbbel */
+    td {
+        border: 1px solid black;
+    }
+
+    /* table dumbbel button */
+    td button {
+
+    }
+
+    
+</style>
 
 <div>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <form id="hidden-form" method="POST" enctype="multipart/form-data" style="display:none"></form>
+    <form id="hidden-form" method="POST" enctype="multipart/form-data" class="display:none"></form>
 
     <center>
         <div>

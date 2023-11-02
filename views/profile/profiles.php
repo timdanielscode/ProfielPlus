@@ -6,6 +6,7 @@
     'assets/footer.css',
     'assets/style.css'
 ]); ?>
+
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 
