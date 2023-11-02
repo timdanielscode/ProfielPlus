@@ -244,5 +244,3 @@
     </section>
     
     </main>
-</body>
-</html>
