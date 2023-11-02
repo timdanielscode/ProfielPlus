@@ -10,7 +10,7 @@
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 
-
+<main>
 <form method="POST">
         <h1>Voeg een educatie toe</h1>
 
@@ -88,12 +88,8 @@
         
         ?>
         
+    </form>
 
-        
 
-
-        
-
-</form>
-
+</main>
 

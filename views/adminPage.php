@@ -6,7 +6,7 @@
     'assets/default.css',
     "assets/navbar.css",
     'assets/form.css',
-    'assets/admin.css',
+    // 'assets/admin.css',
   ]);
   
 $this->include("headerClose"); 

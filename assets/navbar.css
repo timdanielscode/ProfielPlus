@@ -3,6 +3,11 @@
     to {top: 241px}
 }
 
+@keyframes movingOutProfileMenu {
+    from {right: -38px;}
+    to {right: 131px;}
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -86,10 +91,11 @@ nav ul, nav li {
     margin: 0;
     width: 143px; 
     border-radius: 3px;
+    z-index: 1;
 }
 
 .profileMenu li a{
-    color: black;
+    color: azure;
     width: 100%;
     margin: 0;
 }
@@ -112,10 +118,12 @@ nav ul, nav li {
     display: flex;
     flex-direction: column;
     position: fixed;
-    right: 131px;
     top: 60px;
+    animation: movingOutProfileMenu .5s;
+    right: 131px;
     color: black;
     border: 1px solid #3E195A;
+    background-color: white;
     height: 171px;
 }
 

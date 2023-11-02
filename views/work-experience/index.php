@@ -1,6 +1,19 @@
-<?php $this->include("headerOpen"); ?>
-<?php Stylesheet::add(['assets/style.css']); ?>
-<?php $this->include("headerClose"); ?>
+
+<?php 
+ 
+ $this->include("headerOpen");
+ Stylesheet::add([
+    
+    'assets/default.css',
+    "assets/navbar.css",
+    'assets/form.css',
+    'assets/style.css'
+  ]);
+  
+$this->include("headerClose"); 
+$this->include("navbar");
+
+?>
 
 <?php echo Message::success('create'); ?>
 <?php echo Message::success('update'); ?>
