@@ -31,7 +31,6 @@ class EditSchoolsController extends Controller {
         $data["subjectsWithMarks"] = $this->education->getUserSubjectsMarks($_SESSION['userId'])['with'];
         $data["subjectsWithoutMarks"] = $this->education->getUserSubjectsMarks($_SESSION['userId'])['without'];
 
-        $this->view('addEducation', $data);
         $this->view('editSchools', $data);
     }
 

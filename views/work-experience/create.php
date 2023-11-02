@@ -2,14 +2,13 @@
 <?php Stylesheet::add([
     
     'assets/default.css',
-    'assets/navbar.css',
-    'assets/footer.css',
-    'assets/style.css'
+    './assets/navbar.css'
+    
 ]); ?>
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 
-
+<main>
 <h1>Voeg werkervaring toe</h1>
 <form action="" method="POST">
     <div class="form-parts">
@@ -40,6 +39,7 @@
     <input type="submit" name="submit" value="Voeg toe"/>
 </form>
 
+</main>
 
 
-<?php $this->include("headerClose"); ?>
+

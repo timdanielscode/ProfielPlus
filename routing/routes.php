@@ -11,8 +11,9 @@ Route::post('/register')->add('RegisterController', 'store');
 Route::get('/login')->add('LoginController', 'show');
 Route::post('/login')->add('LoginController', 'authenticate');
 Route::get('/logout')->add('LogoutController', 'logout');
-Route::get('/admin')->add('AdminController', 'show');
-Route::post('/admin')->add('AdminController', 'adminAction');
+
+
+
 
 
 if(isset($_SESSION['userId']) === true) {
@@ -38,6 +39,14 @@ if(isset($_SESSION['userId']) === true) {
     Route::get('/profile/' . $_SESSION['userId'] . '/work-experience/edit')->add('WorkExperienceController', 'edit');
     Route::post('/profile/' . $_SESSION['userId'] . '/work-experience/update')->add('WorkExperienceController', 'update');
     Route::post('/profile/' . $_SESSION['userId'] . '/work-experience/delete')->add('WorkExperienceController', 'delete');
+
+    if ($_SESSION["role"] === 2) {
+
+        Route::get('/admin')->add('AdminController', 'show');
+        Route::post('/admin')->add('AdminController', 'adminAction');
+    
+    }
+    
 }
 
 

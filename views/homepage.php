@@ -40,5 +40,4 @@
     </main>    
 <!-- Homepage content -->
 
-
 <?php $this->include("footer"); ?>

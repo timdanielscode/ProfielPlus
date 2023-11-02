@@ -179,6 +179,7 @@ class User {
             $_SESSION["loggedIn"] = true;
             $_SESSION["user"] = $email;
             $_SESSION["userId"] = $this->getUserId($email)['id'];
+            $_SESSION["role"] = $this->getUserRole($email)['role_id'];
            
             return true;
         } 
@@ -197,6 +198,19 @@ class User {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     }
+
+    /**
+     * Getting the role of a user by using the mail
+     */
+    private function getUserRole($email) {
+        $sql = "SELECT role_id from users WHERE email=?";
+        $stmt = $this->_db->connection->prepare($sql);
+        $stmt->execute([$email]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
 
     /**
      * delete Selected User and all its data

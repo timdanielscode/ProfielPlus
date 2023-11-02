@@ -140,7 +140,7 @@
                             <input type="hidden" name="oldDiplomaAchieved" value="nee">
                             
                         </td>
-                        <td>
+                        <td >
                             <input type="submit" name="deleteEducation" value="Delete">
                             <input type="submit" name="updateEducation" value="Update" >
                         </td>
@@ -235,8 +235,6 @@
                 
                 <?php
             }
-            
-            ?>
             
             ?>
 
