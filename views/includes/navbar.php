@@ -16,7 +16,7 @@
       <?php } else { ?>
 
         <li>
-        <a href="/login">login</a>
+        <a href="/register">register</a>
       </li>
       <li>
         <a href="/login">login</a>
@@ -33,7 +33,7 @@
     <ul class="inActive" id="editLinkMenu">
       <li><a href="/edit-schools">Edit Educaties</a></li>
       <li><a href="/profile/<?= $_SESSION['userId'] ?>/work-experience">Edit Werkervaring</a></li>
-      <li><a href="">Edit hobby's</a></li>
+      <li><a href="/profle<?=$_SESSION['userId']?>/hobby/edit">Edit hobby's</a></li>
     </ul>
 </nav>    
 

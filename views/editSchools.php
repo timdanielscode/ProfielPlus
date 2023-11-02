@@ -6,13 +6,15 @@
     'assets/footer.css',
     'assets/form.css',
     'assets/admin.css',
+    'assets/workexperience.css'
     
 ]); ?>
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 
+<center>
     <main>
-        
+    
     <section>
         <table>
             <tr>
@@ -245,4 +247,5 @@
     
     </main>
 </body>
+</center>
 </html>
