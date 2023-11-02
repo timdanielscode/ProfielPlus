@@ -43,5 +43,3 @@ $this->include("navbar");
     <?php } ?>
 </table> 
 
-
-<?php $this->include("footer"); ?>

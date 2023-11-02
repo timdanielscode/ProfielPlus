@@ -2,7 +2,7 @@
 <?php Stylesheet::add([
     
     'assets/default.css',
-    './assets/navbar.css'
+    'assets/navbar.css'
     
 ]); ?>
 <?php $this->include("headerClose"); ?>
