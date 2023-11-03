@@ -32,7 +32,7 @@
                     <div class="schoolsContainer accordionItem display-none">
                         <span class="title"><?php echo $educationSchool['school']; ?></span>
                         <?php foreach($subjecsMarks as $subjectMark) { ?>
-                            <?php if($educationSchool['id'] === $subjectMark['education_id']) { ?>
+                            <?php if($educationSchool['id'] === $subjectMark['education_id'] && $subjectMark['school_id'] === $educationSchool['school_id']) { ?>
                                 <div class="subjectsContainer">
                                     <span class="subject"><?php echo $subjectMark['subject_name']; ?></span>
                                     <span class="mark"><?php echo $subjectMark['mark']; ?></span>
