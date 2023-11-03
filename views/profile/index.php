@@ -65,19 +65,19 @@
     </div>
     <div class="col6">
         <div class="hobbyDataContainer">
-            <?php if(!empty($hobbies) && $hobbies !== null) { ?>
+            <?php if(!empty($imageFilePaths) && $imageFilePaths !== null) { ?>
                 <div class="slider">
                     <h3>Hobbys</h3>
-                    <?php foreach($hobbies as $hobby) { ?>
+                    <?php foreach($imageFilePaths as $filePath) { ?>
                         <div class="slide">
-                            <img src="/assets/img/<?php echo $hobby['hobby'] . '-' . $hobby['user_id'] . $hobby['file_extension']; ?>"/>
+                            <img src="/<?php echo $filePath['file_path']; ?>"/>
                         </div>
                     <?php } ?>
                     <span class="previous"><</span>
                     <span class="next">></span>
                 </div>
                 <?php if(!empty($hobbyDescription) && $hobbyDescription !== null) { ?>
-                    <div class="hobbys_description"><?php echo $hobbyDescription['hobbys_description']; ?></div>
+                    <div class="hobbys_description"><?php echo $hobbyDescription[0]['hobby_description']; ?></div>
                 <?php } ?>
             <?php } ?>
         </div>

@@ -21,6 +21,7 @@ class ProfileController extends Controller {
         $data['subjecsMarks'] = $subject->getSubjecstMarksOnUserId($this->_userId);
         $data['educationSchools'] = $education->getEducationSchoolOnUserId($this->_userId);
         $data['jobExperiences'] = $workExperience->getOnUserId($this->_userId);
+        $data['imageFilePaths'] = $user->getHobbyImageFilePaths($this->_userId);
         $data['hobbyDescription'] = $user->getHobbyDescription($this->_userId);
         $data['user'] = $user->getDetails($this->_userId);
 
