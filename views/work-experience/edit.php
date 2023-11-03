@@ -4,12 +4,18 @@
      '/assets/default.css',
      '/assets/navbar.css',
      '/assets/footer.css',
+     '/assets/form.css',
+
 
      '/assets/admin.css',
      '/assets/style.css',
      '/assets/workexperience.css'
      
- ]); ?>
+ ]); 
+ Script::add([
+    '/assets/navbar.js' =>true
+]);
+ ?>
  <?php $this->include("headerClose"); ?>
  <?php $this->include("navbar"); ?>
 
@@ -42,7 +48,7 @@
             <?php if(!empty($errors['details'])) { echo $errors['details']; } ?>
         </div>
         <input type="hidden" name="id" value="<?php echo $jobExperience['id']; ?>"/>
-        <input type="submit" name="submit" value="Aanpassen"/>
+        <input type="submit" name="submit" class="formBtn primaryFormBtn" value="Aanpassen"/>
     </form>
 </center>
 

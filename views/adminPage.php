@@ -6,8 +6,11 @@
     'assets/default.css',
     "assets/navbar.css",
     'assets/form.css',
-    // 'assets/admin.css',
   ]);
+
+ Script::add([
+    'assets/navbar.js'
+]);
   
 $this->include("headerClose"); 
 $this->include("navbar");

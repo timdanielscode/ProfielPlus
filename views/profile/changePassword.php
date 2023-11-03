@@ -5,16 +5,22 @@
     '/assets/navbar.css',
     '/assets/footer.css',
     '/assets/style.css',
+    '/assets/form.css',
     '/assets/changepassword.css'
-]); ?>
+]); 
+Script::add([
+    'assets/navbar.js'
+]);
+
+?>
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 
 
 <center>
-    <h1>Huidig Wachtwoord wijzigen</h1>
 
     <form method="POST" action="">
+    <h1>Huidig Wachtwoord wijzigen</h1>
         <div class="form-parts">
             <label for="currentPassword">Huidig wachtwoord:</label>
             <input id="currentPassword" type="password" name="currentPassword"/>
@@ -30,7 +36,7 @@
             <input id="newPasswordRetype" type="password" name="newPasswordRetype"/>
             <?php if(!empty($errors['newPasswordRetype'])) { echo $errors['newPasswordRetype']; } ?>
         </div>
-        <button type="submit" name="submit">Wijzigen</button>
+        <button type="submit" class="formBtn primaryFormBtn" name="submit">Wijzigen</button>
     </form>
 </center>
 

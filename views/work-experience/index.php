@@ -13,11 +13,12 @@
  <?php $this->include("navbar"); ?>
 
 
+
+
+<center>
 <?php echo Message::success('create'); ?>
 <?php echo Message::success('update'); ?>
 <?php echo Message::success('delete'); ?>
-
-<center>
     <h1>Werkervaring overzicht</h1>
     <table>
         <tr>

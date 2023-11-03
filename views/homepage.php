@@ -4,7 +4,12 @@
     'assets/default.css',
     'assets/navbar.css'
     
-]); ?>
+]); 
+
+Script::add([
+    'assets/navbar.js'
+]);
+?>
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 

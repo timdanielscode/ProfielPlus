@@ -1,10 +1,13 @@
 <?php $this->include("headerOpen"); ?>
 <?php Stylesheet::add([
-    '../assets/navbar.css',
+    '/assets/default.css',
+    '/assets/navbar.css',
     '/assets/style.css',
     '/assets/accordion.css',
     '/assets/slider.css'
 ]); ?>
+
+
 
 <?php Script::add([
 
@@ -13,7 +16,8 @@
     '/assets/js/profile/accordion/main.js' => true,
     '/assets/js/profile/slider/Slide.js' => true,
     '/assets/js/profile/slider/Slider.js' => true,
-    '/assets/js/profile/slider/main.js' => true
+    '/assets/js/profile/slider/main.js' => true,
+    '/assets/navbar.js' => true
 ]); ?>
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>

@@ -9,7 +9,11 @@
     '/assets/style.css',
     '/assets/hobbyedit.css'
     
-]); ?>
+]); 
+Script::add([
+    '/assets/navbar.js' =>true
+]);
+?>
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 
@@ -42,7 +46,7 @@
             <textarea id="details" name="details"><?php if(!empty($data['details']) ) { echo $data['details']; } ?></textarea>
             <?php if(!empty($errors['details'])) { echo $errors['details']; } ?>
         </div>
-        <input type="submit" name="submit" value="Voeg toe"/>
+        <input type="submit" name="submit" class="formBtn primaryFormBtn" value="Voeg toe"/>
     </form>
     </main>
 </center>

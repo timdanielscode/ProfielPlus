@@ -26,14 +26,22 @@
     </ul>
     <ul class="inActive" id="profileMenu">
       <li><a id="editDropdownBtn">Edit</a></li>
-      <li class="movingDownForEdit"><a href="/profile/<?= $_SESSION['userId'] ?>/change-password">wachtwoord veranderen</a></li>
-      <li class="movingDownForEdit"><a href="/logout">Uit loggen</a></li>
+      <li><a id="addDropdownBtn">Add</a></li>
+      <li><a href="/profile/<?= $_SESSION['userId'] ?>/change-password">wachtwoord veranderen</a></li>
+      <li><a href="/profile/<?= $_SESSION['userId'] ?>/profiles">Browse</a></li>
+      <li><a href="/logout">Uit loggen</a></li>
     </ul>
 
     <ul class="inActive" id="editLinkMenu">
       <li><a href="/edit-schools">Edit Educaties</a></li>
       <li><a href="/profile/<?= $_SESSION['userId'] ?>/work-experience">Edit Werkervaring</a></li>
       <li><a href="/profile/<?=$_SESSION['userId']?>/hobby/edit">Edit hobby's</a></li>
+    </ul>
+
+    <ul class="inActive" id="addLinkMenu">
+      <li><a href="/add-schools">Add Educaties</a></li>
+      <li><a href="/profile/<?= $_SESSION['userId'] ?>/work-experience/create">Add Werkervaring</a></li>
+      <li><a href="/profile/<?=$_SESSION['userId']?>/hobby/edit">Add hobby's</a></li>
     </ul>
 </nav>    
 

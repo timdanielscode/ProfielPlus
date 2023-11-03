@@ -16,3 +16,7 @@ body {
 .inActive {
     display: none;
 }
+
+main, center {
+    margin-top: 20px;
+}

@@ -9,6 +9,9 @@ Stylesheet::add([
   "assets/form.css"
   
 ]);
+Script::add([
+  'assets/navbar.js'
+]);
 
 $this->include("headerClose");
 $this->include("navbar");
