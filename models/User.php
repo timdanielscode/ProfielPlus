@@ -92,13 +92,37 @@ class User {
         }
     }
 
-
-
+    /* 
+     * @author Tim Daniëls
+     * Getting users where id is not user id 
+     *
+     * @param string $id id user id
+     * return object DB user records
+    */
     public function getAllWhereNot($id) {
 
         if(!empty($id) && $id !== null) {
 
             $sql = "SELECT * FROM users WHERE id != $id";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        }
+    }
+
+    /* 
+     * @author Tim Daniëls
+     * Getting hobby description on user id
+     *
+     * @param string $id user id 
+     * return object DB user record
+    */
+    public function getHobbyDescription($id) {
+
+        if(!empty($id) && $id !== null) {
+
+            $sql = "SELECT hobby_description FROM users WHERE id != $id";
             $stmt = $this->_db->connection->prepare($sql);
             $stmt->execute();
 

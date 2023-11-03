@@ -14,7 +14,6 @@ class ProfileController extends Controller {
         $workExperience = new WorkExperience();
         $education = new Education();
         $subject = new Subject();
-        $hobby = new Hobby();
 
         $this->_userId = $_SESSION['userId'];
         $this->viewOtherProfiles($user, $this->_userId);
@@ -22,8 +21,7 @@ class ProfileController extends Controller {
         $data['subjecsMarks'] = $subject->getSubjecstMarksOnUserId($this->_userId);
         $data['educationSchools'] = $education->getEducationSchoolOnUserId($this->_userId);
         $data['jobExperiences'] = $workExperience->getOnUserId($this->_userId);
-        $data['hobbies'] = $hobby->getHobbyUserId($this->_userId);
-        $data['hobbyDescription'] = $hobby->getHobbyDescription($this->_userId);
+        $data['hobbyDescription'] = $user->getHobbyDescription($this->_userId);
         $data['user'] = $user->getDetails($this->_userId);
 
         return $this->view('profile/index', $data);
