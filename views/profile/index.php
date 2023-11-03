@@ -1,6 +1,6 @@
 <?php $this->include("headerOpen"); ?>
 <?php Stylesheet::add([
-    '../assets/navbar.css',
+    '/assets/navbar.css',
     '/assets/style.css',
     '/assets/accordion.css',
     '/assets/slider.css'
