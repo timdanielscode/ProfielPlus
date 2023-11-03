@@ -1,6 +1,5 @@
 <?php $this->include("headerOpen"); ?>
 <?php Stylesheet::add([
-    '/assets/default.css',
     '/assets/navbar.css',
     '/assets/style.css',
     '/assets/accordion.css',
@@ -27,8 +26,8 @@
 </div>
 <div class="row">
     <div class="col6">
-        <div class="educationSchoolDataContainer">
         <?php if(!empty($educationSchools) && $educationSchools !== null) { ?>
+            <div class="educationSchoolDataContainer">
             <h3 class="educationTitle">Opleidingen</h3>
             <div class="accordionContainer">
             <?php foreach($educationSchools as $educationSchool) { ?>
@@ -36,7 +35,7 @@
                     <div class="schoolsContainer accordionItem display-none">
                         <span class="title"><?php echo $educationSchool['school']; ?></span>
                         <?php foreach($subjecsMarks as $subjectMark) { ?>
-                            <?php if($educationSchool['id'] === $subjectMark['education_id']) { ?>
+                            <?php if($educationSchool['id'] === $subjectMark['education_id'] && $subjectMark['school_id'] === $educationSchool['school_id']) { ?>
                                 <div class="subjectsContainer">
                                     <span class="subject"><?php echo $subjectMark['subject_name']; ?></span>
                                     <span class="mark"><?php echo $subjectMark['mark']; ?></span>
@@ -45,11 +44,11 @@
                         <?php } ?>
                     </div>
                 <?php } ?>
+                </div>
             <?php } ?>
-            </div>
         </div>
-        <div class="jobExperienceDataContainer">
             <?php if(!empty($jobExperiences) && $jobExperiences !== null) { ?>
+                <div class="jobExperienceDataContainer">
                 <h3 class="jobExperienceTitle">Werkervaring</h3>
                 <div class="accordionContainer">
                 <?php foreach($jobExperiences as $jobExperience) { ?>
@@ -63,28 +62,28 @@
                         <span class="details"><?php echo $jobExperience['details']; ?></span>
                     </div>
                 <?php } ?>
+                </div>
             <?php } ?>
-            </div>
         </div>
     </div>
     <div class="col6">
-        <div class="hobbyDataContainer">
-            <?php if(!empty($hobbies) && $hobbies !== null) { ?>
-                <div class="slider">
-                    <h3>Hobbys</h3>
-                    <?php foreach($hobbies as $hobby) { ?>
-                        <div class="slide">
-                            <img src="/assets/img/<?php echo $hobby['hobby'] . '-' . $hobby['user_id'] . $hobby['file_extension']; ?>"/>
-                        </div>
-                    <?php } ?>
-                    <span class="previous"><</span>
-                    <span class="next">></span>
-                </div>
-                <?php if(!empty($hobbyDescription) && $hobbyDescription !== null) { ?>
-                    <div class="hobbys_description"><?php echo $hobbyDescription['hobbys_description']; ?></div>
+        <?php if(!empty($imageFilePaths) && $imageFilePaths !== null) { ?>
+            <div class="hobbyDataContainer">
+            <div class="slider">
+                <h3>Hobbys</h3>
+                <?php foreach($imageFilePaths as $filePath) { ?>
+                    <div class="slide">
+                        <img src="/<?php echo $filePath['file_path']; ?>"/>
+                    </div>
                 <?php } ?>
+                <span class="previous"><</span>
+                <span class="next">></span>
+            </div>
+            <?php if(!empty($hobbyDescription) && $hobbyDescription !== null) { ?>
+                <div class="hobbys_description"><?php echo $hobbyDescription[0]['hobby_description']; ?></div>
             <?php } ?>
-        </div>
+            </div>
+        <?php } ?>
     </div>
 </div>
 

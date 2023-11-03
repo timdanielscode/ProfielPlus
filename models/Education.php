@@ -511,7 +511,7 @@ public function editSubject($subject, $mark, $oldSubject, $userId) {
     */
     public function getEducationSchoolOnUserId($id) {
 
-        $sql = "SELECT educations.id, educations.education_name, schools.school FROM educations INNER JOIN educations_schools_users ON educations.id = educations_schools_users.education_id INNER JOIN schools ON schools.id = educations_schools_users.school_id WHERE educations_schools_users.user_id = ?";
+        $sql = "SELECT educations.id, educations_schools_users.school_id, educations.education_name, schools.school FROM educations INNER JOIN educations_schools_users ON educations.id = educations_schools_users.education_id INNER JOIN schools ON schools.id = educations_schools_users.school_id WHERE educations_schools_users.user_id = ?";
         $stmt = $this->_db->connection->prepare($sql);
         $stmt->execute([$id]);
 

@@ -30,9 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `diplomas_achieved` (
   `school_id` int(11) NOT NULL,
   `education_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------

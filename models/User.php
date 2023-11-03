@@ -122,7 +122,26 @@ class User {
 
         if(!empty($id) && $id !== null) {
 
-            $sql = "SELECT hobby_description FROM users WHERE id != $id";
+            $sql = "SELECT hobby_description FROM users WHERE id = $id";
+            $stmt = $this->_db->connection->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        }
+    }
+
+    /* 
+     * @author Tim Daniëls
+     * Getting hobby image paths
+     *
+     * @param string $id user id 
+     * return object DB user record
+    */
+    public function getHobbyImageFilePaths($id) {
+
+        if(!empty($id) && $id !== null) {
+
+            $sql = "SELECT images.file_path FROM hobby_user INNER JOIN images ON images.id = hobby_user.image_id WHERE hobby_user.user_id = $id";
             $stmt = $this->_db->connection->prepare($sql);
             $stmt->execute();
 
