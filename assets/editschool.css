@@ -21,7 +21,11 @@ table {
     background-color: #FAF9F6;
     border-collapse: collapse;
     border: 1px solid black;
-           
+        
+}
+
+tr {
+    font-size:35px;
 }
 
 table th {
@@ -37,16 +41,8 @@ table th {
     
 }
 
-center h1 {
-    font-size:45px;
-}
-
 #table th {
     padding: 4px;
-}
-
-table td {
-    font-size:30px;
 }
 
 /* table row */

@@ -2,35 +2,49 @@
 center div{
     flex-direction:column;
     display: flex;
+
 }
 
 @media only screen and (min-width: 768px) {
+    #table th {
+        padding: 10px;
+    }
     center div {
         flex-direction:row;
 
     }
 }
 
-center div div {
-    flex-basis: 35%;
-    margin: auto 4%;
-    display: block;
-}
-
 table {
     box-shadow: 8px 8px 15px 8px rgb(82, 82, 82);
     border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    max-width: 600px;
-    padding: 10px 20px;
     margin: auto;
     margin-top: 20px;
     background-color: #FAF9F6;
     border-collapse: collapse;
     border: 1px solid black;
+    width:100%;
+}
+
+.description {
+    box-shadow: 8px 8px 15px 8px rgb(82, 82, 82);
+    flex-basis: 35%;
+    margin: auto 4%;
+    display: block;
+    background-color:#d1cece;
+    
+}
+
+div textarea{
+    font-size:20px;
+}
+
+td input, button {
+    font-size:20px;
+}
+
+#table th {
+    padding: 4px;
 }
 
 /* table row */

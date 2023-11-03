@@ -3,7 +3,7 @@
 
 <nav>
   <div class="imgContainer">
-      <img src="./views/includes/coat_logo.png" alt="logo of our team">
+      <img src="/views/includes/coat_logo.png" alt="logo of our team">
   </div>    
     <ul>
       

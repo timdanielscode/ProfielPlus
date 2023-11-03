@@ -4,7 +4,6 @@
      '/assets/default.css',
      '/assets/navbar.css',
      '/assets/footer.css',
-
      '/assets/admin.css',
      '/assets/style.css',
      '/assets/workexperience.css'

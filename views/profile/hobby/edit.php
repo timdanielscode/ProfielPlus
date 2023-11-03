@@ -4,12 +4,9 @@
      '/assets/default.css',
      '/assets/navbar.css',
      '/assets/footer.css',
-     '/assets.form.css',
-     '/assets/admin.css',
      '/assets/style.css',
      '/assets/hobbyedit.css',
-     '/assets/accordion.css',
-     '/assets/slider.css'
+
           
  ]); ?>
 
@@ -142,53 +139,12 @@
     }
 ?>
 
-
-
-
-<style>
-    center div {
-        display: flex;
-    }
-
-    center div div {
-        flex-basis: 35%;
-        margin: auto 4%;
-        display: block;
-    }
-
-    table {
-        background-color: #ddd;
-    }
-
-    /* table row */
-    tr {
-        border: 1px solid black;
-    }
-
-    /* table header */
-    th {
-        border: 1px solid black;
-    }
-
-    /* table dumbbel */
-    td {
-        border: 1px solid black;
-    }
-
-    /* table dumbbel button */
-    td button {
-
-    }
-
-    
-</style>
-
 <div>
     <form id="hidden-form" method="POST" enctype="multipart/form-data" class="display:none"></form>
 
     <center>
         <div>
-            <div>
+            <div class="description">
                 <div>
                     <h1>Hobby's</h1>
                     <button onclick="createItem()">toevoegen</button>
@@ -222,10 +178,10 @@
                 </table>
             </div>
 
-            <div>
+            <div    class="description">
                 <form id="update-description-form" method="POST" action="/profile/<?php echo $_SESSION['userId'] ?>/update-description">
-                    <label for="hobby_description">General Description:</label><br>
-                    <textarea name="hobby_description" rows="12" cols="50" id="$user"><?= $hobbyDescription; ?></textarea><br>
+                    <label for="hobby_description"><h1>General Description:</h1></label><br>
+                    <textarea name="hobby_description" rows="12" cols="50" id="$user"><?= $hobbyDescription; ?></textarea><br> 
                     <button type="submit" name="update_hobby_description">Update</button>
                 </form>
             </div>
