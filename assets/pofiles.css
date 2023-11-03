@@ -1,5 +1,6 @@
 table {
     width: 80%;
+    max-width: 1150px;
 }
 td a {
     padding: 5px;
