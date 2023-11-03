@@ -20,7 +20,7 @@ class RegisterController extends Controller {
                 'firstName' => ['required' => true, 'max' => 30, 'special' => true],
                 'lastName' => ['required' => true, 'max' => 50, 'special' => true],
                 'email' => ['required' => true, 'max' => 50, 'special' => true],
-                'password' => ['required' => true, 'min' => 2, 'max' => 99],
+                'password' => ['required' => true, 'min' => 16, 'max' => 99],
                 'retypePassword' => ['match' => ['password', 'wachtwoord']]
             ]);
 
