@@ -1,16 +1,15 @@
 <?php $this->include("headerOpen"); ?>
  <?php Stylesheet::add([
      
-     '/assets/default.css',
-     '/assets/navbar.css',
-     '/assets/footer.css',
-     '/assets/style.css',
-     '/assets/hobbyedit.css',
-
+    'assets/default.css',
+    '/assets/navbar.css',
+    '/assets/footer.css',
+    '/assets/style.css',
+    '/assets/hobbyedit.css'
           
  ]); ?>
 
-<?php script::add([
+<?php Script::add([
     '/assets/js/profile/accordion/AccordionItem.js' => true,
     '/assets/js/profile/accordion/AccordionButton.js' => true,
     '/assets/js/profile/accordion/main.js' => true,
@@ -153,7 +152,7 @@
 
                 <table id="table">
                     <tr>
-                        <th>Hobby</th>
+                        <h>Hobby</th>
                         <th>Image</th>
                         <th>Update</th>
                         <th>Delete</th>
