@@ -4,7 +4,9 @@
     '/assets/default.css',
     '/assets/navbar.css',
     '/assets/footer.css',
-    '/assets/style.css'
+    '/assets/style.css',
+    '/assets/hobbyedit.css',
+    '/assets/pofiles.css'
 ]); 
 Script::add([
     '/assets/navbar.js'

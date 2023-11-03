@@ -1,0 +1,12 @@
+table {
+    width: 80%;
+}
+td a {
+    padding: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    table {
+      width: 100%;
+    }
+  }
