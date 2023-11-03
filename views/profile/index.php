@@ -23,8 +23,8 @@
 </div>
 <div class="row">
     <div class="col6">
-        <div class="educationSchoolDataContainer">
         <?php if(!empty($educationSchools) && $educationSchools !== null) { ?>
+            <div class="educationSchoolDataContainer">
             <h3 class="educationTitle">Opleidingen</h3>
             <div class="accordionContainer">
             <?php foreach($educationSchools as $educationSchool) { ?>
@@ -41,11 +41,11 @@
                         <?php } ?>
                     </div>
                 <?php } ?>
+                </div>
             <?php } ?>
-            </div>
         </div>
-        <div class="jobExperienceDataContainer">
             <?php if(!empty($jobExperiences) && $jobExperiences !== null) { ?>
+                <div class="jobExperienceDataContainer">
                 <h3 class="jobExperienceTitle">Werkervaring</h3>
                 <div class="accordionContainer">
                 <?php foreach($jobExperiences as $jobExperience) { ?>
@@ -59,28 +59,28 @@
                         <span class="details"><?php echo $jobExperience['details']; ?></span>
                     </div>
                 <?php } ?>
+                </div>
             <?php } ?>
-            </div>
         </div>
     </div>
     <div class="col6">
-        <div class="hobbyDataContainer">
-            <?php if(!empty($imageFilePaths) && $imageFilePaths !== null) { ?>
-                <div class="slider">
-                    <h3>Hobbys</h3>
-                    <?php foreach($imageFilePaths as $filePath) { ?>
-                        <div class="slide">
-                            <img src="/<?php echo $filePath['file_path']; ?>"/>
-                        </div>
-                    <?php } ?>
-                    <span class="previous"><</span>
-                    <span class="next">></span>
-                </div>
-                <?php if(!empty($hobbyDescription) && $hobbyDescription !== null) { ?>
-                    <div class="hobbys_description"><?php echo $hobbyDescription[0]['hobby_description']; ?></div>
+        <?php if(!empty($imageFilePaths) && $imageFilePaths !== null) { ?>
+            <div class="hobbyDataContainer">
+            <div class="slider">
+                <h3>Hobbys</h3>
+                <?php foreach($imageFilePaths as $filePath) { ?>
+                    <div class="slide">
+                        <img src="/<?php echo $filePath['file_path']; ?>"/>
+                    </div>
                 <?php } ?>
+                <span class="previous"><</span>
+                <span class="next">></span>
+            </div>
+            <?php if(!empty($hobbyDescription) && $hobbyDescription !== null) { ?>
+                <div class="hobbys_description"><?php echo $hobbyDescription[0]['hobby_description']; ?></div>
             <?php } ?>
-        </div>
+            </div>
+        <?php } ?>
     </div>
 </div>
 
