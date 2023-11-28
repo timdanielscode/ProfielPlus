@@ -5,39 +5,35 @@
     '/assets/navbar.css',
     '/assets/footer.css',
     '/assets/style.css',
-    '/assets/form.css',
-    '/assets/changepassword.css'
+    '/assets/form.css'
 ]); 
-Script::add([
-    'assets/navbar.js'
-]);
 
 ?>
+<!-- including the head and the navbar that are made in another file -->
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 
 
-<center>
-
+<main>
     <form method="POST" action="">
     <h1>Huidig Wachtwoord wijzigen</h1>
-        <div class="form-parts">
             <label for="currentPassword">Huidig wachtwoord:</label>
             <input id="currentPassword" type="password" name="currentPassword"/>
-            <?php if(!empty($errors['currentPassword'])) { echo $errors['currentPassword']; } ?>
-        </div>
-        <div class="form-parts">
+            <?php if (!empty($errors['currentPassword'])) {
+                echo $errors['currentPassword']; 
+            } ?>
             <label for="newPassword">Nieuw wachtwoord:</label>
             <input id="newPassword" type="password" name="newPassword"/>
-            <?php if(!empty($errors['newPassword'])) { echo $errors['newPassword']; } ?>
-        </div>
-        <div class="form-parts">
+            <?php if (!empty($errors['newPassword'])) {
+                echo $errors['newPassword']; 
+            } ?>
             <label for="newPasswordRetype">Nieuw wachtwoord opnieuw:</label>
             <input id="newPasswordRetype" type="password" name="newPasswordRetype"/>
-            <?php if(!empty($errors['newPasswordRetype'])) { echo $errors['newPasswordRetype']; } ?>
-        </div>
+            <?php if (!empty($errors['newPasswordRetype'])) {
+                echo $errors['newPasswordRetype']; 
+            } ?>
         <button type="submit" class="formBtn primaryFormBtn" name="submit">Wijzigen</button>
     </form>
-</center>
-
+</main>
+<!-- including the footer thad is made in another file -->
 <?php $this->include("footer"); ?>

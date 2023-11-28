@@ -11,6 +11,7 @@ Script::add([
   'assets/navbar.js'
 ]);
 ?>
+// including the head and the navbar, because they were made in an other file
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 
@@ -19,26 +20,38 @@ Script::add([
   <form action="" method="POST">
       <label for="firstName">Voornaam:</label>
       <input id="firstName" name="firstName" type="text" class="form-control">
-      <?php if(!empty($errors['firstName'])) { echo $errors['firstName']; } ?>
+      <?php if (!empty($errors['firstName'])) {
+            echo $errors['firstName']; 
+      } ?>
 
       <label for="lastName">Achternaam:</label>
       <input id="lastName" name="lastName" type="text" class="form-control">
-      <?php if(!empty($errors['lastName'])) { echo $errors['lastName']; } ?>
+      <?php if (!empty($errors['lastName'])) {
+            echo $errors['lastName']; 
+      } ?>
 
       <label for="email">Email:</label>
       <input id="email" name="email" type="email" class="form-control">
-      <?php if(!empty($errors['email'])) { echo $errors['email']; } ?>
+      <?php if (!empty($errors['email'])) {
+            echo $errors['email']; 
+      } ?>
 
       <label for="password">Wachtwoord:</label>
       <input id="password" name="password" type="password" class="form-control">
-      <?php if(!empty($errors['password'])) { echo $errors['password']; } ?>
+      <?php if (!empty($errors['password'])) {
+            echo $errors['password']; 
+      } ?>
 
       <label for="retypePassword">Wachtwoord herhalen:</label>
       <input id="retypePassword" name="retypePassword" type="password" class="form-control">
-      <?php if(!empty($errors['retypePassword'])) { echo $errors['retypePassword']; } ?>
+      <?php if (!empty($errors['retypePassword'])) {
+            echo $errors['retypePassword']; 
+      } ?>
       
     <input type="submit" class="primaryFormBtn formBtn" name="submit" value="Submit"/>
   </form>
 
 </main>
   
+    <!-- here we include the footer because its made in an other file -->
+<?php $this->include("footer");

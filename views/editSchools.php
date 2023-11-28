@@ -16,10 +16,10 @@ Script::add([
 
 ?>
 
+<!-- including the head and the navbar, because they were made in an other file -->
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 
-<center>
     <main>
     
     <section>
@@ -34,13 +34,14 @@ Script::add([
             <!-- by using a foreach loop all the rows will be dynamicly 
             created depending on the amount of rows in the database -->
             <?php
-
+            // the schools where the user achieved its diploma will be displayed at the top of the table
                 foreach($schoolsAchieved as $achievedSchool){
 
                     $instituut = $achievedSchool['school'];
                     $educatie = $achievedSchool['education'];
                     ?>
                     <tr>
+                        <!-- each table row will be a form so that the user can update its data in the table -->
                     <form method="POST">
                         <td>
                             <select name="instituutSelect" id="instituutSelect">
@@ -54,7 +55,7 @@ Script::add([
                                 }
                                 ?>
                             </select>
-
+<!-- a hidden input is field is added to the form so that we know what row should be updated in the database -->
                             <input type="hidden" name="oldInstituutSelect" value="<?= $instituut ?>">
                         </td>
 
@@ -71,6 +72,7 @@ Script::add([
                                 ?>
                             </select>
 
+<!-- a hidden input is field is added to the form so that we know what row should be updated in the database -->
                             <input type="hidden" name="oldeducationSelect" value="<?= $educatie ?>">
 
                             
@@ -81,6 +83,7 @@ Script::add([
                                 <option value="nee">Nee</option>
                             </select>
 
+<!-- a hidden input is field is added to the form so that we know what row should be updated in the database -->
                             <input type="hidden" name="oldDiplomaAchieved" value="ja">
 
                             
@@ -95,6 +98,7 @@ Script::add([
                     <?php
                 }
             
+                // all the schools where there is now diploma will be displayed here
                 foreach($schoolsNotAchieved as $schoolNotAchieved){
 
                     $instituut = $schoolNotAchieved['school'];
@@ -117,6 +121,7 @@ Script::add([
                                 ?>
                             </select>
 
+<!-- a hidden input is field is added to the form so that we know what row should be updated in the database -->
                             <input type="hidden" name="oldInstituutSelect" value="<?= $instituut ?>">
 
                         </td>
@@ -134,6 +139,7 @@ Script::add([
                                 ?>
                             </select>
 
+<!-- a hidden input is field is added to the form so that we know what row should be updated in the database -->
                             <input type="hidden" name="oldeducationSelect" value="<?= $educatie ?>">
 
                             
@@ -146,6 +152,7 @@ Script::add([
                                 <option value="ja">Ja</option>
                             </select>
 
+<!-- a hidden input is field is added to the form so that we know what row should be updated in the database -->
                             <input type="hidden" name="oldDiplomaAchieved" value="nee">
                             
                         </td>
@@ -200,6 +207,7 @@ Script::add([
                             <input type="submit" name="updateSubject" value="Update">
                         </td>
                         
+<!-- a hidden input is field is added to the form so that we know what row should be updated in the database -->
                         <input type="hidden" name="oldSubject" value="<?= $userSubject['subject'] ?>">
 
                     </form>
@@ -237,6 +245,7 @@ Script::add([
                             <input type="submit" name="updateSubject" value="Update">
                         </td>
 
+<!-- a hidden input is field is added to the form so that we know what row should be updated in the database -->
                         <input type="hidden" name="oldSubject" value="<?= $userSubject['subject'] ?>">
 
                     </form>
@@ -253,6 +262,6 @@ Script::add([
     </section>
     
     </main>
-</body>
-</center>
-</html>
+
+    <!-- here we include the footer because its made in an other file -->
+    <?php $this->include("footer");

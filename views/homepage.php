@@ -10,6 +10,7 @@ Script::add([
     'assets/navbar.js'
 ]);
 ?>
+<!-- including the head and the navbar, because they were made in an other file -->
 <?php $this->include("headerClose"); ?>
 <?php $this->include("navbar"); ?>
 
@@ -43,6 +44,6 @@ Script::add([
             </section>
         </div>
     </main>    
-<!-- Homepage content -->
 
+    <!-- here we include the footer because its made in an other file -->
 <?php $this->include("footer"); ?>

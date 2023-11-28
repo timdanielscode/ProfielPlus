@@ -13,6 +13,7 @@ Script::add([
   'assets/navbar.js'
 ]);
 
+// including the head and the navbar, because they were made in an other file
 $this->include("headerClose");
 $this->include("navbar");
 
@@ -36,6 +37,6 @@ $this->include("navbar");
     </form>
 </main>
 
-<footer>
-    <a href="https://github.com/timdanielscode/SL01-portfolioApp">github repo van dit project</a>
-</footer>
+
+    <!-- here we include the footer because its made in an other file -->
+<?php $this->include("footer");

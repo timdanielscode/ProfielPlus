@@ -1,5 +1,5 @@
+
 .educationSchoolDataContainer, .jobExperienceDataContainer {
-    width: 100%;
     background: rgb(247, 247, 247);
     padding-bottom: 50px;
     margin: 0 auto;
@@ -17,6 +17,7 @@
     margin-left: 5%;
     margin-top: 0;
 }
+/* giving the first child of the .accordionButton that lives in . accordionContainer a 1px top-border */
 .accordionContainer .accordionButton:nth-child(1) {
     border-top: 1px solid;
 }
@@ -97,10 +98,11 @@
     margin-left: 25px;
     margin-top: 10px;
 }
-
+/* addin 2.5% margin to the bottom of the educationSchoolDataContainer 
+and the educationSchoolDataContainer if the viewers screen size is 600px or less */
 @media screen and (max-width: 600px) {
 
-    .educationSchoolDataContainer, .jobExperienceDataContainer {
+    .educationSchoolDataContainer, .educationSchoolDataContainer {
         margin-bottom: 2.5%;
     }
 }
