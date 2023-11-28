@@ -56,7 +56,7 @@
 
         <label for="addSubject">Vak toevoegen</label>
         <br>
-        <!-- the admin can type in a name of an subjec, so that the users have a larger selection to choose from -->
+        <!-- the admin can type in a name of an subject, so that the users have a larger selection to choose from -->
         <input type="text" name="addSubject" id="addSubject">
         <input type="submit" name="submitNewSubject" class="formBtn submitBtn" id="submitNewSubject" value="submit">
         <br>
@@ -67,7 +67,7 @@
         <h2>delete een school, opleiding of vak</h2>
 
 
-        <!-- delete a school, used if a school changed its name, is disconitued or if the admin made a typo -->
+        <!-- delete a school, used if a school changed its name, is discontinued or if the admin made a typo -->
         <select name="schoolSelect" id="schoolSelect">
             <option value="">selecteer een school</option>
             <?php
@@ -83,7 +83,7 @@
         <br>
 
 
-        <!-- delete a educatie, used if an education changed its name, is disconitued or if the admin made a typo -->
+        <!-- delete a educatie, used if an education changed its name, is discontinued or if the admin made a typo -->
         <select name="educationSelect" id="educationSelect">
             <option value="">selecteer een opleiding</option>
             <?php
@@ -100,7 +100,7 @@
 
 
 
-        <!-- delete a subject, used if a subjects name is changed, is disconitued or if the admin made a typo -->
+        <!-- delete a subject, used if a subjects name is changed, is discontinued or if the admin made a typo -->
         <select name="subjectSelect" id="subjectSelect">
             <option value="">selecteer een Vak</option>
             <?php

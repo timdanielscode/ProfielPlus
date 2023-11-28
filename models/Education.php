@@ -83,7 +83,7 @@ class Education {
     }
 
     /**
-     * getting IDs from selected tables
+     * getting id's from selected tables
      */
     private function getSchoolId($name) {
         $sql = "SELECT id FROM schools WHERE school=?";
@@ -445,7 +445,7 @@ public function deleteSchool($school, $education, $userId) {
   * function to update the selected subject in the database
   */
 public function editSubject($subject, $mark, $oldSubject, $userId) {
-    // getting the ids of ythe new and old subjects
+    // getting the ids of the new and old subjects
     $newSubjectId = $this->getsubjectId($subject);
     $oldSubjectId = $this->getsubjectId($oldSubject);
     

@@ -120,7 +120,7 @@ nav ul, nav li {
 /* _______________ edit dropdown __________________ */
 
 /* 
-the .editLinkMenu contains the add menu and the edit menu, sothat i had to write the styles only once 
+the .editLinkMenu contains the add menu and the edit menu, so that i had to write the styles only once 
 this menu is only visible when the profile button is clicked and the add or edit button is clicked
 */
 .editLinkMenu {

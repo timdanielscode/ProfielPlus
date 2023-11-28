@@ -31,7 +31,7 @@ Script::add([
                 <th>Edit/Delete</th>
             </tr>
             
-            <!-- by using a foreach loop all the rows will be dynamicly 
+            <!-- by using a foreach loop all the rows will be dynamically 
             created depending on the amount of rows in the database -->
             <?php
             // the schools where the user achieved its diploma will be displayed at the top of the table

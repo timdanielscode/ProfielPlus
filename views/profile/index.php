@@ -32,7 +32,7 @@
     <div class="col6">
         <?php if (!empty($educationSchools) && $educationSchools !== null) { ?>
             <!-- when the user has added schools to his account then they will all be displayed here, 
-        if rhey haven't added schools to their account yet then this section will not exist -->
+        if they haven't added schools to their account yet then this section will not exist -->
             <div class="educationSchoolDataContainer">
             <h3 class="educationTitle">Opleidingen</h3>
             <div class="accordionContainer">

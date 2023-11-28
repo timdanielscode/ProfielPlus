@@ -60,7 +60,7 @@ class Slider {
     }
 
     /* 
-     * Setting onclick events on both next and previous elements 
+     * Setting Onclick events on both next and previous elements 
      *
     */
     setOnlickEvents() {

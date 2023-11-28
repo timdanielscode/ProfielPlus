@@ -38,7 +38,7 @@ function toggleAddLinkMenu() {
     }
 }
 
-// here we add an event listener to the "profile button" sothat when it is clicked, the toggleProfileMenu function is called
+// here we add an event listener to the "profile button" so that when it is clicked, the toggleProfileMenu function is called
 profileBtn.addEventListener("click", toggleProfileMenu);
 // here we add an event listener to the "edit button" so that when it is clicked, the toggleEditLinkMenu function is called
 editDropdownBtn.addEventListener("click", toggleEditLinkMenu);

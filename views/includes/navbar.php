@@ -1,4 +1,4 @@
-<!-- het script dat er voorzorgd dat de nav bar werkt -->
+<!-- Script that makes the navbar function -->
 <script src="../../assets/navbar.js" defer></script>
 
 
