@@ -1,5 +1,4 @@
     let itemAdded = false;
-
     function deleteItem(hobby_id) {
         const form = document.getElementById("hidden-form");
         form.innerHTML = "";
@@ -54,7 +53,6 @@
 
         form.submit();
     }
-
     function createItem() {
         if(itemAdded == false) {
             itemAdded = true;
