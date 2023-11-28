@@ -24,7 +24,9 @@ html, body {
 .col6 {
     flex: 50%;
 }
-
+/* 
+These styles only apply when the width of the viewers screen is 600px or less
+*/
 @media screen and (max-width: 600px) {
 
     .col6 {

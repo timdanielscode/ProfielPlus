@@ -74,7 +74,9 @@
     margin-left: 2.5%;
     font-weight: bold;
 }
-
+/* 
+These styles only apply when the width of the viewers screen is 600px or less
+*/
 @media screen and (max-width: 600px) {
 
     .profileDetails {

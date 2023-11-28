@@ -1,3 +1,6 @@
+/* 
+making an animation for when the formbuttons are hovered
+ */
 @keyframes movingOutNav {
     from {top: 60px;}
     to {top: 361px}
@@ -76,6 +79,7 @@ nav ul, nav li {
     cursor: pointer;
 }
 
+/* the profilemenu is only vilible when the profile button is clicked */
 .profileMenu {
     display: flex;
     justify-content: start;
@@ -115,6 +119,10 @@ nav ul, nav li {
 
 /* _______________ edit dropdown __________________ */
 
+/* 
+the .editLinkMenu contains the add menu and the edit menu, sothat i had to write the styles only once 
+this menu is only visible when the profile button is clicked and the add or edit button is clicked
+*/
 .editLinkMenu {
     display: flex;
     flex-direction: column;
@@ -137,6 +145,9 @@ nav ul, nav li {
 }
 
 /* ___________media queries___________ */
+/* 
+these styles are for the screens smaller or equal to 400px
+*/
 @media only screen and (max-width: 400px) {
     .profileMenu {
         width: 100%;

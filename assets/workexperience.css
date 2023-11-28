@@ -4,7 +4,9 @@ center div{
     display: flex;
 
 }
-
+/* 
+These styles within the mediaquery only apply when the width of the viewers screen is 768px or more
+*/
 @media only screen and (min-width: 768px) {
     #table th {
         padding: 10px;

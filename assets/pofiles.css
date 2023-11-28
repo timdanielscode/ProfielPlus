@@ -5,7 +5,9 @@ table {
 td a {
     padding: 5px;
 }
-
+/* 
+These styles only apply when the width of the viewers screen is 600px or less
+*/
 @media only screen and (max-width: 600px) {
     table {
       width: 100%;

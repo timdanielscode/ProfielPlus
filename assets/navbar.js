@@ -7,7 +7,7 @@ const editLinkMenu = document.getElementById("editLinkMenu");
 const addLinkMenu = document.getElementById("addLinkMenu");
 const addDropdownBtn = document.getElementById("addDropdownBtn");
 
-// this functions makes the profile options visible or invisible
+// this functions makes the profile menu visible or invisible
 function toggleProfileMenu() {
     profileMenu.classList.toggle("profileMenu");
     if (!profileMenu.classList.contains("profileMenu") && editLinkMenu.classList.contains("editLinkMenu")) {
@@ -38,7 +38,9 @@ function toggleAddLinkMenu() {
     }
 }
 
-
+// here we add an event listener to the "profile button" sothat when it is clicked, the toggleProfileMenu function is called
 profileBtn.addEventListener("click", toggleProfileMenu);
+// here we add an event listener to the "edit button" so that when it is clicked, the toggleEditLinkMenu function is called
 editDropdownBtn.addEventListener("click", toggleEditLinkMenu);
+// here we add an event listener to the "add button" so that when it is clicked, the toggleAddLinkMenu function is called
 addDropdownBtn.addEventListener("click", toggleAddLinkMenu);

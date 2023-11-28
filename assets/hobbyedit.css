@@ -4,7 +4,9 @@ center div{
     display: flex;
 
 }
-
+/* 
+These styles only apply when the width of the viewers screen is 520px or less
+*/
 @media only screen and (min-width: 768px) {
     #table th {
         padding: 10px;
