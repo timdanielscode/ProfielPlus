@@ -94,11 +94,12 @@ input, select {
     border-radius: 3px;
 }
 
-
+/* 
+These styles only apply when the width of the viewers screen is 520px or less
+*/
 @media only screen and (max-width: 520px) {
     .buttonRow {
         height: 110px;
-        /* flex-direction: column; */
         align-items: center;
         justify-content: space-around;
     }    

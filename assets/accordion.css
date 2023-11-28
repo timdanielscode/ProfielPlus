@@ -98,8 +98,10 @@
     margin-left: 25px;
     margin-top: 10px;
 }
-/* addin 2.5% margin to the bottom of the educationSchoolDataContainer 
-and the educationSchoolDataContainer if the viewers screen size is 600px or less */
+/* 
+addin 2.5% margin to the bottom of the educationSchoolDataContainer 
+and the educationSchoolDataContainer if the viewers screen size is 600px or less 
+*/
 @media screen and (max-width: 600px) {
 
     .educationSchoolDataContainer, .educationSchoolDataContainer {

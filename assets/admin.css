@@ -15,6 +15,8 @@ select, option {
     border-radius: 3px;
 }
 
+
+/* styling submit buttons based on their value */
 input[value=Delete] {
     background-color: rgb(121, 0, 0);
     width: 60px;
